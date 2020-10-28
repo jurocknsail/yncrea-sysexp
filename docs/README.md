@@ -8,24 +8,24 @@ The course takes place over 4 days and a half and intends to give students an ov
 
 ## Day 1
 
-1. [OS Introduction](./intro.md)
+1. [OS Introduction](./00_intro.md)
 
 
 ## Day 2
 
-1. [OS Introduction](./intro.md)
+1. [OS Introduction](./00_intro.md)
 
 
 ## Day 3
 
-1. [TP Linux commands](./tpLinuxCommands.md)
+1. [TP Linux commands](./04_handsOnLinuxCommands.md)
 
 
 ## Day 4
 
-1. [OS Introduction](./intro.md)
+1. [OS Introduction](./00_intro.md)
 
 
 ## Day 4 & 1/2
 
-1. [OS Introduction](./intro.md)
+1. [OS Introduction](./00_intro.md)
