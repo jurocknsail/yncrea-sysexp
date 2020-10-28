@@ -34,6 +34,10 @@ Sur le fichier C utilisé au TP précédent :
     ```
          
 - Remplacer le nom de famille DERUE par Christophe – Affichage stdout
+- Remplacer les lignes préfixée par 0100 et suffixée par 123, par le contenu situé entre ces deux occurrences – Affichage stdout.   
+  Example :
+    0100123456123 devient 123456
+
 - Ne garder que les chiffres du fichier – Affichage stdout
 - Afficher, sur stdout, les champs 1 et 4 issue du découpage à partir du token ``:`` du fichier titi.txt
 - Trier les lignes de titi.txt
