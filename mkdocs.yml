@@ -1,8 +1,8 @@
 site_name: 'Yncrea - SYSEXP Course'
 
 # Repository
-repo_name: Corrections
-repo_url: https://github.com/jurocknsail/yncrea-cloudcomputing-code-labs
+repo_name: yncrea-sysexp
+repo_url: https://github.com/jurocknsail/yncrea-sysexp
 edit_uri: ""
 site_description: >-
   Ce cours fait partie du cours <b>ITII 2 - SYSEXP</b> pour <b>YNCREA Toulon</b> sur les systèmes d'exploitation et principalement les connaissances Linux.
