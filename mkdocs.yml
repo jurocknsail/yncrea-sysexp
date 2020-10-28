@@ -5,9 +5,9 @@ repo_name: Corrections
 repo_url: https://github.com/jurocknsail/yncrea-cloudcomputing-code-labs
 edit_uri: ""
 site_description: >-
-  This Course is part of <b>ITII 2 - SYSEXP Course </b> for <b>YNCREA Toulon</b> about Operating Systems & mostly Linux knowledge.
+  Ce cours fait partie du cours <b>ITII 2 - SYSEXP</b> pour <b>YNCREA Toulon</b> sur les systèmes d'exploitation et principalement les connaissances Linux.
   <br><br>
-  <i>The course takes place over 4 days and a half and intends to give students an overview of OS's way of working and have a hands on Linux basics.</i>
+  <i>Le cours se déroule sur 4 jours et demi et vise à donner aux étudiants un aperçu de la façon de travailler du système d'exploitation et de se familiariser avec les bases de Linux.</i>
 
 
 nav:
@@ -17,7 +17,7 @@ nav:
   - Day#2:
     - OS Introduction: 00_intro.md
   - Day#3:
-    - TP Linux Commands: 04_handsOnLinuxCommands.md
+    - TP Linux Commands: 04_TpCommandesLinux.md
   - Day#4:
     - OS Introduction: 00_intro.md
   - Day#4 & 1/2:

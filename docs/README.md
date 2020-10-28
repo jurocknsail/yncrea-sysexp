@@ -2,10 +2,9 @@
 
 # Introduction
 
-Course for ISEN Yncrea School about Operating Systems & mostly Linux knowledge.  
+Ce cours fait partie du cours ITII 2 - SYSEXP pour YNCREA Toulon sur les systèmes d'exploitation et principalement les connaissances Linux.
 
-The course takes place over 4 days and a half and intends to give students an overview of OS's way of working and have a hands on Linux basics.
-
+Le cours se déroule sur 4 jours et demi et vise à donner aux étudiants un aperçu de la façon de travailler du système d'exploitation et de se familiariser avec les bases de Linux.
 ## Day 1
 
 1. [OS Introduction](./00_intro.md)
@@ -18,7 +17,7 @@ The course takes place over 4 days and a half and intends to give students an ov
 
 ## Day 3
 
-1. [TP Linux commands](./04_handsOnLinuxCommands.md)
+1. [TP Linux commands](./04_TpCommandesLinux.md)
 
 
 ## Day 4
