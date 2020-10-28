@@ -87,7 +87,7 @@ Dans ce TP, vous apprendrez à utiliser les commandes de base d'Unix.
     ??? example "Solution"
         ```bash linenums="1"
         mkdir -p SE/{TP1/{dpc,script,delivery},TP2/{bin,obj,src,inc}}
-         ```
+        ```
 
 - Installer la commande `tree` qui permet d'afficher l'arborescence ci-dessus
 
@@ -180,6 +180,9 @@ Dans ce TP, vous apprendrez à utiliser les commandes de base d'Unix.
          chmod -R 750 SE/TP2/
          ```
          
+    !!! tip 
+        Vous pouvez vérifier avec la commande ```tree -p```
+         
 - Copier le fichier bonjour.c en salut.c en local.
     
     !!! tip 
@@ -254,7 +257,7 @@ Dans ce TP, vous apprendrez à utiliser les commandes de base d'Unix.
         
     ??? example "Solution"
          ```bash linenums="1"
-         chown -R mon_user:mon_groupe TP3/
+         chown -R mon_user:mon_groupe TP2/
          ```
          
 - Se positionner sur son home directory et créer un lien symbolique vers le fichier salut.c de TP2
@@ -270,12 +273,11 @@ Dans ce TP, vous apprendrez à utiliser les commandes de base d'Unix.
 
     ??? example "Solution"
          ```bash linenums="1"
-         cd
          cat monLien
          ```
          
     !!! note
-        Un lien symbolique pointe vers le nom d'un fichier existant.
+        Un lien symbolique pointe vers le nom d'un fichier existant.  
         Un lieu permanent (ou physique) pointe vers l'esapace mémoire où se siture le fichier.
         
 
@@ -296,43 +298,191 @@ Dans ce TP, vous apprendrez à utiliser les commandes de base d'Unix.
          ```
          
 ### Utilisation de la commande export :
-- Modifier le contenu de la variable d’environnement PATH afin d’y ajouter le répertoire local.
-- Vérifier que, situé sous SE/TP2/bin, vous pouvez lancer ``bonjour`` de la façon suivante :
-    bonjour ↵    
-    ( Attention de ne pas effacer PATH)
+
+- Modifier le contenu de la variable d’environnement PATH afin d’y ajouter le chemin **absolu** vers le répertoire `TP2/bin`.
+    
+    !!! warning
+        Attention à ne pas écraser totalement la variable PATH !
+        
+    ??? example "Solution"
+         ```bash linenums="1"
+         export PATH=$PATH:/home/user/SE/TP2/bin
+         ```
+         
+- Vérifier que depuis n'importe quel folder, vous pouvez lancer ``bonjour`` de la façon suivante : `bonjour ↵`   
+
+- Vérifiez que ```bonjour``` execute bien votre binaire avec `which bonjour`
+
 - Modifier votre profil utilisateur afin de modifier PATH comme précédemment, de manière permanente.
 
+    ??? example "Solution"
+        Il suffit de copier coller l'export ``export PATH=$PATH:/home/user/SE/TP2/bin`` dans le fichier `~/.bashrc`
+
+         
 ### Script :
+
 - Déplacez vous sous SE/TP1/script et créer, en 1 seule commande, un fichier essai.bash contenant ``#!/bin/bash``
+    
+    ??? example "Solution"
+         ```bash linenums="1"
+         cd ~/SE/TP1/script
+         echo '#!/bin/bash' > essai.bash
+         ```
+
 - Ajouter à la fin de essai.bash la ligne « ls –lrt » (en une seule commande)
+
+    
+    ??? example "Solution"
+         ```bash linenums="1"
+         echo 'ls -lrt' >> essai.bash
+         ```
+
 - Exécutez essai.bash
 
+    !!! warning
+        Pensez à vous donner les droits d'execution avant ...  
+        ``chmod u+x essai.bash``
+        
+    ??? example "Solution"
+         ```bash linenums="1"
+         ./essai.bash
+         ```
+
 ### Utilisation de grep, ps, netstat,wc :
-- Rechercher l’occurrence « include » dans le fichier bonjour.c
+- Rechercher l’occurrence « include » dans le fichier `bonjour.c`
+
+    ??? example "Solution"
+         ```bash linenums="1"
+         cd ~/SE/TP2/src
+         grep "include" bonjour.c
+         ```
+
 - Afficher l’ensemble des processus en cours
+
+    ??? example "Solution"
+         ```bash linenums="1"
+         ps -edf
+         ```
+
 - Afficher l’ensemble des sockets en état ‘ESTABLISHED’ sur votre machine et comptez les.
+   
+    ??? example "Solution"
+         ```bash linenums="1"
+         netstat –a | grep ESTABLISHED | wc
+         ```
 
 ### Utilisation de la commande find :
-- Rechercher à partir de votre home directory l’ensemble des fichiers .c contenus dans ce répertoire et ses sous répertoires
-- Rechercher à partir de votre home directory l’ensemble des occurrences de « printf » dans l’ensemble des fichiers .c contenus dans ce répertoire et ses sous répertoires
+- Rechercher à partir de votre repertoire ``SE`` l’ensemble des fichiers .c contenus dans ce répertoire et ses sous répertoires
 
-### Utilisation de la commande xargs et find:
-- Créer une sauvegarde de l’ensemble des fichiers c se trouvant sous ``./SE/TP2/src`` en le copiant en ``nom_du_fichier.c_backup``  
-    Ex : bonjour.c est copié en bonjour.c_backup
-- Rechercher à partir de votre home directory l’ensemble des fichiers d’extension .c et .c_backup en une seule commande.
+    ??? example "Solution"
+         ```bash linenums="1"
+         find ~/SE -name "*.c"
+         ```
+         
+- Rechercher à partir de votre repertoire ``SE`` l’ensemble des occurrences de « printf » dans l’ensemble des fichiers .c contenus dans ce répertoire et ses sous répertoires
 
+    ??? example "Solution"
+         ```bash linenums="1"
+         find ~/SE -name "*.c" -exec grep "printf" {} \; -print
+         ```
+         
+### Utilisation de la commande xargs:
+
+- Créer une sauvegarde de l’ensemble des fichiers c se trouvant sous ``SE/TP2/src`` en le copiant en ``nom_du_fichier.c_backup``  
+    
+    !!! tip
+        bonjour.c est copié en bonjour.c_backup
+        
+    ??? example "Solution"
+         ```bash linenums="1"
+         ls *.c | xargs –t –i cp {} {}_backup
+         ```
+        
 ### Machine/user/système/terminal
 - Afficher qui est loggé sur votre machine ?
 - Afficher quel est le nom de votre machine ?
 - Afficher quel est le nom de votre système ?
 - Afficher quel votre numéro utilisateur et groupe ?
 
+    ??? example "Solution"
+         ```bash linenums="1"
+         who
+         hostname
+         uname -a
+         id -u
+         ```
+
 ### Les Process : utilisation des commandes ps, top, jobs, CTRL^Z, fg, bg, kill
-- Monitorer de manière dynamique l’ensemble des process en cours (rafraichissement de la commande 2 secondes)
-- Lancer un process en background, par example ``firefox``
-- Monitorer le de 2 façons différentes
+
+- Monitorer de manière dynamique l’ensemble des process en cours
+
+    ??? example "Solution"
+         ```bash linenums="1"
+         jobs
+         ```
+- Dans un autre terminal, lancer un process long en background, par example ``firefox``, ou ajouter une boucle infinie au programme bonjour et utiliser ``bonjour`.
+    
+    !!! tip "bonjour.c"
+         ```c linenums="1"
+         // directive du préprocesseur
+         #include <stdio.h>
+         
+         /* prototype des fonctions */
+         
+         /* programme principal */
+         int main() {
+           while(1){
+            printf("Bonjour\n") ;
+            sleep (2);
+           }
+         }
+         ```
+                 
+    ??? example "Solution"
+         ```bash linenums="1"
+         bonjour &
+         ```
+         
+- Monitorer le de façon statique
+    
+    ??? example "Solution"
+         ```bash linenums="1"
+         ps | grep bonjour
+             
+             9034 ttys000    0:00.00 bonjour
+         ```
 - Tuer le violemment
+
+    ??? example "Solution"
+         ```bash linenums="1"
+         kill -9 9034
+         ```
+         
 - Lancer un process, l’interrompre et le mettre en exécution en background
+
+    ??? example "Solution"
+         ```bash linenums="1"
+         bonjour
+         ctrl + z
+         bg
+         ```
+         
 - Monitorer le
+
+    ??? example "Solution"
+         ```bash linenums="1"
+         ps | grep bonjour
+         ```
 - Basculer ce process en foreground
+
+    ??? example "Solution"
+         ```bash linenums="1"
+         fg
+         ```
+         
 - Stopper le par un signal d’interruption
+    
+    ??? example "Solution"
+         ```bash linenums="1"
+         ctrl + z
+         ```
