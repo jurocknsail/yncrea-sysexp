@@ -15,12 +15,10 @@ nav:
   - Day#1:
     - OS Introduction: 00_intro.md
   - Day#2:
-    - OS Introduction: 00_intro.md
+    - TP Linux Commands: 02_TpCommandesLinux.md
   - Day#3:
-    - TP Linux Commands: 04_TpCommandesLinux.md
+    - TP Regexp: 03_TpRegexp.md
   - Day#4:
-    - OS Introduction: 00_intro.md
-  - Day#4 & 1/2:
     - OS Introduction: 00_intro.md
 
 theme:

@@ -155,7 +155,7 @@ Dans ce TP, vous apprendrez à utiliser les commandes de base d'Unix.
         file ../bin/bonjour
         ```
         
-- Déplacez vous par un déplacement relatif sous ``bin``
+- Déplacez vous par un déplacement relatif sous ``TP2/bin``
 
     ??? example "Solution"
         ```bash linenums="1"
@@ -219,41 +219,10 @@ Dans ce TP, vous apprendrez à utiliser les commandes de base d'Unix.
          ```bash linenums="1"
          rm -R TP3/
          ```
-     
-### Monitoring disques
-
-- Quel est l’espace disponible sur votre disque ?
-
-    ??? example "Solution"
-         ```bash linenums="1"
-         df -h
-         ```
-         
-- Quelles sont les partitions disques présentent sur votre système ?    
-
-    ??? example "Solution"
-         ```bash linenums="1"
-         sudo fdisk -l
-         ```
    
 ### Utilisation des commandes : chmod, chown, chgrp, ls, ln
 
-- Copier le répertoire ``TP2`` en ``TP3`` avec l’ensemble de ses fichiers
-
-    ??? example "Solution"
-         ```bash linenums="1"
-         cd ~/SE
-         cp -R TP2/ TP3/
-         ```
-         
-- Changer les droits du fichier salut.c de TP3 en ``_rwxrwxrwx``
-
-    ??? example "Solution"
-         ```bash linenums="1"
-         chmod 777 TP3/src/salut.c
-         ```
-         
-- Changer le owner de ce fichier par n'importe quel autre utilisateur présent sur votre machine, monitorer le résultat
+- Changer le owner du fichier `TP2/src/salut.c` par n'importe quel autre utilisateur présent sur votre machine, monitorer le résultat
 
     !!! tip 
         Pour connaitre les users disponible, allez voir le contenu du fichier ``/etc/passwd`` avec la command ``cat``  
@@ -262,7 +231,7 @@ Dans ce TP, vous apprendrez à utiliser les commandes de base d'Unix.
 
     ??? example "Solution"
          ```bash linenums="1"
-         chown new_owner TP3/src/salut.c
+         chown new_owner TP2/src/salut.c
          ls -la
          ```
         
@@ -274,30 +243,26 @@ Dans ce TP, vous apprendrez à utiliser les commandes de base d'Unix.
 
     ??? example "Solution"
          ```bash linenums="1"
-         chgrp new_group TP3/src/salut.c
+         chgrp new_group TP2/src/salut.c
          ls -la
          ```
-        
-- Attribuer les droits ``rwxrwxrwx`` à TP3 et aux fichiers qu’il contient
-
-    ??? example "Solution"
-         ```bash linenums="1"
-         chmod 777 TP3/
-         ```
          
-- Changer en une seule commande le owner et goupe de TP3 et des fichiers qu’il contient pour vous les redonner
+- Changer en une seule commande le owner et goupe de TP2 et des fichiers qu’il contient pour vous les redonner
 
+    !!! tip 
+        Utilisez la commande `id` pour connaitre votre user:groupe
+        
     ??? example "Solution"
          ```bash linenums="1"
          chown -R mon_user:mon_groupe TP3/
          ```
          
-- Se positionner sur son home directory et créer un lien symbolique vers le fichier salut.c de TP3
+- Se positionner sur son home directory et créer un lien symbolique vers le fichier salut.c de TP2
 
     ??? example "Solution"
          ```bash linenums="1"
          cd
-         ln -s SE/TP3/src/salut.c monLien
+         ln -s SE/TP2/src/salut.c monLien
          ls -la
          ```
          
@@ -313,65 +278,57 @@ Dans ce TP, vous apprendrez à utiliser les commandes de base d'Unix.
         Un lien symbolique pointe vers le nom d'un fichier existant.
         Un lieu permanent (ou physique) pointe vers l'esapace mémoire où se siture le fichier.
         
-        
-### Utilisation des commandes d’édition :
 
-- Afficher de trois façons différentes le contenu du fichier bonjour.c
-    
+### Monitoring disques
+
+- Quel est l’espace disponible sur votre disque ?
+
     ??? example "Solution"
          ```bash linenums="1"
-         vi bonjour.c
-         nano bonjour.c
-         cat bonjour.c
+         df -h
          ```
-         Attention, cat ne permet pas l'edition !
          
+- Quelles sont les partitions disques présentent sur votre système ?    
 
-### Utilisation des commandes echo, tail, export :
+    ??? example "Solution"
+         ```bash linenums="1"
+         sudo fdisk -l
+         ```
+         
+### Utilisation de la commande export :
 - Modifier le contenu de la variable d’environnement PATH afin d’y ajouter le répertoire local.
 - Vérifier que, situé sous SE/TP2/bin, vous pouvez lancer ``bonjour`` de la façon suivante :
     bonjour ↵    
     ( Attention de ne pas effacer PATH)
 - Modifier votre profil utilisateur afin de modifier PATH comme précédemment, de manière permanente.
+
+### Script :
 - Déplacez vous sous SE/TP1/script et créer, en 1 seule commande, un fichier essai.bash contenant ``#!/bin/bash``
 - Ajouter à la fin de essai.bash la ligne « ls –lrt » (en une seule commande)
-- Ouvrez un shell suplémentaire,
-    - Sur le shell 1, affichez la fin du fichier essai.bash avec mise à jour,
-    - Sur le shell 2, ajouter à la fin de essai.bash la ligne « env »  
-  Que constatez vous ? 
-  Exécutez essai.bash
+- Exécutez essai.bash
 
 ### Utilisation de grep, ps, netstat,wc :
 - Rechercher l’occurrence « include » dans le fichier bonjour.c
 - Afficher l’ensemble des processus en cours
-- Afficher l’ensemble des sockets en état ‘ESTABLISHED’ sur votre machine.
-- Affichez le nombre de sockets en état ‘ESTABLISHED’
+- Afficher l’ensemble des sockets en état ‘ESTABLISHED’ sur votre machine et comptez les.
 
 ### Utilisation de la commande find :
 - Rechercher à partir de votre home directory l’ensemble des fichiers .c contenus dans ce répertoire et ses sous répertoires
-- Rechercher à partir de votre home directory l’ensemble des fichiers .c contenant le caractère ‘u’ dans leur nom
 - Rechercher à partir de votre home directory l’ensemble des occurrences de « printf » dans l’ensemble des fichiers .c contenus dans ce répertoire et ses sous répertoires
-- Rechercher à partir de votre home directory l’ensemble des fichiers qui ne sont pas d’extension ``.c``
-- Modifier l’ensemble des fichiers contenu dans votre répertoire courant et ses sous-répertoires d’extension ```.bak``` en ```.c```
 
 ### Utilisation de la commande xargs et find:
-- Afficher dans un fichier le contenu de l’ensemble des fichiers ```.c``` se trouvant sous ```./SE/TP2/src```
 - Créer une sauvegarde de l’ensemble des fichiers c se trouvant sous ``./SE/TP2/src`` en le copiant en ``nom_du_fichier.c_backup``  
     Ex : bonjour.c est copié en bonjour.c_backup
-- Créer un fichier contenant les fichiers .c et leur backup. 
-- Faire la différence entre les fichiers .c et leur backup à partir de ce fichier créé.
 - Rechercher à partir de votre home directory l’ensemble des fichiers d’extension .c et .c_backup en une seule commande.
 
 ### Machine/user/système/terminal
 - Afficher qui est loggé sur votre machine ?
-- Afficher qui est loggé sur votre machine sur la sortie standard mais également dans un fichier log.txt (sans répétition de commande) ?
 - Afficher quel est le nom de votre machine ?
 - Afficher quel est le nom de votre système ?
-- Afficher quel est le nom du terminal associé à votre user ?
-- Afficher votre numéro utilisateur et groupe
+- Afficher quel votre numéro utilisateur et groupe ?
 
-### Les Process : utilisation des commandes ps, top, jobs, CTRL^Z, fg, bg
-- Monitorer de manière dynamique l’ensemble des process (rafraichissement de la commande 2 secondes)
+### Les Process : utilisation des commandes ps, top, jobs, CTRL^Z, fg, bg, kill
+- Monitorer de manière dynamique l’ensemble des process en cours (rafraichissement de la commande 2 secondes)
 - Lancer un process en background, par example ``firefox``
 - Monitorer le de 2 façons différentes
 - Tuer le violemment
