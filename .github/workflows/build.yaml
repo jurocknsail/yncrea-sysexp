@@ -1,0 +1,19 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  my-job:
+    name: CI/CD Job
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout master branch
+        uses: actions/checkout@v2
+
+      - name: Deploy docs
+        uses: mhausenblas/mkdocs-deploy-gh-pages@master
+        env:
+          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}

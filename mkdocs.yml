@@ -1,0 +1,77 @@
+site_name: 'Yncrea - Intro to Cloud Computing Course'
+
+# Repository
+repo_name: Corrections
+repo_url: https://github.com/jurocknsail/yncrea-cloudcomputing-code-labs
+edit_uri: ""
+site_description: >-
+  This Course is part of <b>ITII 2 - SYSEXP Course </b> for <b>YNCREA Toulon</b> about Operating Systems & mostly Linux knowledge.
+  <br><br>
+  <i>The course takes place over 4 days and a half and intends to give students an overview of OS's way of working and have a hands on Linux basics.</i>
+
+
+nav:
+  - Home: index.md
+  - Day#1:
+    - OS Introduction: 00_intro.md
+  - Day#2:
+    - OS Introduction: 00_intro.md
+  - Day#3:
+    - TP Linux Commands: 04_handsOnLinuxCommands.md
+  - Day#4:
+    - OS Introduction: 00_intro.md
+  - Day#4 & 1/2:
+    - OS Introduction: 00_intro.md
+
+theme:
+  language: en
+  name: 'material'
+  logo: assets/images/yncrea.png
+  favicon: assets/images/yncrea.png
+  palette:
+    primary: blue
+    accent: blue
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - tabs
+    - instant
+  custom_dir: material
+
+markdown_extensions:
+  - codehilite:
+      linenums: true
+  - admonition
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed
+  - pymdownx.tilde
+copyright: '&copy; 2020 Julien Berger'
+
+# Customization
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/jurocknsail
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/julien-berger-0a9671154/
+
+# Google Analytics
+google_analytics:
+  - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
+  - auto
