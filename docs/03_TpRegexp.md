@@ -45,6 +45,19 @@ Sur le fichier C utilisé au TP précédent :
 - Trier les lignes de titi.txt
 - Effacer les lignes vides contenues dans le fichier bonjour.c
 
+- Ecrivez un script awk qui permet d'afficher chaque groupe disponible sur votre machine, suivit de son numéro GID, si et seulement si son GID est > 1.  
+    Formattez la sortie comme ceci :   
+    ``Nom du groupe : [groupName] / ID du groupe : [GID]``  
+    Voici un example de fichier ``/etc/group`` si vous n'en avez pas :
+    
+        ```linenums="1"
+        wheel:*:0:root
+        daemon:*:1:root
+        kmem:*:5:root
+        jberger:*:200:user
+        user1:*:201:user
+        eleve:*:500:eleves
+        ```
 
 ## Archiver son travail : tar, gzip
 
