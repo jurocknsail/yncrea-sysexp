@@ -50,14 +50,14 @@ Sur le fichier C utilisé au TP précédent :
     ``Nom du groupe : [groupName] / ID du groupe : [GID]``  
     Voici un example de fichier ``/etc/group`` si vous n'en avez pas :
     
-        ```linenums="1"
-        wheel:*:0:root
-        daemon:*:1:root
-        kmem:*:5:root
-        jberger:*:200:user
-        user1:*:201:user
-        eleve:*:500:eleves
-        ```
+    ```linenums="1"
+    wheel:*:0:root
+    daemon:*:1:root
+    kmem:*:5:root
+    jberger:*:200:user
+    user1:*:201:user
+    eleve:*:500:eleves
+    ```
 
 ## Archiver son travail : tar, gzip
 
