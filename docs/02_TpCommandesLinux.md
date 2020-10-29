@@ -484,5 +484,5 @@ Dans ce TP, vous apprendrez à utiliser les commandes de base d'Unix.
     
     ??? example "Solution"
          ```bash linenums="1"
-         ctrl + z
+         ctrl + c
          ```
