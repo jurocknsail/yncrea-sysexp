@@ -395,7 +395,7 @@ Dans ce TP, vous apprendrez à utiliser les commandes de base d'Unix.
         
     ??? example "Solution"
          ```bash linenums="1"
-         ls *.c | xargs –t –i cp {} {}_backup
+         ls *.c | xargs -t -i cp {} {}_backup
          ```
         
 ### Machine/user/système/terminal
