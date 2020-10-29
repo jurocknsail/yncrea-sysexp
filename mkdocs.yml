@@ -18,6 +18,7 @@ nav:
     - TP Linux Commands: 02_TpCommandesLinux.md
   - Day#3:
     - TP Regexp: 03_TpRegexp.md
+    - "": 03_TpRegexp.md
   - Day#4:
     - OS Introduction: 00_intro.md
 
