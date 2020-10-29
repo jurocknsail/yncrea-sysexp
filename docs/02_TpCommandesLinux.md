@@ -368,7 +368,7 @@ Dans ce TP, vous apprendrez à utiliser les commandes de base d'Unix.
    
     ??? example "Solution"
          ```bash linenums="1"
-         netstat –a | grep ESTABLISHED | wc
+         netstat –a | grep ESTABLISHED | wc -l
          ```
 
 ### Utilisation de la commande find :
