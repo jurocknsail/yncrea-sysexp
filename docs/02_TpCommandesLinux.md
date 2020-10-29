@@ -418,7 +418,7 @@ Dans ce TP, vous apprendrez à utiliser les commandes de base d'Unix.
 
     ??? example "Solution"
          ```bash linenums="1"
-         jobs
+         top
          ```
 - Dans un autre terminal, lancer un process long en background, par example ``firefox``, ou ajouter une boucle infinie au programme bonjour et utiliser ``bonjour`.
     
