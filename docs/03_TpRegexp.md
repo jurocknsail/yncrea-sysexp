@@ -10,7 +10,8 @@ Sur le fichier C utilisé au TP précédent :
 
 - Transformer les commentaires // en /* */ – Affichage stdout
 - Transformer les commentaires /* */ en // – Affichage dans un fichier bonjour.cpp
-- Comparer les fichiers bonjour.cpp et bonjour.c 
+- Comparer les fichiers bonjour.cpp et bonjour.c
+
 - Sous SE/TP1/script, créer le fichier titi.txt contenant les lignes suivantes :
 
     ```bash linenums="1"
@@ -34,9 +35,10 @@ Sur le fichier C utilisé au TP précédent :
     ```
          
 - Remplacer le nom de famille DERUE par Christophe – Affichage stdout
-- Remplacer les lignes préfixée par 0100 et suffixée par 123, par le contenu situé entre ces deux occurrences – Affichage stdout.   
-  Example :
-    0100123456123 devient 123456
+
+- Remplacer les lignes préfixées par 0100 et suffixée par 123, par le contenu situé entre ces deux occurrences – Affichage stdout.  
+    Exemple :  
+        0100123456123 devient 123456
 
 - Ne garder que les chiffres du fichier – Affichage stdout
 - Afficher, sur stdout, les champs 1 et 4 issue du découpage à partir du token ``:`` du fichier titi.txt
@@ -46,5 +48,4 @@ Sur le fichier C utilisé au TP précédent :
 
 ## Archiver son travail : tar, gzip
 
-- Se positionner sous SE et archiver TP1 et TP2
-- Compresser l’archive précédemment obtenue
+- Se positionner sous votre home directory  et archiver SE en donnant votre nom à l'archive.
