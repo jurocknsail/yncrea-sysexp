@@ -2,6 +2,12 @@
 
 ---
 
+## Objectifs
+
+TODO
+
+---
+
 ## Définition
 
 Un OS est la couche logicielle qui permet et coordonne l’utilisation du matériel entre les différents programmes d’application.  
