@@ -13,14 +13,15 @@ site_description: >-
 nav:
   - Home: index.md
   - Day#1:
-    - OS Introduction: 00_intro.md
+    - Introduction: 00_intro.md
+    - Histoire: 01_history.md
   - Day#2:
-    - TP Linux Commands: 02_TpCommandesLinux.md
+    - TP Linux Commands: 20_TpCommandesLinux.md
   - Day#3:
-    - TP Regexp: 03_TpRegexp.md
-    - "": 03_TpRegexp_Corr.md
+    - TP Regexp: 30_TpRegexp.md
+    - "": 30_TpRegexp_Corr.md
   - Day#4:
-    - OS Introduction: 00_intro.md
+    - Programmation Système: 40_progsys.md
 
 theme:
   language: en
@@ -39,10 +40,16 @@ theme:
   custom_dir: material
 
 markdown_extensions:
-  - codehilite:
-      linenums: true
   - admonition
-  - pymdownx.arithmatex
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.betterem:
       smart_enable: all
   - pymdownx.caret
@@ -51,15 +58,27 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
   - pymdownx.inlinehilite
-  - pymdownx.magiclink
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
   - pymdownx.mark
   - pymdownx.smartsymbols
-  - pymdownx.superfences
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed
   - pymdownx.tasklist:
       custom_checkbox: true
-  - pymdownx.tabbed
   - pymdownx.tilde
+
 copyright: '&copy; 2020 Julien Berger'
 
 # Customization

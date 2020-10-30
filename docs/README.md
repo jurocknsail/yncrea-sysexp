@@ -17,7 +17,7 @@ Le cours se déroule sur 4 jours et demi et vise à donner aux étudiants un ape
 
 ## Day 3
 
-1. [TP Linux commands](02_TpCommandesLinux.md)
+1. [TP Linux commands](20_TpCommandesLinux.md)
 
 
 ## Day 4
