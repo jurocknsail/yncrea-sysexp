@@ -12,5 +12,7 @@
 
 ## 1960 : Multi-tâches et multi-utilisateur 
 
+## Pour résumer en Vidéo
 
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/bdSWj7Y50VY/0.jpg)](https://www.youtube.com/watch?v=bdSWj7Y50VY "Histoire du système d'exploitation Unix")
 
