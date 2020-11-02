@@ -15,8 +15,11 @@ nav:
   - Day#1:
     - Introduction: 00_intro.md
     - Histoire: 01_history.md
+    - Ordonnancement: 02_ordonnacement.md
+    - SGF: 20_LeSystemeDeFichiers.md
+
   - Day#2:
-    - TP Linux Commands: 20_TpCommandesLinux.md
+    - TP Linux Commands: 21_TpCommandesLinux.md
   - Day#3:
     - TP Regexp: 30_TpRegexp.md
     - "": 30_TpRegexp_Corr.md

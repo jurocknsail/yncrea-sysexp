@@ -5,8 +5,8 @@
 ## Objectifs
 
 Le 1er objectif est de découvrir quel est le **rôle d'un OS** afin de pouvoir coder des programmes utilisant des *processus / threads*.  
-Cela permettra de paralléliser des actions.  
-Le second objectif du cours est de maitriser **les bases du Shell Unix**.  
+Cela permettra de paralléliser des actions dans nos future programmes.  
+Aussi, nous verrons de manière simplifiée comment sont ordonnancés les processus, puis comment sont organisés les fichiers.  
 
 ---
 
@@ -53,7 +53,14 @@ On peut voir l'OS de duex points de vues différents :
     Le système doit gérer l'allocation du processeur aux différents programmes pouvant s'exécuter (les processus).   
     Cette allocation se fait par le biais d'un algorithme d'ordonnancement qui  planifie l'exécution des programmes.   
     Selon le type de système d'exploitation, l'algorithme d'ordonnancement répond à des objectifs différents  
-    (Ex. Systèmes Temps Réel)  
+    (Ex. Systèmes Temps Réel)[^1]
+    
+
+[^1]:
+    {++Systèmes TR++} : Les programmes en exécution sont soumis à des contraintes de temps fortes, c'est-à-dire que leurs exécutions doivent être impérativement achevées à une date butoir appelée échéance (Robotique / Sécurité / Défense)    
+    ![OS TR](./assets/images/intro/realtime.jpg "OS TR")
+
+    
 
 #### Gestion de la concurrence  
 
@@ -67,7 +74,8 @@ On peut voir l'OS de duex points de vues différents :
 !!! abstract ""
     Le système doit gérer l'allocation de la RAM entre les différents programmes pouvant s'exécuter.  
     Comme la mémoire physique est souvent trop petite pour contenir la totalité des programmes, la gestion de la mémoire se fait selon le principe de la mémoire virtuelle.  
-    A un instant donné, seules sont chargées en RAM les parties de code et données utiles à l'exécution.
+    A un instant donné, seules sont chargées en RAM les parties de code et données utiles à l'exécution.  
+    Ainsi, chacun des processus ==accède à toute la mémoire== à un instant T.
 
 #### Gestion des entrées/sorties  
 

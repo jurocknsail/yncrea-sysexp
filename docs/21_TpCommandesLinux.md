@@ -1,6 +1,8 @@
 # TP Commandes Linux
 
-Dans ce TP, vous apprendrez à utiliser les commandes de base d'Unix.
+
+## Objectifs
+Le second objectif du cours est de maitriser **les bases du Shell Unix**, via un TP.
 
 ---
 
