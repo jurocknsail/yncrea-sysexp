@@ -4,25 +4,27 @@
 
 ## Objectifs
 
-TODO
+Le 1er objectif est de découvrir quel est le **rôle d'un OS** afin de pouvoir coder des programmes utilisant des *processus / threads*.  
+Cela permettra de paralléliser des actions.  
+Le second objectif du cours est de maitriser **les bases du Shell Unix**.  
 
 ---
 
 ## Définition
 
-Un OS est la couche logicielle qui permet et coordonne l’utilisation du matériel entre les différents programmes d’application.  
+Un OS est la ==couche logicielle== qui permet et coordonne l’utilisation du matériel entre les différents programmes d’application.  
 
 !!! tip
-    C'est donc le lien entre l'homme et le hardware ! On parle d'IHM - Interface Homme Machine
+    C'est donc le lien entre l'homme et le hardware ! On parle *d'__IHM__- Interface Homme Machine*
     
-![Vues Centriques et en Couches](assets/images/intro/os_intro.jpg "Vues Centriques et en Couches")
+![Vues Centriques et en Couches](assets/images/intro/os_intro.jpg "Vues Centriques et en Couches"){: align=left }
 
 !!! example
-    Quelques exemples d'OS :   
-        - Unix based : Linux, Mac, Android, iOS ...  
-        - Windows : XP, Vista, 7, 10 ...  
+    ^^Quelques exemples d'OS^^ :   
+        - **Unix based** : Linux, Mac, Android, iOS ...  
+        - **Windows** : XP, Vista, 7, 10 ...  
         
-    ![OS Examples](./assets/images/os_examples.jpg "OS Examples")
+    ![OS Examples](./assets/images/intro/os_examples.jpg "OS Examples"){: align=left }
 
 On peut voir l'OS de duex points de vues différents :  
 
@@ -33,43 +35,63 @@ On peut voir l'OS de duex points de vues différents :
 
 ## Fonctions d'un OS
 
-- Offrir une interface de programmation
-- Offrir une interface opérateur conviviale
-- Interpréter les commandes et l’enchaînement des travaux    
-- Gérer les processus et leur existence simultanée
+### Offrir une interface de programmation & interpreteur de commandes
 
-    - Gestion du processeur  
-      Le système doit gérer l'allocation du processeur aux différents programmes pouvant s'exécuter (les processus).   
-      Cette allocation se fait par le biais d'un algorithme d'ordonnancement qui  planifie l'exécution des programmes.   
-      Selon le type de système d'exploitation, l'algorithme d'ordonnancement répond à des objectifs différents.
-      
-- Optimiser l’utilisation des éléments du système informatique :
+!!! abstract ""
+    Un IDE, Une Command Line etc ...
 
-    - Gestion de la concurrence  
-      Comme plusieurs programmes coexistent en RAM, ceux-ci peuvent vouloir communiquer pour échanger des données.  
-      Par ailleurs, il faut synchroniser l'accès aux données partagées afin de maintenir leur cohérence.   
-      Le système offre des outils de communication et de synchronisation entre programmes.
+### Offrir une interface opérateur conviviale
 
-    - Gestion de la mémoire  
-      Le système doit gérer l'allocation de la RAM entre les différents programmes pouvant s'exécuter.  
-      Comme la mémoire physique est souvent trop petite pour contenir la totalité des programmes, la gestion de la mémoire se fait selon le principe de la mémoire virtuelle.  
-      A un instant donné, seules sont chargées en RAM les parties de code et données utiles à l'exécution.
+!!! abstract ""
+    Pour les non programmeurs. Ceci n'est pas obligatoire ;)
 
-    - Gestion des entrées/sorties  
-      Le système doit gérer l'accès aux périphériques, c'est-à-dire faire la liaison entre les appels de haut niveau des programmes utilisateurs (exemple getchar()) et les opérations de bas niveau de l‘unité d’exécution responsable du périphérique (UE clavier)   
-      C'est le pilote d'entrées/sorties (driver) qui assure cette correspondance.
-      
-    - Gestion des objets externes  
-      La mémoire centrale est une mémoire volatile (RAM). Aussi, toutes les données devant être conservées au delà de l'arrêt de la machine, doivent être stockées sur une mémoire de masse ( disque dur ).  
-      
-    - Gestion de l’accès au réseau  
-      Le système doit permettre à des exécutions de programmes, placées sur des machines distinctes, de communiquer.  
-      Le système offre des outils de type socket pour accéder à la couche de protocoles de communication.
-      
-    - Gestion de la protection  
-      Le système doit fournir des mécanismes garantissant que ses ressources (CPU, mémoire, fichiers,…) ne peuvent être utilisées que par les programmes auxquels les droits nécessaires ont été accordés.
-      
+### Optimiser l’utilisation des éléments du système informatique :
 
-        ![OS Functions](./assets/images/os_functions.jpg "OS Functions")
+#### Gestion du processeur  
+
+!!! abstract ""
+    Le système doit gérer l'allocation du processeur aux différents programmes pouvant s'exécuter (les processus).   
+    Cette allocation se fait par le biais d'un algorithme d'ordonnancement qui  planifie l'exécution des programmes.   
+    Selon le type de système d'exploitation, l'algorithme d'ordonnancement répond à des objectifs différents  
+    (Ex. Systèmes Temps Réel)  
+
+#### Gestion de la concurrence  
+
+!!! abstract ""
+    Comme plusieurs programmes coexistent en RAM, ceux-ci peuvent vouloir communiquer pour échanger des données.  
+    Par ailleurs, il faut synchroniser l'accès aux données partagées afin de maintenir leur cohérence.   
+    Le système offre des outils de communication et de synchronisation entre programmes.
+
+#### Gestion de la mémoire  
+
+!!! abstract ""
+    Le système doit gérer l'allocation de la RAM entre les différents programmes pouvant s'exécuter.  
+    Comme la mémoire physique est souvent trop petite pour contenir la totalité des programmes, la gestion de la mémoire se fait selon le principe de la mémoire virtuelle.  
+    A un instant donné, seules sont chargées en RAM les parties de code et données utiles à l'exécution.
+
+#### Gestion des entrées/sorties  
+
+!!! abstract ""
+    Le système doit gérer l'accès aux périphériques, c'est-à-dire faire la liaison entre les appels de haut niveau des programmes utilisateurs (exemple getchar()) et les opérations de bas niveau de l‘unité d’exécution responsable du périphérique (UE clavier)   
+    C'est le pilote d'entrées/sorties (driver) qui assure cette correspondance.
+
+#### Gestion des objets externes  
+
+!!! abstract ""
+    La mémoire centrale est une mémoire volatile (RAM). Aussi, toutes les données devant être conservées au delà de l'arrêt de la machine, doivent être stockées sur une mémoire de masse ( disque dur ).  
+
+#### Gestion de l’accès au réseau 
+
+!!! abstract ""
+    Le système doit permettre à des exécutions de programmes, placées sur des machines distinctes, de communiquer.  
+    Le système offre des outils de type socket pour accéder à la couche de protocoles de communication.
+
+#### Gestion de la protection  
+
+!!! abstract ""
+    Le système doit fournir des mécanismes garantissant que ses ressources (CPU, mémoire, fichiers,…) ne peuvent être utilisées que par les programmes auxquels les droits nécessaires ont été accordés.
+
+
+![OS Functions](./assets/images/intro/os_functions.jpg "OS Functions")
 
     
