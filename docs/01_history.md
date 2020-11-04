@@ -1,11 +1,16 @@
 # Histoire
 
+---
+
 ## 1940 : Traitement en Série
 
 Un programmeur à la fois, un programme à la fois.  
 Necéssite l'intervention humaine pour changer de programme.
 
 ![Série](./assets/images/history/traitement_serie.jpg "Série")
+
+  
+---
 
 ## 1950 : Traitement par Lots
 
@@ -22,6 +27,9 @@ Introduction d'un programme {++montiteur++}, qui serveille les taches en cours e
     L’ordinateur est soit en exécution d’un programme utilisateur soit en exécution du programme moniteur
 
 ![Lots](./assets/images/history/traitement_lots.jpg "Lots")
+
+  
+---
 
 ## 1950- 1960 : Traitement par Lots Multiprogrammés
 
@@ -42,6 +50,8 @@ Ceci exige la coopération du matériel.
 !!! warning "Important !"
     **Traitement par lots = pas d’interactivité !**
 
+  
+---
 
 ## Début 1960 : Traitement en Temps Partagé
 Une nouvelle technique doit être développée: le CTSS (Compatible Time-Sharing System) de MIT.
@@ -57,7 +67,7 @@ Une nouvelle technique doit être développée: le CTSS (Compatible Time-Sharing
     Ainsi, les tâches ont tour à tour l’attention du processeur (**round-robin**).
     
     Lorsqu’une tâche est en attente d’une opération E/S :  
-    :fontawesome-solid-arrow-right: elle est immédiatement bloquée
+    :fontawesome-solid-arrow-right: elle est immédiatement bloquée  
     :fontawesome-solid-arrow-right: le contrôle du processeur est passé à une autre tâche
     
 |                           | Multi Programming                                             | Temps Partagé                                             |
@@ -65,11 +75,17 @@ Une nouvelle technique doit être développée: le CTSS (Compatible Time-Sharing
 | `Objectif`                | :material-check: Maximiser **l'utilisation du processeur**    |     :material-check: Minimiser le **Temps de Réponse**    |
 | `Source des Commandes `   | Job Control Language (JCL)                                    | Commandes interactives via le Terminal                    |
 
+  
+---
+
 ## 1965 ~ : Multi-tâches et multi-utilisateur 
 
 !!! success
     Association du **Multi-tache** (multi-programmation) + **Multi-Utilisateur** (temps partagé) : MULTICS.  
-    En ajouter un système de fichier, on a déjà la structure d'un SE Moderne :muscle: !
+    En ajoutant un {==**Système de Gestion de Fichiers (SGF)**==}, on a déjà la structure d'un SE Moderne :muscle: !
+
+  
+---
 
 ## Pour résumer en Vidéo
 

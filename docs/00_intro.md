@@ -75,7 +75,10 @@ On peut voir l'OS de duex points de vues différents :
     Le système doit gérer l'allocation de la RAM entre les différents programmes pouvant s'exécuter.  
     Comme la mémoire physique est souvent trop petite pour contenir la totalité des programmes, la gestion de la mémoire se fait selon le principe de la mémoire virtuelle.  
     A un instant donné, seules sont chargées en RAM les parties de code et données utiles à l'exécution.  
-    Ainsi, chacun des processus ==accède à toute la mémoire== à un instant T.
+    Ainsi, chacun des processus ==accède à toute la mémoire== à un instant T.  
+    
+    A cela on ajoute le mécanisme de SWAP qui permet de ==désengorger== le système en déplaçant des modules executables sur la mémoire secondaire (le HDD).  
+    C'est plus lent, mais au moins le système continue de fonctionner !
 
 #### Gestion des entrées/sorties  
 
