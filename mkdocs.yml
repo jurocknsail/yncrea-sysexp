@@ -15,15 +15,15 @@ nav:
   - Day#1:
     - Introduction: 00_intro.md
     - Histoire: 01_history.md
-    - SGF: 02_LeSystemeDeFichiers.md
-    - Ordonnancement: 03_ordonnacement.md
+    - SGF: 02_sgf.md
+    - Processus: 03_processus.md
 
 
   - Day#2:
-    - TP Linux Commands: 21_TpCommandesLinux.md
+    - TP Linux Commands: 21_tpShell.md
   - Day#3:
-    - TP Regexp: 30_TpRegexp.md
-    - "": 30_TpRegexp_Corr.md
+    - TP Regexp: 30_tpRegexp.md
+    - "": 30_tpRegexpCorrection.md
   - Day#4:
     - Programmation Système: 40_progsys.md
 

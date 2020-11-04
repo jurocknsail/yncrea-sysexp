@@ -1,4 +1,0 @@
-# Ordonnancement des Processus
-
-
-## Théorie

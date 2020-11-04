@@ -55,6 +55,14 @@ On peut voir l'OS de duex points de vues différents :
     Selon le type de système d'exploitation, l'algorithme d'ordonnancement répond à des objectifs différents  
     (Ex. Systèmes Temps Réel)[^1]
     
+!!! warning "Définition d'un Processus"
+    **Processus = programme en cours d'exécution.**
+    
+    1 Processus possède trois éléments :  
+     
+    - programme exécutable  
+    - données associées au programme  
+    - contexte d’exécution du programme  
 
 [^1]:
     {++Systèmes TR++} : Les programmes en exécution sont soumis à des contraintes de temps fortes, c'est-à-dire que leurs exécutions doivent être impérativement achevées à une date butoir appelée échéance (Robotique / Sécurité / Défense)    
