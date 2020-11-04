@@ -31,8 +31,27 @@ Un processus :
     
 ![Full Lifecycle](./assets/images/processus/full-lifecycle.jpg "Full Lifecycle")
 
+
+!!! tip
+    A la place de "En Execution" on parlera aussi de processus **"Elu"**
+    
+A un instant donné, un processus peut être dans l’un des états suivants :  
+
+- ^^Actif/Elu^^ : le processus s’exécute sur un processeur (il n’y a donc qu’un seul processus actif en même temps sur une machine monoprocesseur)  
+- ^^Prêt^^ : le processus peut devenir actif dès que le processeur lui sera attribué par le système  
+- ^^Bloqué^^ : le processus a besoin d’une ressource pour continuer (attente d’entrée/sortie par exemple).  
+Le blocage ne peut avoir lieu qu’à la suite d’un appel système. Un processus bloqué ne consomme pas de temps processeur.  
+Il peut y en avoir beaucoup sans pénaliser les performances du système.
+
+
 !!! warning
     Si un processus ne respecte pas son cycle de vie, il terminera dans un état "**ZOMBIE**", très néfaste pour la machine hôte ...
+
+---
+
+## Cycle de vie simplifié
+
+![Simple Lifecycle](./assets/images/processus/simple-lifecycle.jpg "Simple Lifecycle")
 
 ---
 
@@ -82,6 +101,65 @@ Les deux derniers points sont essentiels car ils permettent d'éviter :
 
 ---
 
-## Ordonancement
+## Table des Processus
 
-TODO
+Elle formée d’un tableau de structures décrivant les processus, dont le noyau se sert pour gérer leur exécution.  
+Chaque entrée dans la table définit un processus crée par le noyau.   
+
+Elle réside en **mémoire**, le noyau l’interroge et la met à jour en permanence lorsqu’il alloue et désalloue du temps CPU aux processus.  
+ 
+Les informations d’ordonnancement de processus de cette table sont aussi mises à jour pour les processus qui ne sont pas en cours d’exécution.  
+
+!!! warning "Important"
+    On parle de table ... ce qui implique que chaque processus possède identifiant unique appelé ==**PID**== (Process ID).
+    
+!!! tip
+    Les structures des processus sont définies dans ```/usr/include/sys/proc.h```
+
+---
+
+## Context d'éxecution
+
+Pour pouvoir stopper et reprendre un processus où il en était, le SE doit gérer et conserver/restaurer le context d'execution de chaque processus.
+
+![Ctxt](./assets/images/processus/ctx.jpg "Ctxt")
+
+---
+
+## Hierarchie
+
+Comme tout bon système UNIX, et comme pour le SGF, la gestion des processus repose sur un concept ==**arborescent**==.
+
+![arbo](./assets/images/processus/arboProc.jpg "arbo")
+
+---
+
+## Modes d'éxecution
+
+
+### Interactif (foreground)
+
+!!! abstract ""
+    Le plus fréquent (on tape une cmd, on attend un résultat)  
+    Interruption de la commande par CTRL^C  
+    Suspension de la commande par CTRL^Z  
+
+### Arrière plan (background)
+
+!!! abstract ""
+    La cmd est lancée, mais on rend le contrôle à l’utilisateur  
+    Pas d’interaction avec l’utilisateur.  
+
+
+![fgbg](./assets/images/processus/fgbg.png "fgbg")
+
+
+---
+
+## Conclusion
+
+!!! success
+    Maintenant, votre point de vue de programmeur sur les OS doit ressembler à ceci : 
+
+    ![conclusion](./assets/images/processus/conclusion.jpg "conclusion")
+
