@@ -34,7 +34,7 @@ Pour vous aider, voici une liste (non exhaustive) de points à regarder :
 ## Exercice 2 : Ordonnancement simple
 
 Soit 5 processus A, B, C, D et E qui sont soumis à un CPU dans cet ordre, mais quasi simultanément.   
-Ces travaux ne font pas d'entrées-sorties. Leurs durées respectives sont :  Ò 
+Ces travaux ne font pas d'entrées-sorties. Leurs durées respectives sont :  
 
 | Processus    | durée(s) | 
 | ------------ | -------- | 
