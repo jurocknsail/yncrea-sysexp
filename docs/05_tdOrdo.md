@@ -36,6 +36,7 @@ Pour vous aider, voici une liste (non exhaustive) de points à regarder :
 !!! tip 
     Pour toutes ces recherches, google est votre ami :wink:  
     A la place de "noyau" on parle souvent historiquement de **"Kernel"** !
+    
 ---
 
 ## Exercice 2 : Ordonnancement simple
@@ -53,7 +54,8 @@ Ces travaux ne font pas d'entrées-sorties. Leurs durées respectives sont :
 
 ### Question 1
 
-Déterminer les **temps de réponse** de chacun des processus, ainsi que le **temps de réponse moyen**, pour les disciplines :
+Déterminer les **temps de réponse** de chacun des processus, ainsi que le **temps de réponse moyen**, pour les disciplines :  
+Pour le moment, on est en algos ==**non préemptifs**==.
 
 - FIFO (First In First Out)  
 - SJF (Shortest Job First)   
@@ -85,7 +87,7 @@ Les dates d’arrivée des processus sont respectivement :
 
 Tracez le schéma d’exécution des processus en considérant que :  
 
-1. L’ordonnancement est **non préemptif**
+1. L’ordonnancement est **non préemptif** comme précédemment.
 1. Puis qu’il est **préemptif**. 
 
 ---
