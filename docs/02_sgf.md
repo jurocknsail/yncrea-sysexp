@@ -161,7 +161,7 @@ Un inodes est un {==nœuds d’information==} qui contient les **attributs** d'u
     Le codage des droits est fait sous forme binaire (en puissances de 2), pour chaque bloc de permissions (user/group/others).  
     Ainsi le codage des droits ``rwxr-x---`` donne **750** :   
         - Droits  User : $2^2 + 2^1 + 2^0 = 7$   
-        - Droits Groupe : $2^2 + 2^1 + 0 = 5$  
+        - Droits Groupe : $2^2 + 0 + 2^0 = 5$  
         - Droits Autres : $0 + 0 + 0 = 0$   
                      
 
