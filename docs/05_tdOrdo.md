@@ -11,7 +11,7 @@
 
 ## Prérequis
 
-Télécharger ce fichier [BlankTables.xls](assets/files/BlankTables.xls) pour noter vos résultats :muscle:
+:fontawesome-solid-download: Télécharger ce fichier [BlankTables.xls](assets/files/BlankTables.xls) pour noter vos résultats des exos 2 & 3 :muscle:
 
 ---
 
@@ -29,6 +29,13 @@ Pour vous aider, voici une liste (non exhaustive) de points à regarder :
 - Un SE digne de ce nom doit fournir de nombreux utilitaires de programmation (éditeurs, compilateurs, interpréteurs, débogueurs) : quels sont ceux présents par défaut avec le SE ? 
 - … 
 
+!!! warning 
+    Si vous observez que le noyaux n'est pas protégé sur windows ... Ne le supprimez **PAS** !!  
+    Vous rendrier votre machine inutilisable ...
+    
+!!! tip 
+    Pour toutes ces recherches, google est votre ami :wink:  
+    A la place de "noyau" on parle souvent historiquement de **"Kernel"** !
 ---
 
 ## Exercice 2 : Ordonnancement simple
@@ -83,7 +90,7 @@ Tracez le schéma d’exécution des processus en considérant que :
 
 ---
 
-## Exercice 2 : Ordonnancement plus complexe
+## Exercice 3 : Ordonnancement plus complexe
 
 On considère un système **monoprocesseur** (avec capacité de préemption), de type Linux dans lequel les processus **partagent un disque comme seule ressource autre que le processeur**.  
 
