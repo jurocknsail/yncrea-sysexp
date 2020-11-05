@@ -117,7 +117,7 @@ La plus répandue est ==**SSH**==, mais on trouve encore du **telnet**.
 
 ## Le Home Directory : ~
 
-Vous êtes sous votre HOME quand vous êtes sous ``/home/**{==your_login==}**``  
+Vous êtes sous votre HOME quand vous êtes sous ``/home/{==your_login==}``  
 
 C'est un espace disque qui vous appartient, **à vous et à vous seul** (voir "droits").   
 Normalement vous pouvez écrire et lire tous les fichiers qui s'y trouvent.   
