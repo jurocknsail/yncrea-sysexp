@@ -22,7 +22,7 @@ nav:
     - "": 05_tdOrdoCorr.md
 
   - Day#2:
-    - Shell UNIX: 20_linuxshell.md
+    - UNIX: 20_linuxshell.md
     - TP Linux Commands: 21_tpShell.md
   - Day#3:
     - TP Regexp: 30_tpRegexp.md
