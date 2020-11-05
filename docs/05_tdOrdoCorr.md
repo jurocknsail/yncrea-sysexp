@@ -6,10 +6,10 @@
 
 |   | **Windows** | **Linux** |
 | --- | --- | --- |
-| ``Noyau`` | C:\WINNT\system32\ntoskrnl.exe | /boot/vmlinuz |
+| ``Noyau`` | C:\Windows\system32\ntoskrnl.exe | /boot/vmlinuz (lancé par Grub, on le voit dans la conf de Grub) |
 | ``Protection`` | NON, n'importe quel utilisateur peut déplacer, effacer ou modifier ces fichiers | OUI, seul le super utilisateur a le droit d'agir sur ces fichiers. |
-| ``Interpréteur de commandes`` | C:\Windows\system32\command.com | /bin/bash |
-| ``Autres IC.`` | Aucun | tcsh, sh, ksh, mc, … |
+| ``Interpréteur de commandes`` | cmd | /bin/bash |
+| ``Autres IC.`` | PowerShell | zsh, tcsh, sh, ksh, mc, … |
 | ``Fonctionnalités de l'IC.`` |Traitement des fichiers, de répertoires et démarrage d'applications. Très peu d'applications peuvent être lancées en tache de fond|Traitement de fichiers, de répertoires et démarrage des applications. Le lancement d'application en fond de tache est possible|
 | ``Utilitaires systèmes`` |Editeurs de texte, NOTEPAD, WORDPAD, edit sous MSDOS. Utilitaire de dessin (paint),navigateur Internet,lecture d'un CD audio,visionneuse d'images,calculatrice…|Editeurs de texte (vi, ed, pico), utilitaire de dessin, navigateur Internet,lecture d'un CD audio,visionneuse d'images,calculatrice…|
 | ``Utilitaires de programmation`` | Aucun |compilateurs (gcc, java …), éditeur de liensn outils de développement : débogueur (gdb)|
