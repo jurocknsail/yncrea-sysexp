@@ -16,7 +16,7 @@ nav:
     - Introduction: 00_intro.md
     - Histoire: 01_history.md
     - SGF: 02_sgf.md
-    - Noyau: 020_kernel.md
+    - Noyau: 06_kernel.md
     - Processus: 03_processus.md
     - Ordonnancement: 04_ordonnancement.md
     - TD - Les Bases: 05_tdOrdo.md
@@ -24,7 +24,8 @@ nav:
 
   - Day#2:
     - UNIX: 20_linuxshell.md
-    - TP Linux Commands: 21_tpShell.md
+    - Commandes Shell: 21_cmdshell.md
+    - TP Linux Commands: 22_tpShell.md
   - Day#3:
     - TP Regexp: 30_tpRegexp.md
     - "": 30_tpRegexpCorrection.md

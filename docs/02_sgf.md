@@ -194,6 +194,7 @@ Un chemin d’accès est le moyen d'arriver à un fichier situé dans cet arbre.
 Dans les SE UNIX Based :  
 . = catalogue courant  
 .. = catalogue père  
+~ = répertoir d ebase d'un utilisateur
 
 ![Parcours](./assets/images/sgf/parcours.png "Parcours")
 
