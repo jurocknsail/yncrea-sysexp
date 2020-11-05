@@ -16,6 +16,7 @@ nav:
     - Introduction: 00_intro.md
     - Histoire: 01_history.md
     - SGF: 02_sgf.md
+    - Noyau: 020_kernel.md
     - Processus: 03_processus.md
     - Ordonnancement: 04_ordonnancement.md
     - TD - Les Bases: 05_tdOrdo.md

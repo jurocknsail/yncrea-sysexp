@@ -36,7 +36,7 @@
 
 ---
 
-## Exercice 2 : Ordonnancement plus complexe
+## Exercice 3 : Ordonnancement plus complexe
 
 | P1                            | P2                            |     P3                             | P4                      |
 | ----------------------------- | ----------------------------- | -----------------------------------| ----------------------- |

@@ -31,8 +31,12 @@ Il existe deux grandes familles d'ordonnacement :
     A chaque signal d'horloge, le SE reprend la main, décide si le processus courant doit céder sa place, et éventuellement donne le processeur à un autre processus.  
     Un processus perds le processeur s'il se bloque lui-même.  
     Il existe de nombreux algorithmes d'ordonnancement avec réquisition.
-
+    
+    
 ![Preemption](./assets/images/processus/preemption.jpg "Preemption")
+
+!!! tip ""
+    C'est le **noyau** qui déclenche le passage de l'état **Elu** à l'état **Prêt** lors d'une réquisition.
 
 ---
 

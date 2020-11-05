@@ -25,13 +25,21 @@ Un processus :
         Ces ressources sont des : fichiers, mémoire, sémaphores périphériques d’E/S, etc.  
         Ces ressources sont contrôlées par le S.E.
 
+- Possède un context qui lui est propre
+    
+    !!! abstract "" 
+        Un environnement processeur & un environnement mémoire. 
+
+- Est toujours lancé par un processus parent existant.
+
+- Possède un numéro unique (PID)
+
 ---
 
 ## Cycle de vie
     
 ![Full Lifecycle](./assets/images/processus/full-lifecycle.jpg "Full Lifecycle")
-
-
+    
 !!! tip
     A la place de "En Execution" on parlera aussi de processus **"Elu"**
     

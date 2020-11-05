@@ -102,9 +102,9 @@ Un processus peut être en {++exécution++}, {++en attente d’entrées-sorties+
 
 Les **demandes d’entrées-sorties** sont gérées à l’**ancienneté**.  
 
-Dans ce système, on considère 4 processus P1, P2, P3, P4 pour lesquels on sait que:  
+Dans ce système, on considère 4 processus soumis à t=0 dans l'ordre P1, P2, P3, P4, pour lesquels on sait que:  
 
-- P1 et P2 sont des processus appartenant à la classe **SCHED_FIFO**.  
+- P1 et P2 sont des processus appartenant à la classe **SCHED_PRIO**.  
   Dans cette classe, le processeur est donné au processus de plus haute priorité.  
   Ce processus ==peut être préempté par un processus de la même classe ayant une priorité supérieure== 
 
@@ -112,7 +112,7 @@ Dans ce système, on considère 4 processus P1, P2, P3, P4 pour lesquels on sait
   Dans cette classe, le processeur est donné au processus de plus haute priorité pour un quantum de temps égal à **10 ms**.  
   La politique appliquée est celle du tourniquet. 
 
-Les processus de la classe **SCHED_FIFO** sont toujours ==**plus prioritaires**== que les processus de la classe **SCHED_RR**.   
+Les processus de la classe **SCHED_PRIO** sont toujours ==**plus prioritaires**== que les processus de la classe **SCHED_RR**.   
 
 Les priorités des processus sont égales à *50* pour le processus P1, *49* pour le processus P2, P3 et P4.  
 La plus grande valeur correspond à la priorité la plus forte. 
@@ -126,7 +126,7 @@ La plus grande valeur correspond à la priorité la plus forte.
 |  Lecture disque pendant 40 ms | Lecture disque pendant 20 ms  |||
 |  Calcul pendant 10 ms         | Calcul pendant 10 ms          |||
 
-Établissez le chronogramme d’exécution des 4 processus en figurant les états {++prêt (attente du processeur)++}, {++exécution++}, {++attente i/o (attente du HDD)++}, {++I/O (lecture/ecriture HDD)++} .  
+Établissez le chronogramme d’exécution des 4 processus en figurant les états {++prêt (attente du processeur)++}, {++exécution++}, {++attente I/O (attente du HDD)++}, {++I/O (lecture/ecriture HDD)++} .  
 
 
 
