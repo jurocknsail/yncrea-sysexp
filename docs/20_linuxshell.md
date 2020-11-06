@@ -48,11 +48,15 @@ Maintenant, les environnements graphiques sous Linux n'ont rien à envier aux sy
 </p>
 </div>
 
+
 ---
 
-## Interpréteur de Commandes (Shell)
+## Le Shell
+
+Comme tout système d'exploitation, UNIX possède un **Interpréteur de Commandes (I.C.)**.   
 
 C'est un processus utilisateur comme les autres.  
+
 Il permet : 
 
 - l’exécution des programmes
@@ -60,8 +64,41 @@ Il permet :
 - l'accès aux périphériques de l’ordinateur
 - l'automatisation des procédures par fichiers de commandes (scripts en langage Shell) ...
 
-
 ![shell](./assets/images/shell/shell.png "shell")
+
+Ce **"logiciel d'interface"** fournit à l'utilisateur un ensemble de commandes qui lui permettent de "dialoguer" avec le système lui-même, le noyau (kernel).   
+
+!!! tip
+    UNIX propose en standard plusieurs shell possibles :
+    
+    - SH
+    - BASH
+    - ...
+
+Chaque shell peut être lancé (activé) par sa commande équivalente (bsh, ksh, csh). 
+
+Par défaut l'utilisateur lorsqu'il se connecte se retrouve automatiquement dans l'un de ces shell, il a donc un login -shell, configuré dans le fichier ``/etc/passwd``
+
+Le shell est donc un pseudo langage qui :
+ 
+- interprète vos commandes 
+- détermine les fichiers responsables de la mise en place de votre environnement  
+
+!!! warning
+    En BASH, le fichier de configuration du terminal est ~/.bashrc  ou ~/.bash_profile
+
+!!! tip
+    Il se nomme ainsi (coquille) car il enveloppe le noyau Unix, toutes les commandes sont passées au noyau à travers votre shell.
+
+---
+
+## Le Home Directory : ~
+
+Vous êtes sous votre HOME quand vous êtes sous ``/home/{==your_login==}``  
+
+C'est un espace disque qui vous appartient, **à vous et à vous seul** (voir "droits").   
+Normalement vous pouvez écrire et lire tous les fichiers qui s'y trouvent.   
+Vous êtes responsable de tout ce qui s'y passe (piratage, saturation des espaces disques, etc...).   
 
 ---
 
@@ -111,43 +148,3 @@ La plus répandue est ==**SSH**==, mais on trouve encore du **telnet**.
 
 !!! tip
     Les outils le splus connus de SSH sont "PuTTY" et "MobaXterm".
-
-
----
-
-## Le Home Directory : ~
-
-Vous êtes sous votre HOME quand vous êtes sous ``/home/{==your_login==}``  
-
-C'est un espace disque qui vous appartient, **à vous et à vous seul** (voir "droits").   
-Normalement vous pouvez écrire et lire tous les fichiers qui s'y trouvent.   
-Vous êtes responsable de tout ce qui s'y passe (piratage, saturation des espaces disques, etc...).   
-
----
-
-## Le Shell
-
-Comme tout système d'exploitation, UNIX possède un interpréteur de commandes.   
-Ce **"logiciel d'interface"** fournit à l'utilisateur un ensemble de commandes qui lui permettent de "dialoguer" avec le système lui-même, le noyau (kernel).   
-
-!!! tip
-    UNIX propose en standard plusieurs shell possibles :
-    
-    - SH
-    - BASH
-    - ...
-
-Chaque shell peut être lancé (activé) par sa commande équivalente (bsh, ksh, csh). 
-
-Par défaut l'utilisateur lorsqu'il se connecte se retrouve automatiquement dans l'un de ces shell, il a donc un login -shell, configuré dans le fichier ``/etc/passwd``
-
-Le shell est donc un pseudo langage qui :
- 
-- interprète vos commandes 
-- détermine les fichiers responsables de la mise en place de votre environnement  
-
-!!! warning
-    En BASH, le fichier de configuration du terminal est ~/.bashrc  ou ~/.bash_profile
-
-!!! tip
-    Il se nomme ainsi (coquille) car il enveloppe le noyau Unix, toutes les commandes sont passées au noyau à travers votre shell.

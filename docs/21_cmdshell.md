@@ -44,3 +44,14 @@ rm * 2>> erreur.log
 ps –ef|grep toto
 
 ```
+
+---
+
+## Où trouver l'information ?
+
+Quand on a accès à internet, la meilleure source et la plus rapide : Google :wink: !
+Sinon, n'hesitez pas à utiliser la commande ``man nom_de_la_commande`` qui décrit précisement toutes les possibilités d'une commande.
+
+!!! tip
+    Les pages manquantes d'un manuel peuvent être ajoutées...  
+    On peut aussi traduire le ``man`` en français :wink:  
