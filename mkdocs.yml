@@ -31,6 +31,8 @@ nav:
     - "": 30_tpRegexpCorrection.md
   - Day#4:
     - Programmation Système: 40_progsys.md
+    - Programmation Système - TP1 : 41_progsys_tp1.md
+    - Programmation Système - TP2 : 41_progsys_tp2.md
 
 theme:
   language: en
