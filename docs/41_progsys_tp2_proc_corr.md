@@ -114,7 +114,7 @@ Le père affiche en plus le PID de son fils.
             printf("PERE : mon ppid est %d \n", getppid() );
             printf ("PERE: mon fils est %d", pid); 
             wait(&status);
-            printf("\n PERE status == longueur message :  %d",stat>>8);
+            printf("\n PERE status :  %d",status>>8);
         }
         
     return 0;
