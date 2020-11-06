@@ -36,17 +36,20 @@
     
         int pos = lseek(desc,0, SEEK_CUR);
         printf("Position courante du curseur : %d\n", pos);
-        pos = lseek(desc,0, SEEK_SET);
         
+        pos = lseek(desc,0, SEEK_SET);
         printf("Nouvelle position courante du curseur : %d\n", pos);
             
         char cl [6];
         int nb, xl;
+        
         nb = read(desc,cl,6);
         printf (" C : '%s' avec nb octets lus : %d \n", cl, nb);
         nb = read(desc,&xl,sizeof(int));
         printf (" X : '%d' avec nb octets lus : %d \n", xl, nb);
+        
         printf("Taille d'un INT :  %lu \n", sizeof(int));	
+        
         close(desc);
         
         return 0; 
