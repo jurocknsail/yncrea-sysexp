@@ -30,7 +30,7 @@
         printf("Le desc de fichier vaut : %d\n", desc);
     
         char c [6]="chaine";
-        int x = 3;
+        int x = 97;
         write(desc,c,sizeof(c)); 
         write(desc,&x,sizeof(x));
     
