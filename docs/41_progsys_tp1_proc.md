@@ -1,4 +1,4 @@
-# Programmation Système : TP1 Processus
+# Programmation Système : TP1 - Processus
 
 ---
 

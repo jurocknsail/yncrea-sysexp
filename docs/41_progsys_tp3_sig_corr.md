@@ -1,4 +1,4 @@
-# Programmation Système : TP3 Signaux
+# Programmation Système : TP3 - Signaux
 
 ---
 

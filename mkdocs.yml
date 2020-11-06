@@ -35,6 +35,9 @@ nav:
     - Programmation Système - TP2 Processus : 41_progsys_tp2_proc.md
     - Programmation Système - TP3 Signaux : 41_progsys_tp3_sig.md
     - "" : 41_progsys_tp3_sig_corr.md
+    - Programmation Système - TP4 Fichiers : 41_progsys_tp4_fic.md
+    - "" : 41_progsys_tp4_fic_corr.md
+
 
 theme:
   language: en
