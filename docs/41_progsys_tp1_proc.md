@@ -1,4 +1,4 @@
-# Programmation Système : TP1 - Processus
+# Programmation Système : TP1 - Echauffement
 
 ---
 
@@ -30,11 +30,3 @@ calc 5 + 3
   résultat = 8
 ```
 
----
-
-## Zombie War
-
-### Exercice 3
-
-1. Ecrire un programme en C qui créer **deux** processus et qui met en valeur le phénomène des *processus zombie*.
-1. Le corriger pour le rendre « propre » !

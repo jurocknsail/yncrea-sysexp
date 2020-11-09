@@ -30,13 +30,16 @@ nav:
     - TP Regexp: 30_tpRegexp.md
     - "": 30_tpRegexpCorrection.md
   - Day#4:
-    - Programmation Système: 40_progsys_processus.md
-    - Programmation Système - TP1 Processus : 41_progsys_tp1_proc.md
+    - Programmation Système - TP1 Echauffement : 41_progsys_tp1_proc.md
     - "" : 41_progsys_tp1_proc_corr.md
-    - Programmation Système - TP2 Processus : 41_progsys_tp2_proc.md
+    - Programmation Système - Fork: 40_progsys_fork.md
+    - Programmation Système - Execv: 40_progsys_execv.md
+    - Programmation Système - TP2 Fork/Execv : 41_progsys_tp2_proc.md
     - "" :  41_progsys_tp2_proc_corr.md
+    - Programmation Système - Signaux: 40_progsys_signals.md
     - Programmation Système - TP3 Signaux : 41_progsys_tp3_sig.md
     - "" : 41_progsys_tp3_sig_corr.md
+    - Programmation Système - Signaux: 40_progsys_files.md
     - Programmation Système - TP4 Fichiers : 41_progsys_tp4_fic.md
     - "" : 41_progsys_tp4_fic_corr.md
 

@@ -1,4 +1,4 @@
-# Programmation Système - Processus
+# Programmation Système - Fork
 
 ---
 
@@ -138,44 +138,55 @@ int main(void)
     
 Affichons les PID respectifs :  
 
-Dans le ==père== (PID supposé : 1234) :
+<table border="0">
+<tr>
+    <td>
+        Dans le ==père== (PID supposé : 1234) :
+    </td> 
+    <td>
+        Dans le ==fils== (PID supposé : 2345):
+    </td>
+</tr>
 
-```c linenums="1" hl_lines="11 12 13"
-int main(void)
-{
-    pid_t pid;
-    pid = fork();
-
-    if (pid == 0)
-    {
-        printf(" Je suis le fils");
-        printf(" mon pid est = %d ",getpid());
-    } else {
-        printf(" Je suis le pere ");
-        printf(" mon pid est = %d ",getpid());
-        exit(0);
-    }
-}
-```
-
-Dans le ==fils== (PID supposé : 2345):
-
-```c linenums="1" hl_lines="8 9"
-int main(void)
-{
-    pid_t pid;
-    pid = fork();
-
-    if (pid == 0)
-    {
-        printf(" Je suis le fils");
-        printf(" mon pid est = %d ",getpid());
-    } else {
-        printf(" Je suis le pere ");
-        printf(" mon pid est = %d ",getpid());
-    }
-}
-```
+<tr>
+    <td>
+        ```c hl_lines="11 12"
+        int main(void)
+        {
+            pid_t pid;
+            pid = fork();
+        
+            if (pid == 0)
+            {
+                printf(" Je suis le fils");
+                printf(" mon pid est = %d ",getpid());
+            } else {
+                printf(" Je suis le pere ");
+                printf(" mon pid est = %d ",getpid());
+            }
+        }
+        ```
+    </td>
+    <td>
+        ```c hl_lines="8 9"
+        int main(void)
+        {
+            pid_t pid;
+            pid = fork();
+        
+            if (pid == 0)
+            {
+                printf(" Je suis le fils");
+                printf(" mon pid est = %d ",getpid());
+            } else {
+                printf(" Je suis le pere ");
+                printf(" mon pid est = %d ",getpid());
+            }
+        }
+        ```
+    </td>
+</tr>
+</table>
 
 Affichages : 
 
@@ -236,9 +247,19 @@ pid_t wait(int *status);
 
 ## Exemple complet
 
-Dans le ==père== (PID supposé : 1234) :
+<table border="0">
+<tr>
+    <td>
+        Dans le ==père== (PID supposé : 1234) :
+    </td> 
+    <td>
+        Dans le ==fils== (PID supposé : 2345):
+    </td>
+</tr>
 
-```c linenums="1" hl_lines="10 11 12 13"
+<tr>
+    <td>
+```c hl_lines="10 11 12 13"
 int main(void)
 {
     int pid, status;
@@ -256,10 +277,9 @@ int main(void)
   return 0;
 }
 ```
-
-Dans le ==fils== (PID supposé : 2345):
-
-```c linenums="1" hl_lines="7 8"
+    </td>
+    <td>
+```c hl_lines="7 8"
 int main(void)
 {
     int pid, status;
@@ -277,6 +297,15 @@ int main(void)
   return 0;
 }
 ```
+    </td>
+</tr>
+</table>
+
+
+
+
+
+
 
 Affichages : 
 
@@ -357,24 +386,38 @@ Résultat de l’exécution en arrière-plan:
     je suis le fils, à dieu
 ```
 
-Avant la mort du fils :  
-```shell
-> ps
-    1234 tty3 0:04 pgmzombi
-    2345 tty3 0:03 pgmzombi
-```
+<table border="0">
+<tr>
+    <td>
+        Avant la mort du fils : 
+    </td> 
+    <td>
+        Après la mort du fils :
+    </td>
+</tr>
 
-Après la mort du fils :
-```shell  
-> ps
-1234 tty3 0:04 pgmzombi
-2345 tty3 0:03 <defunct>
-```
-     
+<tr>
+    <td>
+        ```shell
+        # ps
+            1234 tty3 0:04 pgmzombi
+            2345 tty3 0:03 pgmzombi
+        ```
+    </td>
+    <td>
+        ```shell  
+        # ps
+            1234 tty3 0:04 pgmzombi
+            2345 tty3 0:03 [defunct]
+        ```
+    </td>
+</tr>
+</table>
+
      
 ---
 
-## Exercice
+## Exercice - Zombi War
 
 Copiez/Collez ce programme Zombi. Observez vous même le Zombi.   
 Enfin, corrigez le code afin de le rendre propre ! 
