@@ -27,6 +27,8 @@ nav:
     - Commandes Shell: 21_cmdshell.md
     - TP Linux Commands: 22_tpShell.md
   - Day#3:
+    - Regexp: 23_regexp.md
+    - AWK: 24_awk.md
     - TP Regexp: 30_tpRegexp.md
     - "": 30_tpRegexpCorrection.md
   - Day#4:
