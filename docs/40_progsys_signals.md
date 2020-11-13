@@ -23,14 +23,22 @@
     
 | Nom  | N°  | Fonction  |
 | --------- |--------------- | ----------------- |
-| ``SIGHUP`` | | |
-| ``SIGINT`` | | |
-| ``SIGQUIT`` | | |
-| | | |
-| | | |
-| | | |
-| | | |
-| | | |
-| | | |
-| | | |
-| | | |
+| ``SIGHUP`` | 1 | déconnection du terminal |
+| ``SIGINT`` | 2 | interruption ``^C`` |
+| ``SIGQUIT`` | 3 | abandon ``^\`` (core) |
+| ``SIGKILL`` | 9 | destruction (ne peut être ignoré) |
+| **``SIGUSR1``** | **10** | **réservé à l’utilisateur (communication inter-processus)** |
+| **``SIGUSR2``** | **12** | **réservé à l’utilisateur (communication inter-processus)** |
+| ``SIGPIPE`` | 13 | essai d’écriture dans un pipe non ouvert |
+| ``SIGALRM`` | 14 | horloge (arrêt de l’horloge d’un processus: ``alarm()``) |
+| ``SIGTERM`` | 15 | terminaison normale d’un processus |
+| ``SIGCHLD`` | 17 | mort d’un fils (envoyé au père) |
+| ``...`` | ... | ... |
+
+!!! tip ""
+    Tout ces signaux se trouvent dans le fichier header : ``signal.h``
+
+
+--- 
+
+## Traitements
