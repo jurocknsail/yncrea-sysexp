@@ -93,6 +93,12 @@ Le second objectif du cours est de maitriser **les bases du Shell Unix**, via un
 
 - Installer la commande `tree` qui permet d'afficher l'arborescence ci-dessus
 
+
+    !!! tip
+        Pour afficher les droits, users et groups avec tree :   
+        ``tree -ugp``
+    
+    
     ??? example "Solution"
         ```bash linenums="1"
         sudo apt-get install tree

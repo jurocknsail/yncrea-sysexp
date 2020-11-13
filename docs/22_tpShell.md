@@ -47,6 +47,11 @@ Le second objectif du cours est de maitriser **les bases du Shell Unix**, via un
     ```
 
 - Installer la commande `tree` qui permet d'afficher l'arborescence ci-dessus
+
+    !!! tip
+        Pour afficher les droits, users et groups avec tree :   
+        ``tree -ugp``
+    
 - Afficher son répertoire courant
 - Créer le fichier `bonjour.c` sous `SE/TP2/src` contenant les lignes suivantes :  
   (En utilisant un editeur en ligne de commande ou graphique, au choix)
