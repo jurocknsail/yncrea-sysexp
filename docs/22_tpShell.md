@@ -99,16 +99,9 @@ Le second objectif du cours est de maitriser **les bases du Shell Unix**, via un
 
          
 - Copier le répertoire TP2 en TP3 avec l’ensemble de ses fichiers
-
-
 - Déplacer le fichier salut.c de TP3 dans SE/TP2/src en l’appelant salut1.c
-
-         
-- Effacer le fichier bonjour.c de TP3
-
-         
+- Effacer le fichier bonjour.c de TP3     
 - Effacer TP3
-
    
 ### Utilisation des commandes : chmod, chown, chgrp, ls, ln
 
@@ -125,33 +118,24 @@ Le second objectif du cours est de maitriser **les bases du Shell Unix**, via un
     !!! tip 
         Pour connaitre les groupes disponible, allez voir le contenu du fichier ``/etc/group`` avec la command ``cat``  
         ``cat /etc/group``
-
-         ```
          
 - Changer en une seule commande le owner et goupe de TP2 et des fichiers qu’il contient pour vous les redonner
 
     !!! tip 
         Utilisez la commande `id` pour connaitre votre user:groupe
 
-         
 - Se positionner sur son home directory et créer un lien symbolique vers le fichier salut.c de TP2
 
-         
 - Editer ce lien. Expliquer la différence entre un lien permanent et un lien symbolique.
-
-         
+        
     !!! note
         Un lien symbolique pointe vers le nom d'un fichier existant.  
-        Un lieu permanent (ou physique) pointe vers l'esapace mémoire où se siture le fichier.
-        
+        Un lieu permanent (ou physique) pointe vers l'esapace mémoire où se siture le fichier.        
 
 ### Monitoring disques
 
 - Quel est l’espace disponible sur votre disque ?
-
-         
 - Quelles sont les partitions disques présentent sur votre système ?    
-
          
 ### Utilisation de la commande export :
 
@@ -159,24 +143,15 @@ Le second objectif du cours est de maitriser **les bases du Shell Unix**, via un
     
     !!! warning
         Attention à ne pas écraser totalement la variable PATH !
-
          
 - Vérifier que depuis n'importe quel folder, vous pouvez lancer ``bonjour`` de la façon suivante : `bonjour ↵`   
-
 - Vérifiez que ```bonjour``` execute bien votre binaire avec `which bonjour`
-
 - Modifier votre profil utilisateur afin de modifier PATH comme précédemment, de manière permanente.
-
-
          
 ### Script :
 
 - Déplacez vous sous SE/TP1/script et créer, en 1 seule commande, un fichier essai.bash contenant ``#!/bin/bash``
-    
-
 - Ajouter à la fin de essai.bash la ligne « ls –lrt » (en une seule commande)
-
-
 - Exécutez essai.bash
 
     !!! warning
@@ -185,21 +160,15 @@ Le second objectif du cours est de maitriser **les bases du Shell Unix**, via un
 
 
 ### Utilisation de grep, ps, netstat,wc :
+
 - Rechercher l’occurrence « include » dans le fichier `bonjour.c`
-
-
 - Afficher l’ensemble des processus en cours
-
-
 - Afficher l’ensemble des sockets en état ‘ESTABLISHED’ sur votre machine et comptez les.
 
-
 ### Utilisation de la commande find :
-- Rechercher à partir de votre repertoire ``SE`` l’ensemble des fichiers .c contenus dans ce répertoire et ses sous répertoires
 
-         
+- Rechercher à partir de votre repertoire ``SE`` l’ensemble des fichiers .c contenus dans ce répertoire et ses sous répertoires    
 - Rechercher à partir de votre repertoire ``SE`` l’ensemble des occurrences de « printf » dans l’ensemble des fichiers .c contenus dans ce répertoire et ses sous répertoires
-
          
 ### Utilisation de la commande xargs:
 
@@ -207,19 +176,17 @@ Le second objectif du cours est de maitriser **les bases du Shell Unix**, via un
     
     !!! tip
         bonjour.c est copié en bonjour.c_backup
-
         
 ### Machine/user/système/terminal
+
 - Afficher qui est loggé sur votre machine ?
 - Afficher quel est le nom de votre machine ?
 - Afficher quel est le nom de votre système ?
 - Afficher quel votre numéro utilisateur et groupe ?
 
-
 ### Les Process : utilisation des commandes ps, top, jobs, CTRL^Z, fg, bg, kill
 
 - Monitorer de manière dynamique l’ensemble des process en cours
-
 
 - Dans un autre terminal, lancer un process long en background, par example ``firefox``, ou ajouter une boucle infinie au programme bonjour et utiliser ``bonjour`.
     
@@ -238,20 +205,15 @@ Le second objectif du cours est de maitriser **les bases du Shell Unix**, via un
            }
          }
          ```
-
          
 - Monitorer le de façon statique
-    
-- Tuer le violemment
 
+- Tuer le violemment
          
 - Lancer un process, l’interrompre et le mettre en exécution en background
-
          
 - Monitorer le
 
 - Basculer ce process en foreground
-
          
 - Stopper le par un signal d’interruption
-    
