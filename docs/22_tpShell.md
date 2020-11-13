@@ -126,11 +126,7 @@ Le second objectif du cours est de maitriser **les bases du Shell Unix**, via un
 
 - Se positionner sur son home directory et créer un lien symbolique vers le fichier salut.c de TP2
 
-- Editer ce lien. Expliquer la différence entre un lien permanent et un lien symbolique.
-        
-    !!! note
-        Un lien symbolique pointe vers le nom d'un fichier existant.  
-        Un lieu permanent (ou physique) pointe vers l'esapace mémoire où se siture le fichier.        
+- Editer ce lien. Expliquer la différence entre un lien permanent et un lien symbolique.        
 
 ### Monitoring disques
 
