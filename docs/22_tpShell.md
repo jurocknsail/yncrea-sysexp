@@ -138,7 +138,7 @@ Le second objectif du cours est de maitriser **les bases du Shell Unix**, via un
 - Quel est l’espace disponible sur votre disque ?
 - Quelles sont les partitions disques présentent sur votre système ?    
          
-### Utilisation de la commande export :
+### Utilisation de la commande export
 
 - Modifier le contenu de la variable d’environnement PATH afin d’y ajouter le chemin **absolu** vers le répertoire `TP2/bin`.
     
@@ -149,7 +149,7 @@ Le second objectif du cours est de maitriser **les bases du Shell Unix**, via un
 - Vérifiez que ```bonjour``` execute bien votre binaire avec `which bonjour`
 - Modifier votre profil utilisateur afin de modifier PATH comme précédemment, de manière permanente.
          
-### Script :
+### Script
 
 - Déplacez vous sous SE/TP1/script et créer, en 1 seule commande, un fichier essai.bash contenant ``#!/bin/bash``
 - Ajouter à la fin de essai.bash la ligne « ls –lrt » (en une seule commande)
@@ -160,18 +160,18 @@ Le second objectif du cours est de maitriser **les bases du Shell Unix**, via un
         ``chmod u+x essai.bash``
 
 
-### Utilisation de grep, ps, netstat,wc :
+### Utilisation de grep, ps, netstat,wc
 
 - Rechercher l’occurrence « include » dans le fichier `bonjour.c`
 - Afficher l’ensemble des processus en cours
 - Afficher l’ensemble des sockets en état ‘ESTABLISHED’ sur votre machine et comptez les.
 
-### Utilisation de la commande find :
+### Utilisation de la commande find 
 
 - Rechercher à partir de votre repertoire ``SE`` l’ensemble des fichiers .c contenus dans ce répertoire et ses sous répertoires    
 - Rechercher à partir de votre repertoire ``SE`` l’ensemble des occurrences de « printf » dans l’ensemble des fichiers .c contenus dans ce répertoire et ses sous répertoires
          
-### Utilisation de la commande xargs:
+### Utilisation de la commande xargs
 
 - Créer une sauvegarde de l’ensemble des fichiers c se trouvant sous ``SE/TP2/src`` en le copiant en ``nom_du_fichier.c_backup``  
     

@@ -305,7 +305,7 @@ Le second objectif du cours est de maitriser **les bases du Shell Unix**, via un
          sudo fdisk -l
          ```
          
-### Utilisation de la commande export :
+### Utilisation de la commande export
 
 - Modifier le contenu de la variable d’environnement PATH afin d’y ajouter le chemin **absolu** vers le répertoire `TP2/bin`.
     
@@ -327,7 +327,7 @@ Le second objectif du cours est de maitriser **les bases du Shell Unix**, via un
         Il suffit de copier coller l'export ``export PATH=$PATH:/home/user/SE/TP2/bin`` dans le fichier `~/.bashrc`
 
          
-### Script :
+### Script
 
 - Déplacez vous sous SE/TP1/script et créer, en 1 seule commande, un fichier essai.bash contenant ``#!/bin/bash``
     
@@ -356,7 +356,7 @@ Le second objectif du cours est de maitriser **les bases du Shell Unix**, via un
          ./essai.bash
          ```
 
-### Utilisation de grep, ps, netstat,wc :
+### Utilisation de grep, ps, netstat,wc
 - Rechercher l’occurrence « include » dans le fichier `bonjour.c`
 
     ??? example "Solution"
@@ -379,7 +379,7 @@ Le second objectif du cours est de maitriser **les bases du Shell Unix**, via un
          netstat –a | grep ESTABLISHED | wc -l
          ```
 
-### Utilisation de la commande find :
+### Utilisation de la commande find
 - Rechercher à partir de votre repertoire ``SE`` l’ensemble des fichiers .c contenus dans ce répertoire et ses sous répertoires
 
     ??? example "Solution"
@@ -394,7 +394,7 @@ Le second objectif du cours est de maitriser **les bases du Shell Unix**, via un
          find ~/SE -name "*.c" -exec grep "printf" {} \; -print
          ```
          
-### Utilisation de la commande xargs:
+### Utilisation de la commande xargs
 
 - Créer une sauvegarde de l’ensemble des fichiers c se trouvant sous ``SE/TP2/src`` en le copiant en ``nom_du_fichier.c_backup``  
     

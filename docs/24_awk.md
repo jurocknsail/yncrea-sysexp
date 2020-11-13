@@ -147,8 +147,97 @@ awk [-Fs] [-v variable] [-f fichier de commandes] '**programme awk**' fichier
 | `substr(s,i,n)` | Retroune la sous chaîne de `s` commençant en `i` et de taille `n`|
 | `...` | ... |
 
+
+!!! warning ""
+    Concaténation de chaînes de caractères dans les actions :  
+    Il n'y a pas d'opérateur de concaténation, il faut simplement lister les chaînes à concaténer.  
+    
+    ^^Exemples^^ :  
+    ``awk '{ print NR " : " $0 }' fichier`` 
+     
  
 ---
 
 ## Exemples 
 
+| Script  | Resultat  | 
+| --------- |--------------- | 
+| `awk -F ":" '{ $2 = "" ; print $0 }' /etc/passwd` | Imprime chaqe ligne du fichier `/etc/passwd` après avoir effacé le 2nd champ  |
+| `awk ' END { print NR }' fichier` | Imprime le nombre total de lignes du fichier |
+| `awk '{ print $NF }' fichier` | Imprime le dernier champ de chaque ligne|
+| `who | awk '{ print $1,$5 }'` | Imprime le login et le temps de connexion |
+| `awk ' length($0) > 75 { print }' fichier` | Imprime les lignes de plus de 75 caractères ( `print` équivaut à `print $0` |
+
+---
+
+## Exercices
+
+````bash
+awk 'BEGIN { print "Verification des UID et GID dans le fichier /etc/passwd"; FS=":"}      
+     $3 !~ /^[0-9][0-9]*$/ {print "UID  erreur ligne "NR" :\n"$0 }
+     $4 !~ /^[0-9][0-9]*$/ {print "GID  erreur ligne "NR" :\n"$0 }
+     END   { print "Fin" }' /etc/passwd 
+````
+
+??? example "Solution"
+    ````
+    Vérification des UID et GID dans le fichier /etc/passwd
+    UID erreur ligne 14 : 
+    clown:*:aaa:b:utilisateur en erreur:/home/clown:/bin:sh
+    GID erreur ligne 14 : 
+    clown:*:aaa:b:utilisateur en erreur:/home/clown:/bin/sh
+    Fin 
+    ````    
+    
+````bash
+awk 'BEGIN { print "Verification du fichier /etc/passwd pour ..."; print "- les utilisateurs avec UID = 0 " ;  print "- les utilisateurs avec UID >= 60000" ; FS=":"}
+     $3 == 0 { print "UID 0 ligne "NR" :\n"$0 }      
+     $3 >= 60000  { print "UID >= 60000 ligne "NR" :\n"$0 }      
+     END   { print "Fin" }' /etc/passwd       
+````
+
+??? example "Solution"
+    ````
+    Verification du fichier /etc/passwd pour ...
+    - les utilisateurs avec UID = 0 
+    - les utilisateurs avec UID >= 60000UID 0 ligne 5 : 
+    root:*:0:b:administrateur:/:/bin/sh
+    UID >= 60000 ligne 14 : 
+    clown:*:61000:b:utilisateur en erreur:/home/clown:/bin/sh
+    Fin 
+    ````
+    
+````bash
+awk 'BEGIN { print "Verification du fichier /etc/group"; print "le groupe 20 est t-il bien nommé users ? " ; FS=":"}      
+     $1 == "users" && $3 ==20 { print "groupe "$1" a le GID "$3" !" }      
+     END   { print "Fin" }' /etc/group 
+````
+
+??? example "Solution"
+    ````
+    Verification du fichier /etc/group
+    le groupe 20 s'appelle t-il bien users ? 
+    groupe users a le GID 20 ! 
+    Fin 
+    ````
+    
+````bash
+awk 'NR == 5 , NR == 10 {print NR" : " $0 }' fichier 
+````
+
+??? example "Solution"
+    ````
+    Imprime de la ligne 5 à la ligne 10 , chaque ligne précédée par son numéro
+    ````
+    
+    
+````bash
+awk 'BEGIN { FS=":" ; OFS=":"}      
+	 $NF != "/bin/ksh" { print $0 }      
+	 $7 == "/bin/ksh" && NF == 7  { $7 = "/bin/posix/sh" ; print $0 } '	/etc/passwd > /etc/passwdnew 
+````
+
+??? example "Solution"
+    ````
+    On crée un nouveau fichier de mot de passe /etc/passwd.new en remplaçant le shell /bin/ksh par /bin/posix/sh 
+    ````                  
