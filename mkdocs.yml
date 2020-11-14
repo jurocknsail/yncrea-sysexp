@@ -42,8 +42,8 @@ nav:
     - Programmation Système - Signaux: 40_progsys_signals.md
     - Programmation Système - TP3 Signaux : 41_progsys_tp3_sig.md
     - "" : 41_progsys_tp3_sig_corr.md
-    - Programmation Système - Signaux: 40_progsys_files.md
-    - Programmation Système - TP4 Fichiers : 41_progsys_tp4_fic.md
+    - Programmation Système - E/S Bas Niveau: 40_progsys_files.md
+    - Programmation Système - TP4 E/S Bas Niveau : 41_progsys_tp4_fic.md
     - "" : 41_progsys_tp4_fic_corr.md
 
 
