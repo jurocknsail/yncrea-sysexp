@@ -21,24 +21,26 @@ nav:
     - Ordonnancement: 04_ordonnancement.md
     - TD - Les Bases: 05_tdOrdo.md
     - "": 05_tdOrdoCorr.md
+    - UNIX: 20_linuxshell.md
 
   - Day#2:
-    - UNIX: 20_linuxshell.md
     - Commandes Shell: 21_cmdshell.md
     - TP Linux Commands: 22_tpShell.md
     - "": 22_tpShell_corr1234.md
-  - Day#3:
     - Regexp: 23_regexp.md
     - AWK: 24_awk.md
     - TP Regexp: 30_tpRegexp.md
     - "": 30_tpRegexpCorrection.md
-  - Day#4:
+
+  - Day#3:
     - Programmation Système - TP1 Echauffement : 41_progsys_tp1_proc.md
     - "" : 41_progsys_tp1_proc_corr.md
     - Programmation Système - Fork: 40_progsys_fork.md
     - Programmation Système - Execv: 40_progsys_execv.md
     - Programmation Système - TP2 Fork/Execv : 41_progsys_tp2_proc.md
     - "" :  41_progsys_tp2_proc_corr.md
+
+  - Day#4:
     - Programmation Système - Signaux: 40_progsys_signals.md
     - Programmation Système - TP3 Signaux : 41_progsys_tp3_sig.md
     - "" : 41_progsys_tp3_sig_corr.md
