@@ -47,6 +47,7 @@ nav:
     - Programmation Système - E/S Bas Niveau: 40_progsys_files.md
     - Programmation Système - TP4 E/S Bas Niveau : 41_progsys_tp4_fic.md
     - "" : 41_progsys_tp4_fic_corr.md
+    - Programmation Système - Pipes: 40_progsys_pipes.md
 
 
 theme:
