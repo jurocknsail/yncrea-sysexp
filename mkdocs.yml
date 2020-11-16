@@ -5,9 +5,9 @@ repo_name: yncrea-sysexp
 repo_url: https://github.com/jurocknsail/yncrea-sysexp
 edit_uri: ""
 site_description: >-
-  Ce cours fait partie du cours <b>ITII 2 - SYSEXP</b> pour <b>YNCREA Toulon</b> sur les systèmes d'exploitation et principalement les connaissances Linux.
+  Ce cours fait partie du cours <b>ITII 2 - SYSEXP</b> pour <b>YNCREA Toulon</b> sur les systèmes d'exploitation et principalement les connaissances Linux et bases de programmation système.
   <br><br>
-  <i>Le cours se déroule sur 4 jours et vise à donner aux étudiants un aperçu de la façon de travailler du système d'exploitation et de se familiariser avec les bases de Linux.</i>
+  <i>Le cours se déroule sur 4 jours et vise à donner aux étudiants un aperçu de la façon de travailler du système d'exploitation, une connaissance basique du shell et de programmation de processus.</i>
 
 
 nav:
