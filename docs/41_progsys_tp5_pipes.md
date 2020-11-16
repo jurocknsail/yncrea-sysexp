@@ -5,7 +5,7 @@
 ## Exercice 1 : Pipe anonyme
 
 Ecrire un programme qui permet à deux taches (sur un seul programme) de communiquer entre elles en utilisant un pipe **non nommé** :   
-On saisi un message au clavier dans la tache fille, qui l’envoie, caractère par caractère, à la mère qui l’affiche.  
+On saisi un message au clavier dans la tache fille, qui l’envoie, caractère par caractère, à la mère qui l’affiche (la mère affiche tout d'un coup).  
 
 
 ---
