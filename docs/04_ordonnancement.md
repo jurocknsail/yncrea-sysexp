@@ -2,6 +2,8 @@
 
 ---
 
+## Généralités
+
 Dans la vraie vie, plusieurs processus cohabitent et peuvent être prêts à êtres exécutés en même temps.  
 
 Le SE doit faire un **choix** (selon un algorithme d'ordonnancement) :

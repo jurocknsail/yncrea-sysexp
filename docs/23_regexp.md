@@ -3,6 +3,8 @@
 
 ---
 
+## Généralités
+
 !!! abstract ""
     Les expressions régulières, combinées à des fonctions de certains langages (PHP, bash, JavaScript et même HTML5 !) permettent de faire des recherches et de la reconnaissance sur des chaines de caractères.   
     Extraire des numéros de téléphone d’une page web, ou vérifier que l’email que rentré dans un formulaire, ressemble bien à un email…   

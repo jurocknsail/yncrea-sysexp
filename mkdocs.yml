@@ -20,7 +20,7 @@ nav:
     - Processus: 03_processus.md
     - Ordonnancement: 04_ordonnancement.md
     - TD - Les Bases: 05_tdOrdo.md
-    - "": 05_tdOrdoCorr.md
+    - "": 05_tdOrdo_corr.md
     - UNIX: 20_linuxshell.md
 
   - Day#2:

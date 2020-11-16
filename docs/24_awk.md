@@ -3,6 +3,8 @@
 
 ---
 
+## Généralités
+
 !!! abstract ""
     Awk est un outil pour la manipulation de fichiers (au format texte).  
     Il a été conçu en 1977 par Alfred **A**ho, Peter **W**einberger et Brian **K**ernighan (Laboratoires Bell) et intégré dans Unix V7 en 1979.  

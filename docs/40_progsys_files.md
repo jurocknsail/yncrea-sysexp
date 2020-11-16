@@ -2,6 +2,8 @@
 
 ---
 
+## Manipuler des fichiers
+
 !!! abstract ""
     Le but est de savoir manipuler tous les fichiers quels que soient leur type.  
     Ainsi nous sauront aussi bien gérer un fichier ASCII ou un Pipe depuis notre code C :wink: !  

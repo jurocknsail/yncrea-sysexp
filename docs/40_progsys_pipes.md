@@ -2,7 +2,7 @@
 
 ---
 
-## Overview 
+## Définition 
 
 !!! abstract ""
     Les pipes sont des objets permettant l’échange de données entre processus sur **une même machine**.    

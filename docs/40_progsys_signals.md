@@ -2,7 +2,7 @@
 
 ---
 
-## Definition
+## Définition
 
 !!! abstract ""
     Les signaux constituent un mécanisme de fondamental de communication entre processus :  
