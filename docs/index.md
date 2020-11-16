@@ -1,4 +1,4 @@
 ---
 template: overrides/home.html
-title: Yncréa SYSEXP Course
+title: Yncréa Cours SYSEXP
 ---
