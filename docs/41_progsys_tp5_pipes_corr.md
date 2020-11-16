@@ -182,7 +182,52 @@ fils3 :
 ````
 
 ```c linenums="1"
-//TODO
+
+#include <stdio.h>
+#include <fcntl.h>
+
+int main(int argc, char * argv[]){
+	int p1 = 0;
+	int tmp = 25310;
+	int dp, f;
+	char buf;
+
+	unlink("pipe");
+	mkfifo("pipe" ,0666);
+
+
+	p1 = fork();
+	if(p1 != 0){
+		dp=open("pipe",O_WRONLY);
+		write(dp, &tmp,sizeof(int));
+		close(dp);
+	}
+	else{
+		execv("ex3_1",NULL);
+	}
+
+	return 0;
+}
+```
+
+```c linenums="1"
+
+#include <stdio.h>
+#include <fcntl.h>
+
+int main(void){
+	int des;
+	int buf;
+
+	des=open("pipe",O_RDONLY);
+	read(des,&buf,sizeof(int));
+	printf("%d", buf);
+
+
+	close(des);
+
+	return 0;
+}
 ```
 
 ---
@@ -190,8 +235,82 @@ fils3 :
 ## Exercice 4 : Calculette efficace !
 
 Créer, dans un même programme, un mécanisme pour réaliser une calculette sur des réels où la saisie de l'opération est faite par une tâche, et le calcul par une autre tâche, celle-ci communiquant le résultat à la première qui l'affiche.   
-De plus une session de la calculette ne doit pas se limiter à une opération mais à autant que le désire l'opérateur (chaque opération est gérée par un programme différent). 
+De plus une session de la calculette ne doit pas se limiter à une opération mais à autant que le désire l'opérateur. 
 
 ```c linenums="1"
-// TODO
+#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+
+int main(int argc, char * argv[]){
+	int p1 = 0;
+	int dp, des, dp1, des1;
+	char buf;
+
+	float op1 = 0, op2 = 0, res = 0;
+	char opt;
+	int c;
+
+
+	unlink("pipe");
+	mkfifo("pipe" ,0666);
+	unlink("pipe1");
+	mkfifo("pipe1" ,0666);
+
+
+	p1 = fork();
+	if(p1 != 0){			//pere
+		dp=open("pipe",O_WRONLY);
+		dp1=open("pipe1",O_RDONLY);
+		while(1){
+			printf("\n\nEntrer le nouveau calcul : ");
+			scanf("%f", &op1);
+			while((c=getchar()) != '\n' && c != '\n');
+			//fseek(stdin, 0, SEEK_END);
+			scanf("%c", &opt);
+			while((c=getchar()) != '\n' && c != '\n');
+			scanf("%f", &op2);
+			while((c=getchar()) != '\n' && c != '\n');
+
+
+			write(dp, &op1,sizeof(float));
+			write(dp, &opt,sizeof(char));
+			write(dp, &op2,sizeof(float));
+			while(!read(dp1,&res,sizeof(float)));
+			printf("\n%.2f %c %.2f = %.2f\n", op1, opt, op2, res);
+		}
+		close(dp);
+		close(dp1);
+	}
+	else{			//fils
+		des=open("pipe",O_RDONLY);
+		des1=open("pipe1",O_WRONLY);
+		while(1){
+			while(!read(des,&op1,sizeof(float)));
+			while(!read(des,&opt,sizeof(char)));
+			while(!read(des,&op2,sizeof(float)));
+
+
+			if(opt == '+'){
+				res = op1+op2;
+			}
+			else if(opt == '-'){
+				res = op1-op2;
+			}
+			else if(opt == '*'){
+				res = op1*op2;
+			}
+			else if(opt == '/'){
+				res = op1/op2;
+			}
+
+			write(des1, &res,sizeof(float));
+		}
+		close(des);
+		close(des1);
+	}
+
+	return 0;
+}
 ```
