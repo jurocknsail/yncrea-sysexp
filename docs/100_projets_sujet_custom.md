@@ -4,5 +4,6 @@
 
 ## Sujet Custom
 
-- Chat RZO
+!!! example ""
+    - Chat RZO via des sockets
 
