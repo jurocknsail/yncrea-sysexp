@@ -1,4 +1,4 @@
-# Mini Projets : partie commune
+# Mini Projets : Partie Commune
 
 ---
 

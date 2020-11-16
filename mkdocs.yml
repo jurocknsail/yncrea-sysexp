@@ -56,7 +56,6 @@ nav:
     - Sujet 1: 100_projets_sujet1.md
     - Sujet 2: 100_projets_sujet2.md
     - Sujet 3: 100_projets_sujet3.md
-    - Sujet 4: 100_projets_sujet4.md
     - Sujet Custom: 100_projets_sujet_custom.md
 theme:
   language: en
