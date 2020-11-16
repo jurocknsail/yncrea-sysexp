@@ -51,6 +51,13 @@ nav:
     - Programmation Système - TP5 Pipes : 41_progsys_tp5_pipes.md
 #    - "" : 41_progsys_tp5_pipes_corr.md
 
+  - Projets:
+    - Commun: 100_projets.md
+    - Sujet 1: 100_projets_sujet1.md
+    - Sujet 2: 100_projets_sujet2.md
+    - Sujet 3: 100_projets_sujet3.md
+    - Sujet 4: 100_projets_sujet4.md
+    - Sujet Custom: 100_projets_sujet_custom.md
 theme:
   language: en
   name: 'material'
