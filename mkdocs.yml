@@ -56,7 +56,7 @@ nav:
     - Sujet 1 - Reveil: 100_projets_sujet1.md
     - Sujet 2 - Server Q&A: 100_projets_sujet2.md
     - Sujet 3 - Equipes de Processus: 100_projets_sujet3.md
-    - Sujet Custom: 100_projets_sujet_custom.md
+    - Sujets Custom: 100_projets_sujet_custom.md
 theme:
   language: en
   name: 'material'
