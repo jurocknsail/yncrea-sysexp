@@ -10,3 +10,6 @@
       En effet, si on peut contrôler l'entrée (stdin) et la sortie (stdout, stderr) d'un programme en l'encapsulant dans un autre programme père, on peut tout faire avec !   
       Par exemple un wrapper graphique de commande bash complexes ?
 
+
+
+Retourne le pid du père du processus courant (appelant)

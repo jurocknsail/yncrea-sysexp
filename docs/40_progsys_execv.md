@@ -42,7 +42,11 @@ argv: tableau de pointeur vers des caractères (tableau de chaines de caractère
     Ici, nous remplaçons l'OS pour instancier manuellement un processus dans un existant.  
     **C'est donc à nous de remplir ce tableau cette fois ci !!**
     
-    
+
+
+![progexecv](./assets/images/processus/progexecv.JPG "progexecv")
+
+
 --- 
 
 ## Exemple

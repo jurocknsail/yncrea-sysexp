@@ -47,6 +47,8 @@ pid_t getppid(void);
 !!! tip 
     Le pendant en Shell serait la commande : ``ps`` :wink:
     
+![progfork](./assets/images/processus/progfork.JPG "progfork")
+
     
 #### Suspension
 
@@ -241,6 +243,9 @@ pid_t wait(int *status);
     Le status est codé sur le 2ème octet de l'int pointé :
     
     ![status](./assets/images/processus/status.JPG "status")
+
+
+![progwait](./assets/images/processus/progwait.JPG "progwait")
 
 
 --- 
