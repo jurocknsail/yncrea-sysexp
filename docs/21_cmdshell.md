@@ -47,6 +47,14 @@ ps –ef|grep toto
 
 ---
 
+## Résumé
+
+
+![sumupshell](./assets/images/shell/sumupshell.JPG "sumupshell")
+
+
+---
+
 ## Où trouver l'information ?
 
 Quand on a accès à internet, la meilleure source et la plus rapide : Google :wink: !
