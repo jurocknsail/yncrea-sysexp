@@ -26,30 +26,30 @@ nav:
   - Day#2:
     - Commandes Shell: 21_cmdshell.md
     - TP Linux Commands: 22_tpShell.md
-#    - "": 22_tpShell_corr.md
+    - "": 22_tpShell_corr.md
     - Regexp: 23_regexp.md
     - AWK: 24_awk.md
     - TP Regexp: 30_tpRegexp.md
-#    - "": 30_tpRegexp_corr.md
+    - "": 30_tpRegexp_corr.md
 
   - Day#3:
     - Programmation Système - TP1 Echauffement : 41_progsys_tp1_proc.md
-#    - "" : 41_progsys_tp1_proc_corr.md
+    - "" : 41_progsys_tp1_proc_corr.md
     - Programmation Système - Fork: 40_progsys_fork.md
     - Programmation Système - Execv: 40_progsys_execv.md
     - Programmation Système - TP2 Fork/Execv : 41_progsys_tp2_proc.md
-#    - "" :  41_progsys_tp2_proc_corr.md
+    - "" :  41_progsys_tp2_proc_corr.md
 
   - Day#4:
     - Programmation Système - Signaux: 40_progsys_signals.md
     - Programmation Système - TP3 Signaux : 41_progsys_tp3_sig.md
-#    - "" : 41_progsys_tp3_sig_corr.md
+    - "" : 41_progsys_tp3_sig_corr.md
     - Programmation Système - E/S Bas Niveau: 40_progsys_files.md
     - Programmation Système - TP4 E/S Bas Niveau : 41_progsys_tp4_fic.md
-#    - "" : 41_progsys_tp4_fic_corr.md
+    - "" : 41_progsys_tp4_fic_corr.md
     - Programmation Système - Pipes: 40_progsys_pipes.md
     - Programmation Système - TP5 Pipes : 41_progsys_tp5_pipes.md
-#    - "" : 41_progsys_tp5_pipes_corr.md
+    - "" : 41_progsys_tp5_pipes_corr.md
 
   - Projets:
     - Commun: 100_projets.md
