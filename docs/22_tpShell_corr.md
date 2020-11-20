@@ -434,9 +434,8 @@ Le second objectif du cours est de maitriser **les bases du Shell Unix**, via un
          ```c linenums="1"
          // directive du préprocesseur
          #include <stdio.h>
-         
-         /* prototype des fonctions */
-         
+         #include <unistd.h>
+                  
          /* programme principal */
          int main() {
            while(1){
