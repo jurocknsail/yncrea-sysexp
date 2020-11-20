@@ -10,6 +10,10 @@
     Extraire des numéros de téléphone d’une page web, ou vérifier que l’email que rentré dans un formulaire, ressemble bien à un email…   
     C’est très puissant !
     
+
+![jk](./assets/images/shell/jk.png "jk")
+
+    
 ---
 
 ## Anatomie d'une REGEX
