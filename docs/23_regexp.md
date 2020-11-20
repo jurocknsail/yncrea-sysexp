@@ -171,14 +171,14 @@ sed -e "s/RE/chaîne de remplacement/g" file
 ## Capture et références
 
 !!! abstract ""
-    Les ```( )``` sont capturantes.  
+    Les ```\( \)``` sont capturantes.  
     
     Qu’est-ce que cela veut dire ? Ça veut dire qu’une expression mise entre parenthèse est automatiquement placée dans une variable à laquelle ont peut faire référence ailleurs.
 
 On peut faire référence aux expressions capturées à deux endroits :  
 
 - Dans la REGEX elle-même, cela s’appelle une backreference ou référence arrière.   
-  On peut ainsi sélectionner les palindromes de trois lettres (mots qui se lisent indifféremment de gauche à droite ou de droite à gauche) avec cette expression ```/(\w)\w\1/```.  
+  On peut ainsi sélectionner les palindromes de trois lettres (mots qui se lisent indifféremment de gauche à droite ou de droite à gauche) avec cette expression ```/\(\w\)\w\1/```.  
 
 
     !!! tip
