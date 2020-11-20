@@ -73,6 +73,7 @@ Sur le fichier C utilisé au TP précédent :
 
      ```bash linenums="1"
      cut -d : -f 1,4 titi.txt
+     awk -F ":" 'NF > 1 { OFS=":" ; print $1,$4  }' titi.txt
      ```
   
 - Trier les lignes de titi.txt
