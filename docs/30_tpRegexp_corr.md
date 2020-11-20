@@ -66,7 +66,7 @@ Sur le fichier C utilisé au TP précédent :
 
      ```bash linenums="1"
      sed -e 's/[a-zA-Z:_-]//g' titi.txt
-     sed -n -e '^ *[0-9][0-9]*$/p' titi.txt
+     sed -n -e '/^.*[0-9][0-9]*.*$/p' titi.txt
      ``` 
   
 - Afficher, sur stdout, les champs 1 et 4 issue du découpage à partir du token ``:`` du fichier titi.txt
