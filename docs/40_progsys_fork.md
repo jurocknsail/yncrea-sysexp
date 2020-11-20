@@ -86,8 +86,8 @@ pid_t fork(void);
 !!! tip
     Bibliothèques :   
     
-    ```#inlude <sys/types.h>```   
-     ``#inlude <unistd.h>``
+    ```#include <sys/types.h>```   
+     ``#include <unistd.h>``
 
 !!! danger ""
     Retourne un entier :
