@@ -86,6 +86,9 @@ Sur le fichier C utilisé au TP précédent :
 
      ```bash linenums="1"
      sed -e '/^$/d' bonjour.c
+     awk ' NF != 0 {print $0 }' titi.txt
+        ou implicitement :
+     awk 'NF' test
      ```
 
 - Ecrivez un script awk qui permet d'afficher chaque groupe disponible sur votre machine, suivit de son numéro GID, si et seulement si son GID est > 1.  
