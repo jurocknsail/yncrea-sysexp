@@ -82,7 +82,7 @@ sed -e "s/RE/chaîne de remplacement/g" file
 | `$`   | marque une fin de chaine                                   |                    /^music$/ (commence et termine par music) |
 | `|`   |     connecteur logique ou                               |   ‘/music | musique/‘ (music ou musique)                 |
 | `.`   |    tous les caractères sauf les retour charriot \n (il faut pour ça utiliser l’option s)                                |   /./ (match presque tout)                 |
-| `\`   |       caractère d’échappement                             |           /\\?/ (signifie que le “?” compte ici comme un caractère normal)         |
+| `\`   |       caractère d’échappement                             |           /\\/ (signifie que le “^” compte ici comme un caractère normal)         |
 
 ---
 
