@@ -47,9 +47,6 @@ pid_t getppid(void);
 !!! tip 
     Le pendant en Shell serait la commande : ``ps`` :wink:
     
-![progfork](./assets/images/processus/progfork.JPG "progfork")
-
-    
 #### Suspension
 
 ```c linenums="1"
@@ -108,7 +105,9 @@ pid_t fork(void);
 !!! tip "Très Important !"
     La valeur retournée par fork permet donc de faire la **distinction** entre le père et le fils !
     
-    
+![progfork](./assets/images/processus/progfork.JPG "progfork")
+
+
 --- 
 
 ## Exemple basique
