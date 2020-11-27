@@ -150,7 +150,9 @@ pause();
 #include<unistd.h>
 int alarm (int sec);
 
-- resultat temps écoulé depuis le dernier appel
+- resultat : temps écoulé depuis le dernier appel à alarm();
+
+Note : l'appel à  alarm(0); annule l'alarme !
 ```      
 
 #### Exemple
