@@ -298,6 +298,10 @@ Ecrire un programme qui simule un réveil en utilisant le signal SIGALRM.
         }
     }
     ```
+
+    !!! tip
+        On pouvait aussi simplement utiliser la fonction ``pause()`` à la place de la dernière boucle si l'on ne souhaite pas l'affichage du décompte :wink:  
+    
     
 ### Exercice 7
 
