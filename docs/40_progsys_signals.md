@@ -152,7 +152,9 @@ int alarm (int sec);
 
 - resultat : temps écoulé depuis le dernier appel à alarm();
 
-Note : l'appel à  alarm(0); annule l'alarme !
+Note : 
+- l'appel à  alarm(0); annule toutes les alarmes enregistrées !
+- chaque appel enreigistre une nouvelle alarme, en indiquant en retour le temps restant pour l'alarme précédemment enregistrée.
 ```      
 
 #### Exemple
