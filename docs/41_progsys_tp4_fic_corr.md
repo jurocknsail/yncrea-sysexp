@@ -56,3 +56,5 @@
     }
     ```
     
+   !!! tip 
+       La valeur ``97`` correspond à la lettre ``a`` dans la table ASCII, d'où le fait qu'il apparait dans vi , qui arrive à décoder le premier octet de l'int comme un caractère !
