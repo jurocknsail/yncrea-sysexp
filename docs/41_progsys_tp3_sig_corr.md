@@ -293,7 +293,8 @@ Ecrire un programme qui simule un réveil en utilisant le signal SIGALRM.
         signal(SIGALRM, reveil);
         for(;;){
             i++;
-            printf("Tu dors depuis %d sec\n",i);
+            printf("\rTu dors depuis %d sec",i); // \r used for next line
+            fflush(stdout); // flushing stdout allows to erase previous printf so it appears updated instead of new line !
             sleep(1);
         }
     }
