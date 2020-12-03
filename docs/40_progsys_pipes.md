@@ -121,7 +121,7 @@ int pipe( int desc[2] );
 – Résultat : 0 si création du pipe, -1 sinon
 ``` 
 
-### Exemple
+### Exemple simple
 
 ```c linenums="1" hl_lines="7 12 13 14 17 18 20"
 int main(void)
@@ -145,6 +145,85 @@ int main(void)
         wait(NULL);
         close(desc[0]);                 // Fermeture du pipe en lecture
     }
+}
+``` 
+
+### Exemple complet 
+
+```c linenums="1"
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <string.h>
+#include <stdlib.h>
+#include <signal.h>
+
+#define BUFFER_SIZE 25
+#define READ  0
+#define WRITE 1
+
+int mypipefd[2];
+
+void interruptPere(int sig){
+        printf("Interrupt pere : SIGUSR1 fils reçut %d\n", sig);
+    wait(NULL);
+        printf("Interrupt pere : le fils est mort par son exit(1)\n");
+    close(mypipefd[WRITE]);
+        printf("Interrupt pere : fermeture du pipe et fin du père\n");
+    exit(0);
+}
+
+void interruptFils(int sig){
+        printf("Interrupt fils : CTRLC Catché ! \n");
+    close(mypipefd[READ]);
+        printf("Interrupt fils : fermeture du pipe\n");
+    kill(getppid(), SIGUSR1);
+        printf("Interrupt fils : signal SIGUSR1 envoyé au père\n");
+    exit(1);
+}
+
+int main(void)
+{
+  pid_t pid;  
+
+  /* create the pipe */
+  if (pipe(mypipefd) == -1) {
+    fprintf(stderr,"Pipe failed");
+    return 1;
+  }
+
+  /* now fork a child process */
+  pid = fork();
+
+  if (pid < 0) {
+    fprintf(stderr, "Fork failed");
+    return 1;
+  }
+
+  if (pid > 0) {  /* parent process */
+    signal(SIGINT, SIG_IGN);
+    signal(SIGUSR1, interruptPere);
+    int parentVal = 0;
+    close(mypipefd[READ]);      //close read end, write
+    while(1) {
+        sleep(3);
+        parentVal++;
+        write(mypipefd[WRITE],&parentVal,sizeof(parentVal));
+        printf("Parent: writes value : %d\n", parentVal);
+    }
+    
+  }
+  else { /* child process */
+    signal(SIGINT, interruptFils);
+    int childVal = 0;
+    close(mypipefd[WRITE]);
+    while(1) {
+        //sleep(1);
+        read(mypipefd[READ],&childVal,sizeof(childVal));
+        printf("child: read value : %d\n", childVal);
+    }
+    close(mypipefd[READ]);
+  }
 }
 ``` 
 
