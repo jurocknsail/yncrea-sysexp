@@ -68,11 +68,11 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
-  features:
+#  features:
 #    - tabs
 #    - instant
-    - navigation.instant
-    - navigation.tabs
+#    - navigation.instant
+#    - navigation.tabs
   custom_dir: material
 
 markdown_extensions:
