@@ -217,3 +217,14 @@ Le second objectif du cours est de maitriser **les bases du Shell Unix**, via un
 - Basculer ce process en foreground
          
 - Stopper le par un signal d’interruption
+
+
+## Exercice 3 : Executer un script
+
+- Téléchargez ce script : [install_env_student.sh](assets/files/install_env_student.sh).
+- Verifier que vous possedez les droits *d'execution* sur le script. Sinon utilisez `chmod` !
+- Executez le script
+- Verifier qu'aucune erreur ne s'est produite.
+
+!!! success ""
+    Votre environnement est pret pour faire du C dans la suite du cours :)
