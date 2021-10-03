@@ -13,50 +13,50 @@ site_description: >-
 nav:
   - Home: index.md
   - Day#1:
-    - Introduction: 00_intro.md
-    - Histoire: 01_history.md
-    - SGF: 02_sgf.md
-    - Noyau: 06_kernel.md
-    - Processus: 03_processus.md
-    - Ordonnancement: 04_ordonnancement.md
-    - TD - Les Bases: 05_tdOrdo.md
-    - "": 05_tdOrdo_corr.md
-    - UNIX: 20_linuxshell.md
+      - Introduction: 00_intro.md
+      - Histoire: 01_history.md
+      - SGF: 02_sgf.md
+      - Noyau: 06_kernel.md
+      - Processus: 03_processus.md
+      - Ordonnancement: 04_ordonnancement.md
+      - TD - Les Bases: 05_tdOrdo.md
+      - "": 05_tdOrdo_corr.md
+      - UNIX: 20_linuxshell.md
 
   - Day#2:
-    - Commandes Shell: 21_cmdshell.md
-    - TP Linux Commands: 22_tpShell.md
-    - "": 22_tpShell_corr.md
-    - Regexp: 23_regexp.md
-    - AWK: 24_awk.md
-    - TP Regexp: 30_tpRegexp.md
-    - "": 30_tpRegexp_corr.md
+      - Commandes Shell: 21_cmdshell.md
+      - TP Linux Commands: 22_tpShell.md
+      - "": 22_tpShell_corr.md
+      - Regexp: 23_regexp.md
+      - AWK: 24_awk.md
+      - TP Regexp: 30_tpRegexp.md
+      - "": 30_tpRegexp_corr.md
 
   - Day#3:
-    - Programmation Système - TP1 Echauffement : 41_progsys_tp1_proc.md
-    - "" : 41_progsys_tp1_proc_corr.md
-    - Programmation Système - Fork: 40_progsys_fork.md
-    - Programmation Système - Execv: 40_progsys_execv.md
-    - Programmation Système - TP2 Fork/Execv : 41_progsys_tp2_proc.md
-    - "" :  41_progsys_tp2_proc_corr.md
+      - Programmation Système - TP1 Echauffement : 41_progsys_tp1_proc.md
+      - "" : 41_progsys_tp1_proc_corr.md
+      - Programmation Système - Fork: 40_progsys_fork.md
+      - Programmation Système - Execv: 40_progsys_execv.md
+      - Programmation Système - TP2 Fork/Execv : 41_progsys_tp2_proc.md
+      - "" :  41_progsys_tp2_proc_corr.md
 
   - Day#4:
-    - Programmation Système - Signaux: 40_progsys_signals.md
-    - Programmation Système - TP3 Signaux : 41_progsys_tp3_sig.md
-    - "" : 41_progsys_tp3_sig_corr.md
-    - Programmation Système - E/S Bas Niveau: 40_progsys_files.md
-    - Programmation Système - TP4 E/S Bas Niveau : 41_progsys_tp4_fic.md
-    - "" : 41_progsys_tp4_fic_corr.md
-    - Programmation Système - Pipes: 40_progsys_pipes.md
-    - Programmation Système - TP5 Pipes : 41_progsys_tp5_pipes.md
-    - "" : 41_progsys_tp5_pipes_corr.md
+      - Programmation Système - Signaux: 40_progsys_signals.md
+      - Programmation Système - TP3 Signaux : 41_progsys_tp3_sig.md
+      - "" : 41_progsys_tp3_sig_corr.md
+      - Programmation Système - E/S Bas Niveau: 40_progsys_files.md
+      - Programmation Système - TP4 E/S Bas Niveau : 41_progsys_tp4_fic.md
+      - "" : 41_progsys_tp4_fic_corr.md
+      - Programmation Système - Pipes: 40_progsys_pipes.md
+      - Programmation Système - TP5 Pipes : 41_progsys_tp5_pipes.md
+      - "" : 41_progsys_tp5_pipes_corr.md
 
   - Projets:
-    - Commun: 100_projets.md
-    - Sujet 1 - Reveil: 100_projets_sujet1.md
-    - Sujet 2 - Server Q&A: 100_projets_sujet2.md
-    - Sujet 3 - Equipes de Processus: 100_projets_sujet3.md
-    - Sujets Custom: 100_projets_sujet_custom.md
+      - Commun: 100_projets.md
+      - Sujet 1 - Reveil: 100_projets_sujet1.md
+      - Sujet 2 - Server Q&A: 100_projets_sujet2.md
+      - Sujet 3 - Equipes de Processus: 100_projets_sujet3.md
+      - Sujets Custom: 100_projets_sujet_custom.md
 theme:
   language: en
   name: 'material'
@@ -68,11 +68,11 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
-#  features:
-#    - tabs
-#    - instant
-#    - navigation.instant
-#    - navigation.tabs
+  features:
+    - tabs
+    - instant
+    - navigation.instant
+    - navigation.tabs
   custom_dir: material
 
 markdown_extensions:
@@ -127,5 +127,10 @@ extra:
 
 extra_javascript:
   - javascripts/config.js
-##  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# Google Analytics
+google_analytics:
+  - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
+  - auto
