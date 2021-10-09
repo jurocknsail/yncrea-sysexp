@@ -5,14 +5,14 @@
 ## Objectifs
 
 Le 1er objectif est de découvrir quel est le **rôle d'un OS** afin de pouvoir coder des programmes utilisant des *processus / threads*.  
-Cela permettra de paralléliser des actions dans nos future programmes.  
+Cela permettra de paralléliser des actions dans nos futurs programmes.  
 Aussi, nous verrons de manière simplifiée comment sont ordonnancés les processus, puis comment sont organisés les fichiers.  
 
 ---
 
 ## Définition
 
-Un OS est la ==couche logicielle== qui permet et coordonne l’utilisation du matériel entre les différents programmes d’application.  
+Un OS est la ==couche logicielle== qui permet et coordonne l’utilisation du matériel entre les différents programmes d’applications.  
 
 !!! tip
     C'est donc le lien entre l'homme et le hardware ! On parle *d'__IHM__- Interface Homme Machine*
@@ -26,7 +26,7 @@ Un OS est la ==couche logicielle== qui permet et coordonne l’utilisation du ma
         
     ![OS Examples](./assets/images/intro/os_examples.jpg "OS Examples"){: align=left }
 
-On peut voir l'OS de duex points de vues différents :  
+On peut voir l'OS de deux points de vues différents :  
 
 - Utilisateur Lambda : Une IHM  
 - Un développeur : Un ensemble d'appels systèmes
@@ -35,7 +35,7 @@ On peut voir l'OS de duex points de vues différents :
 
 ## Fonctions d'un OS
 
-### Offrir une interface de programmation & interpreteur de commandes
+### Offrir une interface de programmation & interpréteur de commandes
 
 !!! abstract ""
     Un IDE, Une Command Line etc ...
@@ -85,7 +85,7 @@ On peut voir l'OS de duex points de vues différents :
     A un instant donné, seules sont chargées en RAM les parties de code et données utiles à l'exécution.  
     Ainsi, chacun des processus ==accède à toute la mémoire== à un instant T.  
     
-    A cela on ajoute le mécanisme de SWAP qui permet de ==désengorger== le système en déplaçant des modules executables sur la mémoire secondaire (le HDD).  
+    A cela on ajoute le mécanisme de SWAP qui permet de ==désengorger== le système en déplaçant des modules éxecutables sur la mémoire secondaire (le HDD).  
     C'est plus lent, mais au moins le système continue de fonctionner !
 
 #### Gestion des entrées/sorties  
@@ -97,7 +97,7 @@ On peut voir l'OS de duex points de vues différents :
 #### Gestion des objets externes  
 
 !!! abstract ""
-    La mémoire centrale est une mémoire volatile (RAM). Aussi, toutes les données devant être conservées au delà de l'arrêt de la machine, doivent être stockées sur une mémoire de masse ( disque dur ).  
+    La mémoire centrale est une mémoire volatile (RAM). Aussi, toutes les données devant être conservées au-delà de l'arrêt de la machine, doivent être stockées sur une mémoire de masse ( disque dur ).  
 
 #### Gestion de l’accès au réseau 
 

@@ -5,7 +5,7 @@
 ## 1940 : Traitement en Série
 
 Un programmeur à la fois, un programme à la fois.  
-Necéssite l'intervention humaine pour changer de programme.
+Nécessite l'intervention humaine pour changer de programme.
 
 ![Série](./assets/images/history/traitement_serie.jpg "Série")
 
@@ -14,15 +14,15 @@ Necéssite l'intervention humaine pour changer de programme.
 
 ## 1950 : Traitement par Lots
 
-Introduction d'un programme {++montiteur++}, qui serveille les taches en cours et permet d'enchainer automatiquement une liste de taches.
+Introduction d'un programme {++moniteur++}, qui surveille les tâches en cours et permet d'enchainer automatiquement une liste de taches.
 
 !!! abstract ""
     Chaque utilisateur soumet ses tâches à l’opérateur de l’ordinateur : cartes perforées, rubans magnétiques  
-    Il ya un regroupement des tâches  
+    Il y a un regroupement des tâches  
     Puis exécution séquentielle des regroupements  
     
     :fontawesome-solid-arrow-right: La fin d’une tâche est suivie par un branchement vers le moniteur.  
-    :fontawesome-solid-arrow-right: Le Moniteur charge en mémoire la tâche suivante et l’exécute dans le processeur  
+    :fontawesome-solid-arrow-right: Le moniteur charge en mémoire la tâche suivante et l’exécute dans le processeur  
     
     L’ordinateur est soit en exécution d’un programme utilisateur soit en exécution du programme moniteur
 
@@ -33,7 +33,7 @@ Introduction d'un programme {++montiteur++}, qui serveille les taches en cours e
 
 ## 1950- 1960 : Traitement par Lots Multiprogrammés
 
-L'amélioration logique consite à exécuter une autre tâche dans les portions de temps où le processeur est inactif.   
+L'amélioration logique consiste à exécuter une autre tâche dans les portions de temps où le processeur est inactif.   
 Ceci exige la coopération du matériel.  
 
 !!! abstract ""
