@@ -26,7 +26,7 @@ Un OS est la ==couche logicielle== qui permet et coordonne l’utilisation du ma
         
     ![OS Examples](./assets/images/intro/os_examples.jpg "OS Examples"){: align=left }
 
-On peut voir l'OS de duex points de vues différents :  
+On peut voir l'OS de deux points de vues différents :  
 
 - Utilisateur Lambda : Une IHM  
 - Un développeur : Un ensemble d'appels systèmes
