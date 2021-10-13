@@ -63,7 +63,7 @@ Il peut y en avoir beaucoup sans pénaliser les performances du système.
 
 ---
 
-## Communcication Inter Processus
+## Communication Inter Processus
 
 La communication inter-process est essentielle car elle permet :
 
@@ -88,7 +88,7 @@ La communication inter-process est essentielle car elle permet :
     !!! abstract ""
         Appels de système permettant l'ordonancement des processus  
 
-        Nous nous interesserons particulièrement aux fonction `signal()` et `wait()` dans la partie programmation système dee ce cours
+        Nous nous interesserons particulièrement aux fonction `signal()` et `wait()` dans la partie programmation système de ce cours
 
 
 
