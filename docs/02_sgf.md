@@ -36,7 +36,7 @@ Le SGF définit :
 
 Le SGF conserve une liste de tous les fichiers : la table des inodes.  
 
-Un inodes est un {==nœuds d’information==} qui contient les **attributs** d'un fichier (jusqu'à 40+ sur certains OS !) :  
+Un inode est un {==nœuds d’information==} qui contient les **attributs** d'un fichier (jusqu'à 40+ sur certains OS !) :  
 
 - type de fichier (fichier simple, repertoire, socket ...)
 - propriétaire (user, group)
@@ -194,7 +194,7 @@ Un chemin d’accès est le moyen d'arriver à un fichier situé dans cet arbre.
 Dans les SE UNIX Based :  
 . = catalogue courant  
 .. = catalogue père  
-~ = répertoir d ebase d'un utilisateur
+~ = répertoir de base d'un utilisateur
 
 ![Parcours](./assets/images/sgf/parcours.png "Parcours")
 
