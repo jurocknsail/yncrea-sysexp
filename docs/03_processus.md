@@ -72,7 +72,7 @@ La communication inter-process est essentielle car elle permet :
     !!! abstract ""
         Via des "pipes", "memory sharing", "message queue" ou des "signaux"  
         
-        Nous nous interesserons particulièrement aux **==Pipes==** : Structure de données **FIFO** dont les accès sont gérés par le S.E
+        Nous nous intéresserons particulièrement aux **==Pipes==** : Structure de données **FIFO** dont les accès sont gérés par le S.E
         
         ![Pipe](./assets/images/processus/pipe.jpg "Pipe")
 
@@ -86,9 +86,9 @@ La communication inter-process est essentielle car elle permet :
 - La synchronisation des processus
 
     !!! abstract ""
-        Appels de système permettant l'ordonancement des processus  
+        Appels de système permettant l'ordonnancement des processus  
 
-        Nous nous interesserons particulièrement aux fonction `signal()` et `wait()` dans la partie programmation système dee ce cours
+        Nous nous intéresserons particulièrement aux fonctions `signal()` et `wait()` dans la partie programmation système dee ce cours
 
 
 
@@ -111,15 +111,15 @@ Les deux derniers points sont essentiels car ils permettent d'éviter :
 
 ## Table des Processus
 
-Elle formée d’un tableau de structures décrivant les processus, dont le noyau se sert pour gérer leur exécution.  
-Chaque entrée dans la table définit un processus crée par le noyau.   
+Elle est formée d’un tableau de structures décrivant les processus, dont le noyau se sert pour gérer leur exécution.  
+Chaque entrée dans la table définit un processus créé par le noyau.   
 
 Elle réside en **mémoire**, le noyau l’interroge et la met à jour en permanence lorsqu’il alloue et désalloue du temps CPU aux processus.  
  
 Les informations d’ordonnancement de processus de cette table sont aussi mises à jour pour les processus qui ne sont pas en cours d’exécution.  
 
 !!! warning "Important"
-    On parle de table ... ce qui implique que chaque processus possède identifiant unique appelé ==**PID**== (Process ID).
+    On parle de table ... ce qui implique que chaque processus possède un identifiant unique appelé ==**PID**== (Process ID).
     
 !!! tip
     Les structures des processus sont définies dans ```/usr/include/sys/proc.h```
@@ -128,7 +128,7 @@ Les informations d’ordonnancement de processus de cette table sont aussi mises
 
 ## Context d'éxecution
 
-Pour pouvoir stopper et reprendre un processus où il en était, le SE doit gérer et conserver/restaurer le context d'execution de chaque processus.
+Pour pouvoir stopper et reprendre un processus où il en était, le SE doit gérer et conserver/restaurer le context d'éxecution de chaque processus.
 
 ![Ctxt](./assets/images/processus/ctx.jpg "Ctxt")
 

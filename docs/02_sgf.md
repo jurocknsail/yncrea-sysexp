@@ -14,11 +14,11 @@ Le SGF définit :
 
     !!! abstract ""
         Notion de **fichiers** et de **répertoires**  
-        Les sous-répertoire sont des enfants d’un répertoire **racine**  
-        On a donc un **==hierarchie==**, où un répertoire peut en contenir d’autres.
+        Les sous-répertoires sont des enfants d’un répertoire **racine**  
+        On a donc un **==hiérarchie==**, où un répertoire peut en contenir d’autres.
  
 
-- comment nommer les fichiers (carcatères interdits, réservés, extensions etc ...)?
+- comment nommer les fichiers (caractères interdits, réservés, extensions etc ...)?
 - comment les structurer ?
 - comment les utiliser, les protéger ?
 
@@ -28,7 +28,7 @@ Le SGF définit :
     Un ==dossier== est un **fichier** qui **peut** en contenir d'autres.  
     Un ==fichier== simple est un **fichier** qui **ne peut pas** en contenir d'autres.  
     
-    La distinction ne tient qu'à un attribu qui indique que le fichier en question est en fait un dossier.
+    La distinction ne tient qu'à un attribut qui indique que le fichier en question est en fait un dossier.
 
 ---
 
@@ -36,9 +36,9 @@ Le SGF définit :
 
 Le SGF conserve une liste de tous les fichiers : la table des inodes.  
 
-Un inode est un {==nœuds d’information==} qui contient les **attributs** d'un fichier (jusqu'à 40+ sur certains OS !) :  
+Un inode est un {==nœud d’information==} qui contient les **attributs** d'un fichier (jusqu'à 40+ sur certains OS !) :  
 
-- type de fichier (fichier simple, repertoire, socket ...)
+- type de fichier (fichier simple, répertoire, socket ...)
 - propriétaire (user, group)
 - permissions
 - compteur de lien : nb de répertoires contenant une entrée avec ce numéro d’inode
@@ -50,7 +50,7 @@ Un inode est un {==nœuds d’information==} qui contient les **attributs** d'un
     Un inode ne contient **PAS** le nom du fichier.  
     Un fichier simple étant forcément dans un fichier de type répertoire, c'est le fichier répertoire qui contient les noms des fichiers qu'il contient !
     
-    Cela permet d'avoir une table d'inodes de petite dimension, qui se parcourt rapidement :rocket: !      
+    Cela permet d'avoir une table d'inodes de petites dimension, qui se parcourt rapidement :rocket: !      
     
 ---
  
@@ -59,7 +59,7 @@ Un inode est un {==nœuds d’information==} qui contient les **attributs** d'un
 ![Fichiers](./assets/images/sgf/allfiles.jpg "Fichiers")
 
 !!! tip
-    On peut facilement voir le type d'un fichier en faisant la command ``ls -l`` qui affiche le nom du fichier précédé des son type et droits d'accès :
+    On peut facilement voir le type d'un fichier en faisant la commande ``ls -l`` qui affiche le nom du fichier précédé de son type et droits d'accès :
         ```bash linenums="1"
         ls -l
         {==l==}rw-r--r-- 1 jberger 1049089 309 Oct 29 10:06 monLien -> SE/TP2/src/bonjour.c
@@ -88,14 +88,14 @@ Un inode est un {==nœuds d’information==} qui contient les **attributs** d'un
 
 !!! abstract ""
     Entrée de répertoire normale qui au lieu de pointer vers un fichier unique, pointe sur un fichier déjà existant.  
-    Permet de donner plusieurs noms à un fichier, dans des répertoires différents. Donc de le partager !  
+    Permets de donner plusieurs noms à un fichier, dans des répertoires différents. Donc de le partager !  
     Ce fichier ne sera effacé que lorsque son dernier nom est supprimé (pas d’inode supplémentaire).
         
 ### Lien symbolique : 
 
 !!! abstract ""
     Ne pointe pas vers un autre inode comme un lien permanent mais vers un  autre nom de fichier (inode supplémentaire).  
-    :warning: Lors d'un parcours automatique de disque, on passera plusieurs fois au meme endroit de la mémoir vu qu'il y a une nouvelle inode ... Peut perf !
+    :warning: Lors d'un parcours automatique de disque, on passera plusieurs fois au même endroit de la mémoire vu qu'il y a une nouvelle inode ... Peut perf !
     
 !!! quote "Différence en image : "
     ![lnSH](./assets/images/sgf/lns.jpg "lnSH")
@@ -103,7 +103,7 @@ Un inode est un {==nœuds d’information==} qui contient les **attributs** d'un
 ### Socket : 
 
 !!! abstract ""
-    Moyen de communication avec d’autre machines via le réseau.
+    Moyen de communication avec d’autres machines via le réseau.
         
 ### Pipes nommés :
 
@@ -119,7 +119,7 @@ Un inode est un {==nœuds d’information==} qui contient les **attributs** d'un
 ### Fichiers spéciaux bloc :
 
 !!! abstract ""
-    Offre un mécanisme de communication avec les pilotes de périphériques, similitude avec les fichiers spéciaux à caractères, mais avec une quantité de données plus importante.  
+    Offre un mécanisme de communication avec les pilotes de périphériques, similitude avec les fichiers spéciaux à caractère, mais avec une quantité de données plus importante.  
     Modélisation des disques (Contenu gardé en mémoire).
 
 --- 
@@ -131,7 +131,7 @@ Un inode est un {==nœuds d’information==} qui contient les **attributs** d'un
 !!! abstract ""
     Un fichier peut appartenir à un *utilisateur* qui lui-même fait partie d'un ensemble d'utilisateur (*groupe*) qui ont tous les mêmes droits sur une même machine.  
     
-    Par example, il peut y avoir un groupe ``élèves`` et `profs` sur une même machine et les élèves connectés n'ont pas accès aux fichiers de correction !
+    Par exemple, il peut y avoir un groupe ``élèves`` et `profs` sur une même machine et les élèves connectés n'ont pas accès aux fichiers de correction !
     
     On va donc gérer les accès pour :  
     
@@ -142,7 +142,7 @@ Un inode est un {==nœuds d’information==} qui contient les **attributs** d'un
 ![Rights](./assets/images/sgf/rights.jpg "Rights")
 
 !!! tip
-    On peut facilement voir les droits d'accès à un fichier en faisant la command ``ls -l``
+    On peut facilement voir les droits d'accès à un fichier en faisant la commande ``ls -l``
         ```bash linenums="1"
         ls -l
         l{==rw-r--r--==} 1 jberger 1049089 309 Oct 29 10:06 monLien -> SE/TP2/src/bonjour.c
@@ -151,7 +151,7 @@ Un inode est un {==nœuds d’information==} qui contient les **attributs** d'un
         d{==rwxr-xr-x==} 1 jberger 1049089   0 Oct 28 17:03 TP2/
         ```
         
-    Ici, l'utilisateur `jberger` en particulier peut lire et ecrire le fichier `testRegexp`.  
+    Ici, l'utilisateur `jberger` en particulier peut lire et écrire le fichier `testRegexp`.  
     Les utilisateurs appartenant au groupe `1049089` peuvent uniquement le lire.  
     Idem pour tous les autres utilisateurs. 
         
@@ -173,7 +173,7 @@ Un inode est un {==nœuds d’information==} qui contient les **attributs** d'un
     chmod u+rwx,g+rx,o-rwx toto.txt
     ````
     
-    :warning: Avec la deuxieme notations, les bits non mentionnés ne sont pas changés !!
+    :warning: Avec la deuxième notation, les bits non mentionnés ne sont pas changés !!
 
 ---
 
@@ -194,7 +194,8 @@ Un chemin d’accès est le moyen d'arriver à un fichier situé dans cet arbre.
 Dans les SE UNIX Based :  
 . = catalogue courant  
 .. = catalogue père  
-~ = répertoir de base d'un utilisateur
+~ = répertoire de base d'un utilisateur
+
 
 ![Parcours](./assets/images/sgf/parcours.png "Parcours")
 
@@ -203,7 +204,7 @@ Dans les SE UNIX Based :
 
 ## Opérations sur les Fichiers
 
-Ces opérations se font grâce à des appels systèmes (fonction disponibles dans le noyau) :  
+Ces opérations se font grâce à des appels systèmes (fonction disponible dans le noyau) :  
 
 - CREATE (création d’un fichier vide)
 - DELETE
