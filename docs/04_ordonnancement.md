@@ -4,7 +4,7 @@
 
 ## Généralités
 
-Dans la vraie vie, plusieurs processus cohabitent et peuvent être prêts à êtres exécutés en même temps.  
+Dans la vraie vie, plusieurs processus cohabitent et peuvent être prêts à être exécutés en même temps.  
 
 Le SE doit faire un **choix** (selon un algorithme d'ordonnancement) :
  
@@ -24,14 +24,14 @@ Il existe deux grandes familles d'ordonnacement :
 ### Ordonnancement sans réquisition (ou non préemptif)
 
 !!! abstract ""
-    Un processus est exécuté jusqu'à la fin (sauf si il se bloque lui même).  
+    Un processus est exécuté jusqu'à la fin (sauf si il se bloque lui-même).  
     :warning: inefficace et dangereux (ex: exécution d'une boucle sans fin...) 
     
 ### Ordonnancement avec réquisition (ou préemptif)
 
 !!! abstract ""
     A chaque signal d'horloge, le SE reprend la main, décide si le processus courant doit céder sa place, et éventuellement donne le processeur à un autre processus.  
-    Un processus perds le processeur s'il se bloque lui-même.  
+    Un processus perd le processeur s'il se bloque lui-même.  
     Il existe de nombreux algorithmes d'ordonnancement avec réquisition.
     
     
