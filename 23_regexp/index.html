@@ -1,0 +1,1772 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Ce cours fait partie du cours <b>ITII 2 - SYSEXP</b> pour <b>YNCREA Toulon</b> sur les systèmes d'exploitation et principalement les connaissances Linux et bases de programmation système. <br><br> <i>Le cours se déroule sur 4 jours et vise à donner aux étudiants un aperçu de la façon de travailler du système d'exploitation, une connaissance basique du shell et de programmation de processus.</i>">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/yncrea.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.1.5">
+    
+    
+      
+        <title>Regexp - Yncrea - Cours SYSEXP</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.f6cf1dc9.min.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85bb4ebe.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#00bdd6">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","None","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="cyan" data-md-color-accent="cyan">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#expressions-regulieres" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="Yncrea - Cours SYSEXP" class="md-header-nav__button md-logo" aria-label="Yncrea - Cours SYSEXP">
+      
+  <img src="../assets/images/yncrea.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Yncrea - Cours SYSEXP
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Regexp
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/jurocknsail/yncrea-sysexp" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yncrea-sysexp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../00_intro/" class="md-tabs__link">
+          Day#1
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../21_cmdshell/" class="md-tabs__link md-tabs__link--active">
+          Day#2
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../41_progsys_tp1_proc/" class="md-tabs__link">
+          Day#3
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../40_progsys_signals/" class="md-tabs__link">
+          Day#4
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../100_projets/" class="md-tabs__link">
+          Projets
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Yncrea - Cours SYSEXP" class="md-nav__button md-logo" aria-label="Yncrea - Cours SYSEXP">
+      
+  <img src="../assets/images/yncrea.png" alt="logo">
+
+    </a>
+    Yncrea - Cours SYSEXP
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/jurocknsail/yncrea-sysexp" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yncrea-sysexp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Day#1
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Day#1" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Day#1
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../00_intro/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../01_history/" class="md-nav__link">
+      Histoire
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../02_sgf/" class="md-nav__link">
+      SGF
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../06_kernel/" class="md-nav__link">
+      Noyau
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../03_processus/" class="md-nav__link">
+      Processus
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../04_ordonnancement/" class="md-nav__link">
+      Ordonnancement
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../05_tdOrdo/" class="md-nav__link">
+      TD - Les Bases
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../05_tdOrdo_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../20_linuxshell/" class="md-nav__link">
+      UNIX
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Day#2
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Day#2" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Day#2
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../21_cmdshell/" class="md-nav__link">
+      Commandes Shell
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../22_tpShell/" class="md-nav__link">
+      TP Linux Commands
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../22_tpShell_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Regexp
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Regexp
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#generalites" class="md-nav__link">
+    Généralités
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anatomie-dune-regex" class="md-nav__link">
+    Anatomie d'une REGEX
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#posix-et-pcre" class="md-nav__link">
+    POSIX et PCRE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delimiteurs" class="md-nav__link">
+    Délimiteurs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-metas-caracteres" class="md-nav__link">
+    Les métas-caractères
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantificateurs" class="md-nav__link">
+    Quantificateurs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes-et-intervales" class="md-nav__link">
+    Classes et intervales
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes-abregees" class="md-nav__link">
+    Classes abrégées
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemples" class="md-nav__link">
+    Exemples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercices" class="md-nav__link">
+    Exercices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#capture-et-references" class="md-nav__link">
+    Capture et références
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercices_1" class="md-nav__link">
+    Exercices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outils" class="md-nav__link">
+    Outils
+  </a>
+  
+    <nav class="md-nav" aria-label="Outils">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi" class="md-nav__link">
+    Vi
+  </a>
+  
+    <nav class="md-nav" aria-label="Vi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recherche" class="md-nav__link">
+    Recherche
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commande" class="md-nav__link">
+    Commande
+  </a>
+  
+    <nav class="md-nav" aria-label="Commande">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#substitution" class="md-nav__link">
+    Substitution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sed" class="md-nav__link">
+    Sed
+  </a>
+  
+    <nav class="md-nav" aria-label="Sed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#syntaxe" class="md-nav__link">
+    Syntaxe
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principe-de-fonctionnement" class="md-nav__link">
+    Principe de fonctionnement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commandes" class="md-nav__link">
+    Commandes
+  </a>
+  
+    <nav class="md-nav" aria-label="Commandes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#substitution_1" class="md-nav__link">
+    Substitution
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#negation" class="md-nav__link">
+    Négation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suppression" class="md-nav__link">
+    Suppression
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insertions" class="md-nav__link">
+    Insertions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercices_2" class="md-nav__link">
+    Exercices
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../24_awk/" class="md-nav__link">
+      AWK
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../30_tpRegexp/" class="md-nav__link">
+      TP Regexp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../30_tpRegexp_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Day#3
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Day#3" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Day#3
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp1_proc/" class="md-nav__link">
+      Programmation Système - TP1 Echauffement
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp1_proc_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../40_progsys_fork/" class="md-nav__link">
+      Programmation Système - Fork
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../40_progsys_execv/" class="md-nav__link">
+      Programmation Système - Execv
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp2_proc/" class="md-nav__link">
+      Programmation Système - TP2 Fork/Execv
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp2_proc_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Day#4
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Day#4" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Day#4
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../40_progsys_signals/" class="md-nav__link">
+      Programmation Système - Signaux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp3_sig/" class="md-nav__link">
+      Programmation Système - TP3 Signaux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp3_sig_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../40_progsys_files/" class="md-nav__link">
+      Programmation Système - E/S Bas Niveau
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp4_fic/" class="md-nav__link">
+      Programmation Système - TP4 E/S Bas Niveau
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp4_fic_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../40_progsys_pipes/" class="md-nav__link">
+      Programmation Système - Pipes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp5_pipes/" class="md-nav__link">
+      Programmation Système - TP5 Pipes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp5_pipes_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Projets
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Projets" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Projets
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../100_projets/" class="md-nav__link">
+      Commun
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../100_projets_sujet1/" class="md-nav__link">
+      Sujet 1 - Reveil
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../100_projets_sujet2/" class="md-nav__link">
+      Sujet 2 - Server Q&A
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../100_projets_sujet3/" class="md-nav__link">
+      Sujet 3 - Equipes de Processus
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../100_projets_sujet_custom/" class="md-nav__link">
+      Sujets Custom
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#generalites" class="md-nav__link">
+    Généralités
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anatomie-dune-regex" class="md-nav__link">
+    Anatomie d'une REGEX
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#posix-et-pcre" class="md-nav__link">
+    POSIX et PCRE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delimiteurs" class="md-nav__link">
+    Délimiteurs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-metas-caracteres" class="md-nav__link">
+    Les métas-caractères
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantificateurs" class="md-nav__link">
+    Quantificateurs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes-et-intervales" class="md-nav__link">
+    Classes et intervales
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes-abregees" class="md-nav__link">
+    Classes abrégées
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemples" class="md-nav__link">
+    Exemples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercices" class="md-nav__link">
+    Exercices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#capture-et-references" class="md-nav__link">
+    Capture et références
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercices_1" class="md-nav__link">
+    Exercices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outils" class="md-nav__link">
+    Outils
+  </a>
+  
+    <nav class="md-nav" aria-label="Outils">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi" class="md-nav__link">
+    Vi
+  </a>
+  
+    <nav class="md-nav" aria-label="Vi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recherche" class="md-nav__link">
+    Recherche
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commande" class="md-nav__link">
+    Commande
+  </a>
+  
+    <nav class="md-nav" aria-label="Commande">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#substitution" class="md-nav__link">
+    Substitution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sed" class="md-nav__link">
+    Sed
+  </a>
+  
+    <nav class="md-nav" aria-label="Sed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#syntaxe" class="md-nav__link">
+    Syntaxe
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principe-de-fonctionnement" class="md-nav__link">
+    Principe de fonctionnement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commandes" class="md-nav__link">
+    Commandes
+  </a>
+  
+    <nav class="md-nav" aria-label="Commandes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#substitution_1" class="md-nav__link">
+    Substitution
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#negation" class="md-nav__link">
+    Négation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suppression" class="md-nav__link">
+    Suppression
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insertions" class="md-nav__link">
+    Insertions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercices_2" class="md-nav__link">
+    Exercices
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="expressions-regulieres">Expressions Régulières<a class="headerlink" href="#expressions-regulieres" title="Permanent link">⚓︎</a></h1>
+<hr />
+<h2 id="generalites">Généralités<a class="headerlink" href="#generalites" title="Permanent link">⚓︎</a></h2>
+<div class="admonition abstract">
+<p>Les expressions régulières, combinées à des fonctions de certains langages (PHP, bash, JavaScript et même HTML5 !) permettent de faire des recherches et de la reconnaissance sur des chaines de caractères. <br />
+Extraire des numéros de téléphone d’une page web, ou vérifier que l’email que rentré dans un formulaire, ressemble bien à un email… <br />
+C’est très puissant !</p>
+</div>
+<p><img alt="jk" src="../assets/images/shell/jk.png" title="jk" /></p>
+<hr />
+<h2 id="anatomie-dune-regex">Anatomie d'une REGEX<a class="headerlink" href="#anatomie-dune-regex" title="Permanent link">⚓︎</a></h2>
+<div class="admonition abstract">
+<p>Une regex est faite pour effectuer des recherches dans les chaînes de caractères… et une regex est elle-même une chaîne de caractère !   </p>
+<p>Elle possède un <mark><strong>délimiteur</strong></mark> qui en indique le <strong>début</strong> et la <strong>fin</strong> ainsi que des <ins>caractères spéciaux</ins>.   </p>
+<p>Les caractères spéciaux permettent d’indiquer des comportement prédéfinis. <br />
+Par exemple désigner un sensemble caractères, indiquer la longueur d’un mot, une longueur variable, indiquer qu’on ne veut que des majuscules, un mot optionnel etc.</p>
+<p>Une fois la regex créé, chaque langage de programmation dispose de ses propres fonctions pour les utiliser. <br />
+Certaines fonctions permettent de contrôler la présence de certains éléments dans une chaîne, de la nettoyer en supprimer certains éléments ou encore d’extraire du texte depuis une chaîne.</p>
+</div>
+<div class="admonition warning">
+<p>Lorsqu'on recherche une chaîne de caractères à l'aide d'une expression régulière, la chaîne renvoyée est la chaîne la plus grande correspondant à l'expression.  </p>
+<p>Pour <mark><strong>banaliser</strong></mark> un caractère, il faut utiliser <strong>\</strong> </p>
+</div>
+<p><ins>Exemple</ins> :  </p>
+<div class="highlight"><pre><span></span><code>sed -e <span class="s2">&quot;s/RE/chaîne de remplacement/g&quot;</span> file 
+</code></pre></div>
+<hr />
+<h2 id="posix-et-pcre">POSIX et PCRE<a class="headerlink" href="#posix-et-pcre" title="Permanent link">⚓︎</a></h2>
+<div class="admonition abstract">
+<p>Lorsque l’on parle de REGEX, il faut savoir qu’on peut rencontrer différentes variantes.   </p>
+<p>En effet, certains masques ne fonctionneront pas forcément sur toutes les plate-formes et dans tous les langages.</p>
+<p>POSIX est un standard qui a cherché à uniformiser les syntaxes et les fonctionnalités des expressions régulières. <br />
+Les expressions de type POSIX seront plutôt bien supportées dans la console Linux par exemple.</p>
+<p>Cependant, leur support étendu (le reste étend commun avec PCRE) est plus restreint. <br />
+PHP ne supporte par exemple plus la syntaxe POSIX dans ses dernières versions.</p>
+<p>PCRE désigne un type de REGEX qui s’appuie sur la syntaxe des REGEX du Perl. C’est la syntaxe la plus largement supportée aujourd’hui.  </p>
+</div>
+<hr />
+<h2 id="delimiteurs">Délimiteurs<a class="headerlink" href="#delimiteurs" title="Permanent link">⚓︎</a></h2>
+<div class="admonition abstract">
+<p>Ce sont les caractères <code>#</code>, <code>%</code>, <code>/</code> etc...</p>
+<p>Ils servent à <strong>délimiter</strong> ce qui fait parti de votre expression, de ce qui n’en fait pas parti. C’est donc en dehors des délimiteurs que vous placerez les options PCRE, POSIX n’ayant pas d’options, ni de délimiteurs d’ailleurs.  </p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Le choix du délimiteur est totalement libre (dans la mesure où c’est un caractère spécial), cependant, prenez un caractère assez rare.   </p>
+<p>Inutile de tenter d’utiliser un slash <code>/</code> si vous pensez travailler sur des URL ou commentaires C ...</p>
+</div>
+<hr />
+<h2 id="les-metas-caracteres">Les métas-caractères<a class="headerlink" href="#les-metas-caracteres" title="Permanent link">⚓︎</a></h2>
+<div class="admonition abstract">
+<p>Ces caractères ont chacun une signification spéciale dans les expressions régulières.<br />
+C’est notamment eux qui font la force des REGEX.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Signe</th>
+<th>Signification</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>^</code></td>
+<td>marque un début chaine</td>
+<td>/^music/ (commence par music)</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>marque une fin de chaine</td>
+<td>/^music$/ (commence et termine par music)</td>
+</tr>
+<tr>
+<td><code>|</code></td>
+<td>connecteur logique ou</td>
+<td><code>/music | musique/</code> (music ou musique)</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>tous les caractères sauf les retour charriot \n (il faut pour ça utiliser l’option s)</td>
+<td>/./ (match presque tout)</td>
+</tr>
+<tr>
+<td><code>\</code></td>
+<td>caractère d’échappement</td>
+<td>/\^/ (signifie que le “^” compte ici comme un caractère normal)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="quantificateurs">Quantificateurs<a class="headerlink" href="#quantificateurs" title="Permanent link">⚓︎</a></h2>
+<div class="admonition abstract">
+<p>Les quantificateurs permettent de préciser le nombre de fois que l’on autorise un caractère ou une suite de caractères à se répéter.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Signe</th>
+<th>Signification</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>?</code></td>
+<td>0 ou 1 fois</td>
+<td>/bue?no/ (buno, ou bueno)</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>1 ou plus</td>
+<td>/bue+no/ (bueno, bueno, bueeeeeeno…)</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>0, 1 ou plus</td>
+<td>/bue*no/ (buno, bueno, bueeeeeeno…)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="classes-et-intervales">Classes et intervales<a class="headerlink" href="#classes-et-intervales" title="Permanent link">⚓︎</a></h2>
+<div class="admonition abstract">
+<p>Les classes permettent de recherche entre plusieurs caractères différents, elles donnent des alternatives.<br />
+Les intervales sont des classes un peu spéciales puisqu’elles permettent d’énumérer une certaine palette de chiffre ou de lettres. <br />
+Par exemple, tous les chiffres de 0 à 5, ou toutes les lettres de a à i, sans les énumérer une par une.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Signe</th>
+<th>Signification</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[ ]</code></td>
+<td>classe de caractères</td>
+<td>/gr[oai]s/ (gros, gras ou gris)</td>
+</tr>
+<tr>
+<td><code>[ - ]</code></td>
+<td>intervalle de classe</td>
+<td>/n°[0-9]/ (n°1, n°2, […] n°9)</td>
+</tr>
+<tr>
+<td><code>[^ ]</code></td>
+<td>classe à exclure</td>
+<td>/h[^3-9]/ (h1 et h2 uniquement)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p>Dans un classe, le tiret “-“ sert de délimiteur, donc si on veut l’inclure en tant que caractère, on doit le placer en fin de classe (ou au début).  </p>
+<p>Par ailleurs, le crochet fermant “]” délimite aussi la fin de le classe, il faudra donc l’échapper par un antislash.</p>
+</div>
+<div class="admonition warning">
+<p>En revanche, les autres métas-caractères ne comptent pas dans les classes.<br />
+On ne les échappe pas.<br />
+Cette classe [0-9a-z?+*{}.] correspond donc à un chiffre, une lettre, un point d’interrogation, un point, un plus…</p>
+</div>
+<hr />
+<h2 id="classes-abregees">Classes abrégées<a class="headerlink" href="#classes-abregees" title="Permanent link">⚓︎</a></h2>
+<div class="admonition abstract">
+<p>Les classes abrégées permettent, comme les classes “normales”, d’avoir de nombreuses possibilités.<br />
+Elles n’apportent rien de plus en fonctionnalité que les classes normales, mais elles permettent d’écrire tout ça bien plus vite, ce sont des raccourcis !  </p>
+</div>
+<div class="admonition success">
+<p>Que diriez vous si vous pouviez taper \w à la place de [0-9a-zA-Z_] ? <img alt="😉" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f609.svg" title=":wink:" /></p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Raccourci</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\d</td>
+<td>Indique un chiffre. Ca revient exactement à taper [0-9]</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>Indique ce qui n’est PAS un chiffre. Ca revient à taper [^0-9]</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>Indique un caractère alphanumérique ou un tiret de soulignement. Cela correspond à taper [a-zA-Z0-9_]</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>Indique ce qui n’est PAS un caractère alphanumérique ou un tiret de soulignement. Ca revient à taper [^a-zA-Z0-9_]</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>Indique une tabulation</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>Indique une nouvelle ligne</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>Indique un retour chariot</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>Indique un espace blanc (correspond à \t \n \r)</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>Indique ce qui n’est PAS un espace blanc (\t \n \r)</td>
+</tr>
+<tr>
+<td>.</td>
+<td>Le point indique n’importe quel caractère ! Il autorise donc tout !</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="exemples">Exemples<a class="headerlink" href="#exemples" title="Permanent link">⚓︎</a></h2>
+<p><img alt="ex1" src="../assets/images/shell/regexp1.jpg" title="ex1" /></p>
+<p><img alt="ex2" src="../assets/images/shell/regexp2.jpg" title="ex2" /></p>
+<p><img alt="ex3" src="../assets/images/shell/regexp3.jpg" title="ex3" /></p>
+<hr />
+<h2 id="exercices">Exercices<a class="headerlink" href="#exercices" title="Permanent link">⚓︎</a></h2>
+<p><img alt="ex1" src="../assets/images/shell/ex1.jpg" title="ex1" /></p>
+<details class="example"><summary>Solution</summary><p><img alt="ex1s" src="../assets/images/shell/ex1s.jpg" title="ex1s" /></p>
+</details>
+<hr />
+<h2 id="capture-et-references">Capture et références<a class="headerlink" href="#capture-et-references" title="Permanent link">⚓︎</a></h2>
+<div class="admonition abstract">
+<p>Les <code>\( \)</code> sont capturantes.  </p>
+<p>Qu’est-ce que cela veut dire ? Ça veut dire qu’une expression mise entre parenthèse est automatiquement placée dans une variable à laquelle ont peut faire référence ailleurs.</p>
+</div>
+<p>On peut faire référence aux expressions capturées à deux endroits :  </p>
+<ul>
+<li>
+<p>Dans la REGEX elle-même, cela s’appelle une backreference ou référence arrière. <br />
+  On peut ainsi sélectionner les palindromes de trois lettres (mots qui se lisent indifféremment de gauche à droite ou de droite à gauche) avec cette expression <code>/\(\w\)\w\1/</code>.  </p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Le marqueur <code>(\w)</code> sélectionne tout caractère alphanumérique et capture ce caractère, suivi d’un autre caractère puis du caractère précédemment capturé (donc l’expression entre parenthèses, soit la première lettre sélectionnée)</p>
+</div>
+<p>Il peut y avoir plusieurs backreferences dans une même expression, la première est indiquée par <code>\1</code>, la seconde <code>\2</code> et ainsi de suite.</p>
+</li>
+<li>
+<p>Dans le résultat retourné par la fonction invoquée. Ici, cela dépend du langage et de la fonction utilisée. <br />
+  Par exemple en Bash :  </p>
+</li>
+</ul>
+<hr />
+<h2 id="exercices_1">Exercices<a class="headerlink" href="#exercices_1" title="Permanent link">⚓︎</a></h2>
+<p><img alt="ex2" src="../assets/images/shell/ex2.jpg" title="ex2" /></p>
+<details class="example"><summary>Solution</summary><p><img alt="ex2s" src="../assets/images/shell/ex2s.jpg" title="ex2s" /></p>
+</details>
+<hr />
+<h2 id="outils">Outils<a class="headerlink" href="#outils" title="Permanent link">⚓︎</a></h2>
+<p>En bash nous utiliserons les commandes <code>vi</code> et <code>sed</code> pour manipuler les regex. </p>
+<h3 id="vi">Vi<a class="headerlink" href="#vi" title="Permanent link">⚓︎</a></h3>
+<h4 id="recherche">Recherche<a class="headerlink" href="#recherche" title="Permanent link">⚓︎</a></h4>
+<p>On peut rechercher des chaines de caractères en utilisant des regexp : <br />
+<code>:/regexp/</code> </p>
+<h4 id="commande">Commande<a class="headerlink" href="#commande" title="Permanent link">⚓︎</a></h4>
+<h5 id="substitution">Substitution<a class="headerlink" href="#substitution" title="Permanent link">⚓︎</a></h5>
+<p>On peut utiliser la commande de substitution : <br />
+<code>:%s/regexp/chaine de remplacement/options</code></p>
+<h3 id="sed">Sed<a class="headerlink" href="#sed" title="Permanent link">⚓︎</a></h3>
+<p>Sed est un éditeur non interactif. <br />
+Cette commande permet d'appliquer un certain nombre de commandes sur un fichier puis d'en afficher le résultat (sans modification du fichier de départ) sur la sortie standard. </p>
+<h4 id="syntaxe">Syntaxe<a class="headerlink" href="#syntaxe" title="Permanent link">⚓︎</a></h4>
+<div class="highlight"><pre><span></span><code>sed [-n] [-e commande] [-f fichier de commandes] [fichier] 
+
+-n écrit seulement les lignes spécifiées (par l&#39;option /p) sur la sortie standard 
+-e permet de spécifier les commandes à appliquer sur le fichier. 
+-f les commandes sont lu à partir d&#39;un fichier. 
+</code></pre></div>
+<h4 id="principe-de-fonctionnement">Principe de fonctionnement<a class="headerlink" href="#principe-de-fonctionnement" title="Permanent link">⚓︎</a></h4>
+<p>Pour chaque ligne , on applique la commande (si cela est possible) puis on affiche sur la sortie standard la ligne modifiée ou non. </p>
+<h4 id="commandes">Commandes<a class="headerlink" href="#commandes" title="Permanent link">⚓︎</a></h4>
+<h5 id="substitution_1">Substitution<a class="headerlink" href="#substitution_1" title="Permanent link">⚓︎</a></h5>
+<div class="highlight"><pre><span></span><code>ad1,ad2s/RE/remplacement/flags
+
+-&gt; Remplace les expressions régulières RE par la chaîne de remplacement entre les lignes ad1 à ad2 
+</code></pre></div>
+<p><img alt="sed1" src="../assets/images/shell/sed1.jpg" title="sed1" /></p>
+<h5 id="negation">Négation<a class="headerlink" href="#negation" title="Permanent link">⚓︎</a></h5>
+<div class="highlight"><pre><span></span><code>ad1,ad2 !fonction argument 
+
+-&gt; La fonction est appliquée à toutes les lignes qui ne correspondent pas à la caractérisation
+</code></pre></div>
+<h5 id="suppression">Suppression<a class="headerlink" href="#suppression" title="Permanent link">⚓︎</a></h5>
+<div class="highlight"><pre><span></span><code>ad1,ad2d
+
+-&gt; La commande de suppression **d** efface les lignes (au niveau de la sortie, le fichier d&#39;origine n&#39;est pas modifié)
+</code></pre></div>
+<p><ins>Exemple</ins> :  <br />
+- <code>sed "1,10d" fichier</code> : sortie du fichier à partir de la onzième ligne<br />
+- <code>sed "/^From/!d" fichier</code> : On efface tout sauf les lignes commençant par From , donc on imprime les lignes commençant par From.  </p>
+<h4 id="insertions">Insertions<a class="headerlink" href="#insertions" title="Permanent link">⚓︎</a></h4>
+<p><img alt="sed2" src="../assets/images/shell/sed2.jpg" title="sed2" /></p>
+<hr />
+<h2 id="exercices_2">Exercices<a class="headerlink" href="#exercices_2" title="Permanent link">⚓︎</a></h2>
+<p><img alt="ex3" src="../assets/images/shell/ex3s.JPG" title="ex3" /></p>
+<details class="example"><summary>Solution</summary><p><img alt="ex3s" src="../assets/images/shell/ex3.png" title="ex3s" /></p>
+</details>
+<hr />
+<h1 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">⚓︎</a></h1>
+<p>Peu importe votre domaine de programmation et le langage utilisé, tôt ou tard les regex sont l’outil qu’il vous faut.   </p>
+<p>Enfin, gardez à l’esprit que de la même manière que du code, on n’obtient pas forcement la bonne solution du premier coup, alors testez !    </p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../22_tpShell_corr/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../24_awk/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                AWK
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            &copy; 2020 Julien Berger
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/jurocknsail" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://www.linkedin.com/in/julien-berger-0a9671154/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.8caa27b7.min.js"></script>
+      <script src="../assets/javascripts/bundle.193efd2f.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ["tabs", "instant", "navigation.instant", "navigation.tabs"],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.37585f48.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

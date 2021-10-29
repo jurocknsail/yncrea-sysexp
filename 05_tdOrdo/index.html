@@ -1,0 +1,1376 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Ce cours fait partie du cours <b>ITII 2 - SYSEXP</b> pour <b>YNCREA Toulon</b> sur les systèmes d'exploitation et principalement les connaissances Linux et bases de programmation système. <br><br> <i>Le cours se déroule sur 4 jours et vise à donner aux étudiants un aperçu de la façon de travailler du système d'exploitation, une connaissance basique du shell et de programmation de processus.</i>">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/yncrea.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.1.5">
+    
+    
+      
+        <title>TD - Les Bases - Yncrea - Cours SYSEXP</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.f6cf1dc9.min.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85bb4ebe.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#00bdd6">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","None","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="cyan" data-md-color-accent="cyan">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#td-ordonnancement" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="Yncrea - Cours SYSEXP" class="md-header-nav__button md-logo" aria-label="Yncrea - Cours SYSEXP">
+      
+  <img src="../assets/images/yncrea.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Yncrea - Cours SYSEXP
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              TD - Les Bases
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/jurocknsail/yncrea-sysexp" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yncrea-sysexp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../00_intro/" class="md-tabs__link md-tabs__link--active">
+          Day#1
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../21_cmdshell/" class="md-tabs__link">
+          Day#2
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../41_progsys_tp1_proc/" class="md-tabs__link">
+          Day#3
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../40_progsys_signals/" class="md-tabs__link">
+          Day#4
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../100_projets/" class="md-tabs__link">
+          Projets
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Yncrea - Cours SYSEXP" class="md-nav__button md-logo" aria-label="Yncrea - Cours SYSEXP">
+      
+  <img src="../assets/images/yncrea.png" alt="logo">
+
+    </a>
+    Yncrea - Cours SYSEXP
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/jurocknsail/yncrea-sysexp" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yncrea-sysexp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Day#1
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Day#1" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Day#1
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../00_intro/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../01_history/" class="md-nav__link">
+      Histoire
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../02_sgf/" class="md-nav__link">
+      SGF
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../06_kernel/" class="md-nav__link">
+      Noyau
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../03_processus/" class="md-nav__link">
+      Processus
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../04_ordonnancement/" class="md-nav__link">
+      Ordonnancement
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        TD - Les Bases
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      TD - Les Bases
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectifs" class="md-nav__link">
+    Objectifs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis" class="md-nav__link">
+    Prérequis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercice-1-comparatif-rapide" class="md-nav__link">
+    Exercice 1 : Comparatif rapide
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercice-2-ordonnancement-simple" class="md-nav__link">
+    Exercice 2 : Ordonnancement simple
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercice 2 : Ordonnancement simple">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#question-1" class="md-nav__link">
+    Question 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-2" class="md-nav__link">
+    Question 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercice-3-ordonnancement-plus-complexe" class="md-nav__link">
+    Exercice 3 : Ordonnancement plus complexe
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../05_tdOrdo_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../20_linuxshell/" class="md-nav__link">
+      UNIX
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Day#2
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Day#2" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Day#2
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../21_cmdshell/" class="md-nav__link">
+      Commandes Shell
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../22_tpShell/" class="md-nav__link">
+      TP Linux Commands
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../22_tpShell_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../23_regexp/" class="md-nav__link">
+      Regexp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../24_awk/" class="md-nav__link">
+      AWK
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../30_tpRegexp/" class="md-nav__link">
+      TP Regexp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../30_tpRegexp_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Day#3
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Day#3" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Day#3
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp1_proc/" class="md-nav__link">
+      Programmation Système - TP1 Echauffement
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp1_proc_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../40_progsys_fork/" class="md-nav__link">
+      Programmation Système - Fork
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../40_progsys_execv/" class="md-nav__link">
+      Programmation Système - Execv
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp2_proc/" class="md-nav__link">
+      Programmation Système - TP2 Fork/Execv
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp2_proc_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Day#4
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Day#4" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Day#4
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../40_progsys_signals/" class="md-nav__link">
+      Programmation Système - Signaux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp3_sig/" class="md-nav__link">
+      Programmation Système - TP3 Signaux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp3_sig_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../40_progsys_files/" class="md-nav__link">
+      Programmation Système - E/S Bas Niveau
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp4_fic/" class="md-nav__link">
+      Programmation Système - TP4 E/S Bas Niveau
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp4_fic_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../40_progsys_pipes/" class="md-nav__link">
+      Programmation Système - Pipes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp5_pipes/" class="md-nav__link">
+      Programmation Système - TP5 Pipes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp5_pipes_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Projets
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Projets" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Projets
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../100_projets/" class="md-nav__link">
+      Commun
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../100_projets_sujet1/" class="md-nav__link">
+      Sujet 1 - Reveil
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../100_projets_sujet2/" class="md-nav__link">
+      Sujet 2 - Server Q&A
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../100_projets_sujet3/" class="md-nav__link">
+      Sujet 3 - Equipes de Processus
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../100_projets_sujet_custom/" class="md-nav__link">
+      Sujets Custom
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectifs" class="md-nav__link">
+    Objectifs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis" class="md-nav__link">
+    Prérequis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercice-1-comparatif-rapide" class="md-nav__link">
+    Exercice 1 : Comparatif rapide
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercice-2-ordonnancement-simple" class="md-nav__link">
+    Exercice 2 : Ordonnancement simple
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercice 2 : Ordonnancement simple">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#question-1" class="md-nav__link">
+    Question 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-2" class="md-nav__link">
+    Question 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercice-3-ordonnancement-plus-complexe" class="md-nav__link">
+    Exercice 3 : Ordonnancement plus complexe
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="td-ordonnancement">TD Ordonnancement<a class="headerlink" href="#td-ordonnancement" title="Permanent link">⚓︎</a></h1>
+<hr />
+<h2 id="objectifs">Objectifs<a class="headerlink" href="#objectifs" title="Permanent link">⚓︎</a></h2>
+<ul>
+<li>Comparaison basique de deux systèmes d'exploitation (Windows et Linux). </li>
+<li>Se rendre compte du travail effectué par le CPU : Ordonnancement manuel de processus.</li>
+</ul>
+<hr />
+<h2 id="prerequis">Prérequis<a class="headerlink" href="#prerequis" title="Permanent link">⚓︎</a></h2>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"/></svg></span> Télécharger ce fichier <a href="../assets/files/BlankTables.xls">BlankTables.xls</a> pour noter vos résultats des exos 2 &amp; 3 <img alt="💪" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f4aa.svg" title=":muscle:" /></p>
+<hr />
+<h2 id="exercice-1-comparatif-rapide">Exercice 1 : Comparatif rapide<a class="headerlink" href="#exercice-1-comparatif-rapide" title="Permanent link">⚓︎</a></h2>
+<p>Un système d'exploitation peut être vu comme un ensemble de logiciels organisés en couches, entre l'utilisateur et la partie matérielle de l'ordinateur.  </p>
+<p>Vous avez a disposition des machine sous Windows et sous Linux ou Mac (la votre, une VM, WSL, chez votre voisin ...).<br />
+Vous allez donc essayer de reconnaître les différentes composantes de ces deux systèmes d'exploitation.   </p>
+<p>Pour vous aider, voici une liste (non exhaustive) de points à regarder : </p>
+<ul>
+<li>Où est le noyau du SE ? est-il protégé ? </li>
+<li>Quel est l'interpréteur de commande par défaut du SE ? Quelles en sont ses fonctionnalités ? En existe-t-il d'autres (interpreteurs) ? </li>
+<li>Un SE digne de ce nom doit fournir de nombreux utilitaires de programmation (éditeurs, compilateurs, interpréteurs, débogueurs) : quels sont ceux présents par défaut avec le SE ? </li>
+<li>… </li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Si vous observez que le noyaux n'est pas protégé sur windows ... Ne le supprimez <strong>PAS</strong> !!<br />
+Vous rendrier votre machine inutilisable ...</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Pour toutes ces recherches, google est votre ami <img alt="😉" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f609.svg" title=":wink:" /><br />
+A la place de "noyau" on parle souvent historiquement de <strong>"Kernel"</strong> !</p>
+</div>
+<hr />
+<h2 id="exercice-2-ordonnancement-simple">Exercice 2 : Ordonnancement simple<a class="headerlink" href="#exercice-2-ordonnancement-simple" title="Permanent link">⚓︎</a></h2>
+<p>Soit 5 processus A, B, C, D et E qui sont soumis à un CPU dans cet ordre, mais quasi simultanément. <br />
+Ces travaux ne font pas d'entrées-sorties. Leurs durées respectives sont :  </p>
+<table>
+<thead>
+<tr>
+<th>Processus</th>
+<th>durée(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>A</code></td>
+<td>10s</td>
+</tr>
+<tr>
+<td><code>B</code></td>
+<td>6s</td>
+</tr>
+<tr>
+<td><code>C</code></td>
+<td>2s</td>
+</tr>
+<tr>
+<td><code>D</code></td>
+<td>4s</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td>8s</td>
+</tr>
+</tbody>
+</table>
+<h3 id="question-1">Question 1<a class="headerlink" href="#question-1" title="Permanent link">⚓︎</a></h3>
+<p>Déterminer les <strong>temps de réponse</strong> de chacun des processus, ainsi que le <strong>temps de réponse moyen</strong>, pour les disciplines :<br />
+Pour le moment, on est en algos <mark><strong>non préemptifs</strong></mark>.</p>
+<ul>
+<li>FIFO (First In First Out)  </li>
+<li>SJF (Shortest Job First)   </li>
+<li>
+<p>Priorités, avec le plus petit chiffre égal à la priorité la plus forte et :</p>
+<table>
+<thead>
+<tr>
+<th>Processus</th>
+<th>durée(s)</th>
+<th>Priorité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>A</code></td>
+<td>10s</td>
+<td>3</td>
+</tr>
+<tr>
+<td><code>B</code></td>
+<td>6s</td>
+<td>5</td>
+</tr>
+<tr>
+<td><code>C</code></td>
+<td>2s</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>D</code></td>
+<td>4s</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td>8s</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>PS (Proc. Sharing ou Tourniquet/Round Robin) et un <strong>quantum de 2s</strong>. </p>
+</li>
+</ul>
+<h3 id="question-2">Question 2<a class="headerlink" href="#question-2" title="Permanent link">⚓︎</a></h3>
+<p>On considère ces 5 processus ordonnancés par la politique à <strong>priorité</strong> précédente.<br />
+A présent, les 5 processus  <mark>ne sont pas soumis en même temps</mark>.<br />
+Les dates d’arrivée des processus sont respectivement : </p>
+<table>
+<thead>
+<tr>
+<th>Processus</th>
+<th>durée(s)</th>
+<th>Priorité</th>
+<th><strong>Soumis à (s)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>A</code></td>
+<td>10s</td>
+<td>3</td>
+<td><strong>2s</strong></td>
+</tr>
+<tr>
+<td><code>B</code></td>
+<td>6s</td>
+<td>5</td>
+<td><strong>0s</strong></td>
+</tr>
+<tr>
+<td><code>C</code></td>
+<td>2s</td>
+<td>2</td>
+<td><strong>5s</strong></td>
+</tr>
+<tr>
+<td><code>D</code></td>
+<td>4s</td>
+<td>1</td>
+<td><strong>5s</strong></td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td>8s</td>
+<td>4</td>
+<td><strong>3s</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Tracez le schéma d’exécution des processus en considérant que :  </p>
+<ol>
+<li>L’ordonnancement est <strong>non préemptif</strong> comme précédemment.</li>
+<li>Puis qu’il est <strong>préemptif</strong>. </li>
+</ol>
+<hr />
+<h2 id="exercice-3-ordonnancement-plus-complexe">Exercice 3 : Ordonnancement plus complexe<a class="headerlink" href="#exercice-3-ordonnancement-plus-complexe" title="Permanent link">⚓︎</a></h2>
+<p>On considère un système <strong>monoprocesseur</strong> (avec capacité de préemption), de type Linux dans lequel les processus <strong>partagent un disque comme seule ressource autre que le processeur</strong>.  </p>
+<p>Cette ressource (le <strong>HDD</strong>) n’est accessible qu’en <mark><strong>accès exclusif</strong> et <strong>non requérable</strong></mark>, c’est-à-dire qu’une commande disque lancée pour le compte d’un processus se termine normalement avant de pouvoir en lancer une autre.  </p>
+<p>Un processus peut être en <ins class="critic">exécution</ins>, <ins class="critic">en attente d’entrées-sorties</ins>, <ins class="critic">en entrées-sorties</ins> ou en <ins class="critic">attente du processeur</ins>.  </p>
+<p>Les <strong>demandes d’entrées-sorties</strong> sont gérées à l’<strong>ancienneté</strong>.  </p>
+<p>Dans ce système, on considère 4 processus soumis à t=0 dans l'ordre P1, P2, P3, P4, pour lesquels on sait que:  </p>
+<ul>
+<li>
+<p>P1 et P2 sont des processus appartenant à la classe <strong>SCHED_PRIO</strong>.<br />
+  Dans cette classe, le processeur est donné au processus de plus haute priorité.<br />
+  Ce processus <mark>peut être préempté par un processus de la même classe ayant une priorité supérieure</mark> </p>
+</li>
+<li>
+<p>P3 et P4 sont des processus appartenant à la classe <strong>SCHED_RR</strong>.<br />
+  Dans cette classe, le processeur est donné au processus de plus haute priorité pour un quantum de temps égal à <strong>10 ms</strong>.<br />
+  La politique appliquée est celle du tourniquet. </p>
+</li>
+</ul>
+<p>Les processus de la classe <strong>SCHED_PRIO</strong> sont toujours <mark><strong>plus prioritaires</strong></mark> que les processus de la classe <strong>SCHED_RR</strong>.   </p>
+<p>Les priorités des processus sont égales à <em>50</em> pour le processus P1, <em>49</em> pour le processus P2, P3 et P4.<br />
+La plus grande valeur correspond à la priorité la plus forte. </p>
+<table>
+<thead>
+<tr>
+<th>P1</th>
+<th>P2</th>
+<th>P3</th>
+<th>P4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1 Calcul pendant 40 ms</td>
+<td>P2 Calcul pendant 30 ms</td>
+<td>P3 Calcul pendant 40 ms</td>
+<td>P4 Calcul pendant 100 ms</td>
+</tr>
+<tr>
+<td>Lecture disque pendant 50 ms</td>
+<td>Lecture disque pendant 80 ms</td>
+<td>Lecture disque pendant 40 ms</td>
+<td></td>
+</tr>
+<tr>
+<td>Calcul pendant 30 ms</td>
+<td>Calcul pendant 70 ms</td>
+<td>Calcul pendant 10 ms</td>
+<td></td>
+</tr>
+<tr>
+<td>Lecture disque pendant 40 ms</td>
+<td>Lecture disque pendant 20 ms</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Calcul pendant 10 ms</td>
+<td>Calcul pendant 10 ms</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Établissez le chronogramme d’exécution des 4 processus en figurant les états <ins class="critic">prêt (attente du processeur)</ins>, <ins class="critic">exécution</ins>, <ins class="critic">attente I/O (attente du HDD)</ins>, <ins class="critic">I/O (lecture/ecriture HDD)</ins> .  </p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../04_ordonnancement/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Ordonnancement
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../05_tdOrdo_corr/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            &copy; 2020 Julien Berger
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/jurocknsail" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://www.linkedin.com/in/julien-berger-0a9671154/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.8caa27b7.min.js"></script>
+      <script src="../assets/javascripts/bundle.193efd2f.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ["tabs", "instant", "navigation.instant", "navigation.tabs"],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.37585f48.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

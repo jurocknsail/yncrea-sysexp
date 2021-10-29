@@ -1,0 +1,1455 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Ce cours fait partie du cours <b>ITII 2 - SYSEXP</b> pour <b>YNCREA Toulon</b> sur les systèmes d'exploitation et principalement les connaissances Linux et bases de programmation système. <br><br> <i>Le cours se déroule sur 4 jours et vise à donner aux étudiants un aperçu de la façon de travailler du système d'exploitation, une connaissance basique du shell et de programmation de processus.</i>">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/yncrea.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.1.5">
+    
+    
+      
+        <title>AWK - Yncrea - Cours SYSEXP</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.f6cf1dc9.min.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85bb4ebe.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#00bdd6">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","None","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="cyan" data-md-color-accent="cyan">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#awk" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="Yncrea - Cours SYSEXP" class="md-header-nav__button md-logo" aria-label="Yncrea - Cours SYSEXP">
+      
+  <img src="../assets/images/yncrea.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Yncrea - Cours SYSEXP
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              AWK
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/jurocknsail/yncrea-sysexp" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yncrea-sysexp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../00_intro/" class="md-tabs__link">
+          Day#1
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../21_cmdshell/" class="md-tabs__link md-tabs__link--active">
+          Day#2
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../41_progsys_tp1_proc/" class="md-tabs__link">
+          Day#3
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../40_progsys_signals/" class="md-tabs__link">
+          Day#4
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../100_projets/" class="md-tabs__link">
+          Projets
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Yncrea - Cours SYSEXP" class="md-nav__button md-logo" aria-label="Yncrea - Cours SYSEXP">
+      
+  <img src="../assets/images/yncrea.png" alt="logo">
+
+    </a>
+    Yncrea - Cours SYSEXP
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/jurocknsail/yncrea-sysexp" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yncrea-sysexp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Day#1
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Day#1" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Day#1
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../00_intro/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../01_history/" class="md-nav__link">
+      Histoire
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../02_sgf/" class="md-nav__link">
+      SGF
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../06_kernel/" class="md-nav__link">
+      Noyau
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../03_processus/" class="md-nav__link">
+      Processus
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../04_ordonnancement/" class="md-nav__link">
+      Ordonnancement
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../05_tdOrdo/" class="md-nav__link">
+      TD - Les Bases
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../05_tdOrdo_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../20_linuxshell/" class="md-nav__link">
+      UNIX
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Day#2
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Day#2" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Day#2
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../21_cmdshell/" class="md-nav__link">
+      Commandes Shell
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../22_tpShell/" class="md-nav__link">
+      TP Linux Commands
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../22_tpShell_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../23_regexp/" class="md-nav__link">
+      Regexp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        AWK
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      AWK
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#generalites" class="md-nav__link">
+    Généralités
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syntaxe" class="md-nav__link">
+    Syntaxe
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fonctionnement" class="md-nav__link">
+    Fonctionnement
+  </a>
+  
+    <nav class="md-nav" aria-label="Fonctionnement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variables-predefinies" class="md-nav__link">
+    Variables prédéfinies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-motif" class="md-nav__link">
+    Le motif
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#laction" class="md-nav__link">
+    L'action
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemples" class="md-nav__link">
+    Exemples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercices" class="md-nav__link">
+    Exercices
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../30_tpRegexp/" class="md-nav__link">
+      TP Regexp
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../30_tpRegexp_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Day#3
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Day#3" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Day#3
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp1_proc/" class="md-nav__link">
+      Programmation Système - TP1 Echauffement
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp1_proc_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../40_progsys_fork/" class="md-nav__link">
+      Programmation Système - Fork
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../40_progsys_execv/" class="md-nav__link">
+      Programmation Système - Execv
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp2_proc/" class="md-nav__link">
+      Programmation Système - TP2 Fork/Execv
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp2_proc_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Day#4
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Day#4" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Day#4
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../40_progsys_signals/" class="md-nav__link">
+      Programmation Système - Signaux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp3_sig/" class="md-nav__link">
+      Programmation Système - TP3 Signaux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp3_sig_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../40_progsys_files/" class="md-nav__link">
+      Programmation Système - E/S Bas Niveau
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp4_fic/" class="md-nav__link">
+      Programmation Système - TP4 E/S Bas Niveau
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp4_fic_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../40_progsys_pipes/" class="md-nav__link">
+      Programmation Système - Pipes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp5_pipes/" class="md-nav__link">
+      Programmation Système - TP5 Pipes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41_progsys_tp5_pipes_corr/" class="md-nav__link">
+      
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Projets
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Projets" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Projets
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../100_projets/" class="md-nav__link">
+      Commun
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../100_projets_sujet1/" class="md-nav__link">
+      Sujet 1 - Reveil
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../100_projets_sujet2/" class="md-nav__link">
+      Sujet 2 - Server Q&A
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../100_projets_sujet3/" class="md-nav__link">
+      Sujet 3 - Equipes de Processus
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../100_projets_sujet_custom/" class="md-nav__link">
+      Sujets Custom
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#generalites" class="md-nav__link">
+    Généralités
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syntaxe" class="md-nav__link">
+    Syntaxe
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fonctionnement" class="md-nav__link">
+    Fonctionnement
+  </a>
+  
+    <nav class="md-nav" aria-label="Fonctionnement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variables-predefinies" class="md-nav__link">
+    Variables prédéfinies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-motif" class="md-nav__link">
+    Le motif
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#laction" class="md-nav__link">
+    L'action
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemples" class="md-nav__link">
+    Exemples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercices" class="md-nav__link">
+    Exercices
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="awk">AWK<a class="headerlink" href="#awk" title="Permanent link">⚓︎</a></h1>
+<hr />
+<h2 id="generalites">Généralités<a class="headerlink" href="#generalites" title="Permanent link">⚓︎</a></h2>
+<div class="admonition abstract">
+<p>Awk est un outil pour la manipulation de fichiers (au format texte).<br />
+Il a été conçu en 1977 par Alfred **A**ho, Peter **W**einberger et Brian **K**ernighan (Laboratoires Bell) et intégré dans Unix V7 en 1979.  </p>
+<p>Awk est aujourd'hui dans la norme POSIX (donc intégré dans
+toutes les distributions Unix, Linux, etc.)</p>
+<p>Cette commande permet d'appliquer un certain nombre d'actions sur un fichier. <br />
+Elle est particulièrement adaptée au fichiers qui sont sous forme de <strong>lignes/colonnes</strong>, comme le CSV par exemple.    </p>
+<p>La syntaxe est inspirée du C.</p>
+</div>
+<hr />
+<h2 id="syntaxe">Syntaxe<a class="headerlink" href="#syntaxe" title="Permanent link">⚓︎</a></h2>
+<div class="highlight"><pre><span></span><code>awk [-Fs] [-v variable] [-f fichier de commandes] &#39;**programme awk**&#39; fichier 
+-F : Spécifie les séparateurs de champs 
+-v : Définie une variable utilisée à l&#39;intérieur du programme. 
+-f : les commandes sont lu à partir d&#39;un fichier. 
+</code></pre></div>
+<hr />
+<h2 id="fonctionnement">Fonctionnement<a class="headerlink" href="#fonctionnement" title="Permanent link">⚓︎</a></h2>
+<div class="admonition abstract">
+<p>Le programme awk est une suite d'action de la forme :   </p>
+<div class="highlight"><pre><span></span><code>motif { action }
+</code></pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Vacobulaire</p>
+<p>Un <mark>enregistrement</mark> est : une chaîne de caractères séparée par un retour chariot, <strong>en général une ligne</strong>. <br />
+Un <mark>champs</mark> est : une chaîne de caractères séparée par un espace (ou par le caractère spécifié par l'option -F), <strong>en général un mot</strong>. <br />
+Le <mark>motif</mark> : <strong>condition</strong> qui permet de déterminer sur quels enregistrements est appliquée <strong>l'action</strong>. </p>
+</div>
+<h3 id="variables-predefinies">Variables prédéfinies<a class="headerlink" href="#variables-predefinies" title="Permanent link">⚓︎</a></h3>
+<div class="admonition quote">
+<p>Liste non exhaustive ...</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Signification</th>
+<th>Valeur par défaut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ARGC</code></td>
+<td>Nombre d'arguments de la ligne de commande</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>ARGV</code></td>
+<td>Tableau des arguments de la ligne de commande</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>FNR</code></td>
+<td>Nombre d'enregistrements du fichier</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>NF</code></td>
+<td>Nombre de champs dans l'enregistrement courant</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>NR</code></td>
+<td>Nombre d'enregistrement déjà lus</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>FS</code></td>
+<td>Séparateur de champs d'entrée</td>
+<td>" "</td>
+</tr>
+<tr>
+<td><code>RS</code></td>
+<td>Séparateur d'enregistrement en entrée</td>
+<td>"\n"</td>
+</tr>
+<tr>
+<td><code>OFS</code></td>
+<td>Séparateur de champs de sortie</td>
+<td>" "</td>
+</tr>
+<tr>
+<td><code>ORS</code></td>
+<td>Séparateur d'enregistrement de sortie</td>
+<td>"\n"</td>
+</tr>
+<tr>
+<td><code>...</code></td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<h3 id="le-motif">Le motif<a class="headerlink" href="#le-motif" title="Permanent link">⚓︎</a></h3>
+<div class="admonition abstract">
+<p>Si le motif existe dans l'enregistrement, l'action sera appliquée à la ligne.<br />
+Le motif peut être : </p>
+<ul>
+<li>une expression régulière : <ul>
+<li><code>/expression regulière/</code> </li>
+<li><code>$0 ~ /expression regulière/</code></li>
+<li><code>expression ~ /expression regulière/</code></li>
+<li><code>expression !~ /expression regulière/</code></li>
+</ul>
+</li>
+<li>une expression <code>BEGIN</code> ou <code>END</code> </li>
+<li>une expression de comparaison: <code>&lt;, &lt;=, == , !=, &gt;=, &gt;</code></li>
+<li>une combinaison des trois (à l'aide des opérateurs booléens <code>||</code> ou, <code>&amp;&amp;</code> et, <code>!</code> négation) </li>
+</ul>
+<p>On accède à chaque champs de l'enregistrement courant par la variable $1, $2, ... $NF.  </p>
+</div>
+<div class="admonition tip">
+<p><strong>$0</strong> correspond à l'enregistrement complet. <br />
+La variable <strong>NF</strong> contient le nombre de champs de l'enregistrement courant, la variable <strong>$NF</strong> correspond donc au <ins>dernier champs</ins>.</p>
+</div>
+<h3 id="laction">L'action<a class="headerlink" href="#laction" title="Permanent link">⚓︎</a></h3>
+<div class="admonition abstract">
+<p>Une action transforme ou manipule des données, par défaut on <code>print</code> la ligne.   </p>
+<p><ins>Type des actions</ins> :<br />
+- <strong>fonctions prédéfinies</strong>, numérique ou chaîne de caractères <br />
+- contrôle de flots <br />
+- affectation <br />
+- impression   </p>
+<p><ins>Actions possibles</ins> : </p>
+<ul>
+<li>
+<p>Les opérations arithmétiques usuelles : 
+   <code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>%</code> (reste division entière) et <code>^</code> (puissance).<br />
+   Tous les calculs sont effectués en virgule flottante.<br />
+   Vous pouvez aussi utiliser les opérateurs <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code> etc ...  </p>
+</li>
+<li>
+<p>Les affectations : 
+   <code>var = expression</code>   </p>
+</li>
+<li>
+<p>Références aux variables de champs : <br />
+   Les champs de la ligne courant sont : $1, $2, ..., $NF. La ligne entière est $0.<br />
+   Ces variables ont les mêmes propriétés que Les autres variables. <br />
+   Elles peuvent être réaffectées. 
+   Quand $0 est modifiées, les variables $1, $2 ... sont aussi modifiées ainsi que NF. <br />
+   Inversement si une des variables $i est modifiées, $0 est mise à jour.<br />
+   Les champs peuvent être spécifiés par des expressions, comme $(NF-1) pour l'avant dernier champs.  </p>
+</li>
+<li>
+<p>Impression :<br />
+<code>print $i</code> par exemple ...</p>
+</li>
+<li>
+<p>If/Else, Boucles
+   <div class="highlight"><pre><span></span><code>if (condition) 
+{ ... }
+else
+{ ... }
+
+while (condition) 
+{ ... }
+
+for (init ;cond ;incr)
+{ ... }
+</code></pre></div></p>
+</li>
+<li>
+<p>Commentaire : <code>#</code>  </p>
+</li>
+<li>
+<p><code>next</code>: passe à l'enregistrement suivant. On reprend le script awk à son début.  </p>
+</li>
+<li>
+<p><code>exit</code>: ignore le reste de l'entrée et execute les actions définie par END  </p>
+</li>
+</ul>
+</div>
+<div class="admonition quote">
+<p>Liste non exhaustive de fonction sur chaines de charactères :  <br />
+Dans le tableau suivant <code>s</code> et <code>t</code> représentent des chaînes de caractères, <code>r</code> une expression régulière, <code>i</code> et <code>n</code> des entiers.  </p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>length(s)</code></td>
+<td>Retourne la longueur de la chaine <code>s</code></td>
+</tr>
+<tr>
+<td><code>gsub(r,s,t)</code></td>
+<td>Dans la chaine <code>t</code>, remplace toutes les occurences de <code>r</code> par <code>s</code></td>
+</tr>
+<tr>
+<td><code>substr(s,i,n)</code></td>
+<td>Retroune la sous chaîne de <code>s</code> commençant en <code>i</code> et de taille <code>n</code></td>
+</tr>
+<tr>
+<td><code>...</code></td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p>Concaténation de chaînes de caractères dans les actions :<br />
+Il n'y a pas d'opérateur de concaténation, il faut simplement lister les chaînes à concaténer.  </p>
+<p><ins>Exemples</ins> :<br />
+<code>awk '{ print NR " : " $0 }' fichier</code> </p>
+</div>
+<hr />
+<h2 id="exemples">Exemples<a class="headerlink" href="#exemples" title="Permanent link">⚓︎</a></h2>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>Resultat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>awk -F ":" '{ $2 = "" ; print $0 }' /etc/passwd</code></td>
+<td>Imprime chaqe ligne du fichier <code>/etc/passwd</code> après avoir effacé le 2<sup>nd</sup> champ</td>
+</tr>
+<tr>
+<td><code>awk ' END { print NR }' fichier</code></td>
+<td>Imprime le nombre total de lignes du fichier</td>
+</tr>
+<tr>
+<td><code>awk '{ print $NF }' fichier</code></td>
+<td>Imprime le dernier champ de chaque ligne</td>
+</tr>
+<tr>
+<td><code>who | awk '{ print $1,$5 }'</code></td>
+<td>Imprime le login et le temps de connexion</td>
+</tr>
+<tr>
+<td><code>awk ' length($0) &gt; 75 { print }' fichier</code></td>
+<td>Imprime les lignes de plus de 75 caractères ( <code>print</code> équivaut à <code>print $0</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="exercices">Exercices<a class="headerlink" href="#exercices" title="Permanent link">⚓︎</a></h2>
+<div class="highlight"><pre><span></span><code>awk <span class="s1">&#39;BEGIN { print &quot;Verification des UID et GID dans le fichier /etc/passwd&quot;; FS=&quot;:&quot;}      </span>
+<span class="s1">     $3 !~ /^[0-9][0-9]*$/ {print &quot;UID  erreur ligne &quot;NR&quot; :\n&quot;$0 }</span>
+<span class="s1">     $4 !~ /^[0-9][0-9]*$/ {print &quot;GID  erreur ligne &quot;NR&quot; :\n&quot;$0 }</span>
+<span class="s1">     END   { print &quot;Fin&quot; }&#39;</span> /etc/passwd 
+</code></pre></div>
+<details class="example"><summary>Solution</summary><div class="highlight"><pre><span></span><code>Vérification des UID et GID dans le fichier /etc/passwd
+UID erreur ligne 14 : 
+clown:*:aaa:b:utilisateur en erreur:/home/clown:/bin:sh
+GID erreur ligne 14 : 
+clown:*:aaa:b:utilisateur en erreur:/home/clown:/bin/sh
+Fin 
+</code></pre></div>
+</details>
+<div class="highlight"><pre><span></span><code>awk <span class="s1">&#39;BEGIN { print &quot;Verification du fichier /etc/passwd pour ...&quot;; print &quot;- les utilisateurs avec UID = 0 &quot; ;  print &quot;- les utilisateurs avec UID &gt;= 60000&quot; ; FS=&quot;:&quot;}</span>
+<span class="s1">     $3 == 0 { print &quot;UID 0 ligne &quot;NR&quot; :\n&quot;$0 }      </span>
+<span class="s1">     $3 &gt;= 60000  { print &quot;UID &gt;= 60000 ligne &quot;NR&quot; :\n&quot;$0 }      </span>
+<span class="s1">     END   { print &quot;Fin&quot; }&#39;</span> /etc/passwd       
+</code></pre></div>
+<details class="example"><summary>Solution</summary><div class="highlight"><pre><span></span><code>Verification du fichier /etc/passwd pour ...
+- les utilisateurs avec UID = 0 
+- les utilisateurs avec UID &gt;= 60000UID 0 ligne 5 : 
+root:*:0:b:administrateur:/:/bin/sh
+UID &gt;= 60000 ligne 14 : 
+clown:*:61000:b:utilisateur en erreur:/home/clown:/bin/sh
+Fin 
+</code></pre></div>
+</details>
+<div class="highlight"><pre><span></span><code>awk <span class="s1">&#39;BEGIN { print &quot;Verification du fichier /etc/group&quot;; print &quot;le groupe 20 est t-il bien nommé users ? &quot; ; FS=&quot;:&quot;}      </span>
+<span class="s1">     $1 == &quot;users&quot; &amp;&amp; $3 ==20 { print &quot;groupe &quot;$1&quot; a le GID &quot;$3&quot; !&quot; }      </span>
+<span class="s1">     END   { print &quot;Fin&quot; }&#39;</span> /etc/group 
+</code></pre></div>
+<details class="example"><summary>Solution</summary><div class="highlight"><pre><span></span><code>Verification du fichier /etc/group
+le groupe 20 s&#39;appelle t-il bien users ? 
+groupe users a le GID 20 ! 
+Fin 
+</code></pre></div>
+</details>
+<div class="highlight"><pre><span></span><code>awk <span class="s1">&#39;NR == 5 , NR == 10 {print NR&quot; : &quot; $0 }&#39;</span> fichier 
+</code></pre></div>
+<details class="example"><summary>Solution</summary><div class="highlight"><pre><span></span><code>Imprime de la ligne 5 à la ligne 10 , chaque ligne précédée par son numéro
+</code></pre></div>
+</details>
+<div class="highlight"><pre><span></span><code>awk <span class="s1">&#39;BEGIN { FS=&quot;:&quot; ; OFS=&quot;:&quot;}      </span>
+<span class="s1">     $NF != &quot;/bin/ksh&quot; { print $0 }      </span>
+<span class="s1">     $7 == &quot;/bin/ksh&quot; &amp;&amp; NF == 7  { $7 = &quot;/bin/posix/sh&quot; ; print $0 } &#39;</span> /etc/passwd &gt; /etc/passwdnew 
+</code></pre></div>
+<details class="example"><summary>Solution</summary><div class="highlight"><pre><span></span><code>On crée un nouveau fichier de mot de passe /etc/passwd.new en remplaçant le shell /bin/ksh par /bin/posix/sh 
+</code></pre></div>
+</details>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../23_regexp/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Regexp
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../30_tpRegexp/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                TP Regexp
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            &copy; 2020 Julien Berger
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/jurocknsail" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://www.linkedin.com/in/julien-berger-0a9671154/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.8caa27b7.min.js"></script>
+      <script src="../assets/javascripts/bundle.193efd2f.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ["tabs", "instant", "navigation.instant", "navigation.tabs"],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.37585f48.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
