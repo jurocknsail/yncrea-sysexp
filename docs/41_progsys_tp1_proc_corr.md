@@ -11,11 +11,13 @@ Ecrire un programme qui affiche ses paramètres puis les variables d’environne
 ??? example "Solution"
 
     ```c linenums="1"
-    #include<stdio.h>
-    #include<sys/types.h>
-    #include<sys/wait.h>
-    #include<unistd.h>
-    #include<stdlib.h>
+    #include <stdio.h>
+    #include <sys/types.h>
+    #include <sys/wait.h>
+    #include <stdlib.h>
+    #include <unistd.h>
+    #include <signal.h>
+    #include <fcntl.h>
     
     int main (int argc, char *argv[], char *arge[])
     {
@@ -47,11 +49,13 @@ Ecrire un programme de calculatrice simple, qui prends deux nombres ainsi que l'
 ??? example "Solution"
 
     ```c linenums="1"
-    #include<stdio.h>
-    #include<sys/types.h>
-    #include<sys/wait.h>
-    #include<unistd.h>
-    #include<stdlib.h>
+    #include <stdio.h>
+    #include <sys/types.h>
+    #include <sys/wait.h>
+    #include <stdlib.h>
+    #include <unistd.h>
+    #include <signal.h>
+    #include <fcntl.h>
     
     int main (int argc, char *argv[], char *arge[])
     {
@@ -105,11 +109,13 @@ Ecrire un programme de calculatrice simple, qui prends deux nombres ainsi que l'
 ??? example "Solution"
 
     ```c linenums="1"
-    #include<stdio.h>
-    #include<sys/types.h>
-    #include<sys/wait.h>
-    #include<unistd.h>
-    #include<stdlib.h>
+    #include <stdio.h>
+    #include <sys/types.h>
+    #include <sys/wait.h>
+    #include <stdlib.h>
+    #include <unistd.h>
+    #include <signal.h>
+    #include <fcntl.h>
     
     int main(void)
     {
@@ -142,11 +148,13 @@ Ecrire un programme de calculatrice simple, qui prends deux nombres ainsi que l'
 ??? example "Solution"
 
     ```c linenums="1"
-    #include<stdio.h>
-    #include<sys/types.h>
-    #include<sys/wait.h>
-    #include<unistd.h>
-    #include<stdlib.h>
+    #include <stdio.h>
+    #include <sys/types.h>
+    #include <sys/wait.h>
+    #include <stdlib.h>
+    #include <unistd.h>
+    #include <signal.h>
+    #include <fcntl.h>
     
     int main(void)
     {

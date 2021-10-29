@@ -10,10 +10,12 @@ On a le code suivant :
 
 ```c linenums="1"
 #include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/wait.h>
 #include <sys/types.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+#include <fcntl.h>
 
 int main()
 {
@@ -47,10 +49,12 @@ On suppose que le pid du père est 100 et celui du fils 200, quelles sont les va
 
 ```c linenums="1"
 #include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/wait.h>
 #include <sys/types.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+#include <fcntl.h>
 
 int main(void)
 {
@@ -98,10 +102,12 @@ Le père affiche en plus le PID de son fils.
     
     ```c linenums="1"
     #include <stdio.h>
-    #include <unistd.h>
-    #include <stdlib.h>
-    #include <sys/wait.h>
     #include <sys/types.h>
+    #include <sys/wait.h>
+    #include <stdlib.h>
+    #include <unistd.h>
+    #include <signal.h>
+    #include <fcntl.h>
         
     int main(void)
     {
@@ -142,10 +148,12 @@ Un processus (programme P) en active **un autre** F en lui transmettant une chai
     
     ```c linenums="1"
     #include <stdio.h>
-    #include <unistd.h>
-    #include <stdlib.h>
-    #include <sys/wait.h>
     #include <sys/types.h>
+    #include <sys/wait.h>
+    #include <stdlib.h>
+    #include <unistd.h>
+    #include <signal.h>
+    #include <fcntl.h>
     
     int main(void)
     {
@@ -184,8 +192,12 @@ Un processus (programme P) en active **un autre** F en lui transmettant une chai
     
     ```c linenums="1"
     #include <stdio.h>
-    #include <unistd.h>
+    #include <sys/types.h>
+    #include <sys/wait.h>
     #include <stdlib.h>
+    #include <unistd.h>
+    #include <signal.h>
+    #include <fcntl.h>
     
     int main(int argc,char *argv[])
     {

@@ -180,12 +180,19 @@ alarm(12);
 <tr>
     <td>
 ```c hl_lines="8"
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include <signal.h>
+#include <fcntl.h>
+
 int main(void)
 {
     int pid ; 
     pid=fork(); 
-    if(pid = = 0)
+    if(pid == 0)
         execv("fille", NULL);
     signal(SIGUSR1,fonc); 
     for(;;)
@@ -203,7 +210,14 @@ void fonc(int sig) {
     </td>
     <td>
 ```c hl_lines="4"
-#include<signal.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+#include <fcntl.h>
+
 int main(void) {
     sleep(5); 
     kill(getppid(),SIGUSR1); 

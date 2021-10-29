@@ -9,6 +9,15 @@
 Donner les différents affichages possibles pouvant se produire avec le programme suivant :
 
 ```c linenums="1"
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+#include <fcntl.h>
+
 void interruption (int sig) {
     printf("UN\n");
 }
@@ -35,9 +44,13 @@ Donner les différents affichages possibles pouvant se produire avec le programm
 
 
 ```c linenums="1"
-#include <signal.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+#include <fcntl.h>
 
 void stop (int sig);
 
@@ -87,12 +100,13 @@ Les 5 premières fois: affichage de "Vous avez tape CTRL C" sur l'écran, la 6è
 
     ```c linenums="1"
     
-    #include <stdlib.h>
     #include <stdio.h>
     #include <sys/types.h>
-    #include <unistd.h>
     #include <sys/wait.h>
+    #include <stdlib.h>
+    #include <unistd.h>
     #include <signal.h>
+    #include <fcntl.h>
      
     void catchCtrlC()
     {
@@ -126,9 +140,12 @@ Version variable globale (moins bien ...) :
     ```c linenums="1"
     
     #include <stdio.h>
+    #include <sys/types.h>
+    #include <sys/wait.h>
     #include <stdlib.h>
     #include <unistd.h>
     #include <signal.h>
+    #include <fcntl.h>
     
     int n=0;
     void fonc(int sig);
@@ -166,10 +183,11 @@ La tâche mère lui envoie un signal, la débloquer et attend la fin de la fille
     
     #include <stdio.h>
     #include <sys/types.h>
-    //#include <sys/wait.h>
+    #include <sys/wait.h>
     #include <stdlib.h>
     #include <unistd.h>
     #include <signal.h>
+    #include <fcntl.h>
     
     void stop(int sig){
         printf(" FILLE : Ma mère m'arrête en m'envoyant le signal %d\n",sig);
@@ -208,10 +226,11 @@ Lorsqu'on tape sur une touche, la mère envoie à sa fille un signal, la débloq
     ```c linenums="1"
     #include <stdio.h>
     #include <sys/types.h>
-    //#include <sys/wait.h>
+    #include <sys/wait.h>
     #include <stdlib.h>
     #include <unistd.h>
     #include <signal.h>
+    #include <fcntl.h>
     
     
     int main(void)
@@ -242,10 +261,11 @@ Lorsqu'on tape sur une touche, la mère envoie à sa fille un signal, la débloq
     ```c linenums="1"
     #include <stdio.h>
     #include <sys/types.h>
-    //#include <sys/wait.h>
+    #include <sys/wait.h>
     #include <stdlib.h>
     #include <unistd.h>
     #include <signal.h>
+    #include <fcntl.h>
     
     void stop(int sig){
         printf("CHILD : Stopped by parent with signal %d\n",sig);
@@ -273,10 +293,11 @@ Ecrire un programme qui simule un réveil en utilisant le signal SIGALRM.
     ```c linenums="1"
     #include <stdio.h>
     #include <sys/types.h>
-    //#include <sys/wait.h>
+    #include <sys/wait.h>
     #include <stdlib.h>
     #include <unistd.h>
     #include <signal.h>
+    #include <fcntl.h>
     
     void reveil(int sig){
         printf(" BIP BIP BOP !!!! \n");
@@ -316,10 +337,11 @@ La tâche mère ex7 active une tâche fille ex7-2 et lui demande de la réveille
     ```c linenums="1"
     #include <stdio.h>
     #include <sys/types.h>
-    //#include <sys/wait.h>
+    #include <sys/wait.h>
     #include <stdlib.h>
     #include <unistd.h>
     #include <signal.h>
+    #include <fcntl.h>
     
     void reveil(int sig){
         printf(" BIP BIP BOP !!!! \n");
@@ -356,10 +378,11 @@ La tâche mère ex7 active une tâche fille ex7-2 et lui demande de la réveille
     ```c linenums="1"
     #include <stdio.h>
     #include <sys/types.h>
-    //#include <sys/wait.h>
+    #include <sys/wait.h>
     #include <stdlib.h>
     #include <unistd.h>
     #include <signal.h>
+    #include <fcntl.h>
     
     
     int main(int argc, char * argv[])

@@ -307,20 +307,26 @@ Résultat : -1 en cas d’echec, 0 sinon
 <tr>
     <td>
         ```c hl_lines="6 7 12 13 16"
+        #include <stdio.h>
+        #include <sys/types.h>
+        #include <sys/wait.h>
+        #include <stdlib.h>
+        #include <unistd.h>
+        #include <signal.h>
         #include <fcntl.h>
         int main(void)
         {
             int pid,desc,nb ;
             char buf[80];
-            unlink(" pipe ");
-            mkfifo("pipe« ,0666);
+            unlink("pipe");
+            mkfifo("pipe" ,0666);
             pid=fork();
-            if(pid = = 0)
+            if(pid == 0)
                 execv("fille", NULL);
         
             desc=open("pipe",O_RDONLY);
             nb=read(desc,buf,80);
-            buf[nb]=‘\0 ’;
+            buf[nb]='\0';
             printf(" message: %s\n ",buf);
             close(desc);
             wait(NULL);
@@ -330,8 +336,13 @@ Résultat : -1 en cas d’echec, 0 sinon
     </td>
     <td>
         ```c hl_lines="7 8 9"
-        #include<fcntl.h>
-        #include<sys/mode.h>
+        #include <stdio.h>
+        #include <sys/types.h>
+        #include <sys/wait.h>
+        #include <stdlib.h>
+        #include <unistd.h>
+        #include <signal.h>
+        #include <fcntl.h>
         int main(void)
         {
             int dp;

@@ -7,6 +7,9 @@
 Ecrire un programme qui permet à deux taches (sur un seul programme) de communiquer entre elles en utilisant un pipe **non nommé** :   
 On saisi un message au clavier dans la tache fille, qui l’envoie, caractère par caractère, à la mère qui l’affiche (la mère affiche tout d'un coup).  
 
+!!! warn
+    La fonction `getchar()` met en buffer les char un a un en attendant l'appuye sur ENTRER.  
+    Elle ne commence à dépiler le buffer char par char qu'à ce moment la ...
 
 ---
 

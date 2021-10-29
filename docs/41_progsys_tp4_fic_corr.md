@@ -19,10 +19,12 @@
     ```c linenums="1"
     
     #include <stdio.h>
+    #include <sys/types.h>
+    #include <sys/wait.h>
     #include <stdlib.h>
     #include <unistd.h>
+    #include <signal.h>
     #include <fcntl.h>
-    #include<sys/types.h>
     
     int main (void) {
         

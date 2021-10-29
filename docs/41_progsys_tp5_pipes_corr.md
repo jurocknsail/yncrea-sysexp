@@ -15,11 +15,11 @@ On saisi un message au clavier dans la tache fille, qui l’envoie, caractère p
 ```c linenums="1"
 #include <stdio.h>
 #include <sys/types.h>
-//#include <sys/wait.h>
+#include <sys/wait.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <signal.h>
-
+#include <fcntl.h>
 
 int main(void)
 {
