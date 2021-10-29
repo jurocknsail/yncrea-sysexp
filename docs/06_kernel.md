@@ -4,7 +4,7 @@ C'est le Programme qui assure :
  
 - La gestion de la mémoire  
 - Le partage du processeur entre les différentes tâches à exécuter et les entrées/sorties de bas niveau.  
-- Une bonne répartition des ressources de l’ordinateur (mémoire,processeur(s), espace disque, imprimante(s), accès réseaux) sans intervention des utilisateurs  
+- Une bonne répartition des ressources de l’ordinateur (mémoire, processeur(s), espace disque, imprimante(s), accès réseaux) sans intervention des utilisateurs  
 
 !!! tip ""
     Il est lancé au démarrage du système (le boot) et s’exécute jusqu’à son arrêt.
