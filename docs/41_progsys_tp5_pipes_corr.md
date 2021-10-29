@@ -104,7 +104,7 @@ int main(int argc,char *argv[])
 		nb_char=read(df,fic,80);
 		printf("PERE : je lis %d char \n", nb_char);
 		printf("jai lu : %s", fic);
-		write(dp,buf,nb_char);
+		write(dp,fic,nb_char);
 	}
 
 	close(df); 
